@@ -1,0 +1,67 @@
+[
+  {
+    "key": "alt+j alt+1",
+    "command": "extension.copyCodeBlock",
+    "args": {
+      "formatName": "markdown"
+    }
+  },
+  {
+    "key": "alt+j alt+2",
+    "command": "extension.copyCodeBlock",
+    "args": {
+      "formatName": "markdownWithRelativePath"
+    }
+  },
+  {
+    "key": "alt+w",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+      "snippet": "$LINE_COMMENT TODO: "
+    }
+  },
+  {
+    "key": "alt+f",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+      "langId": "typescript",
+      "name": "function"
+    }
+  },
+  {
+    "key": "alt+c",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+      "langId": "typescript",
+      "name": "function call"
+    }
+  },
+  // Override default to ask for selection before starting.
+  {
+    "key": "f5",
+    "command": "workbench.action.debug.selectandstart"
+  },
+  {
+    "key": "ctrl+shift+up",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+right",
+    "command": "-editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+down",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+left",
+    "command": "-editor.action.smartSelect.shrink",
+    "when": "editorTextFocus"
+  }
+]

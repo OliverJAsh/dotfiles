@@ -1,0 +1,32 @@
+{
+  "function": {
+    "description": "function",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "prefix": "f",
+    "body": "($1)$2 => ${3:{ ${4:return ${5:${SELECTION:null}}} \\}}"
+  },
+  "function call": {
+    "description": "function call",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "prefix": "fc",
+    "body": "${1:fn}(${2:$SELECTION})"
+  },
+  "destructured const": {
+    "description": "destructured const",
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "prefix": "const",
+    "body": ["const { ${2:name} } = ${1:value};"]
+  },
+  "IIFE": {
+    "description": "IIFE",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "prefix": "iife",
+    "body": "(() => { $SELECTION$1 })()"
+  },
+  "namespace import": {
+    "description": "namespace import",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "prefix": "impns",
+    "body": ["import * as ${2:Namespace} from '$1';"]
+  }
+}

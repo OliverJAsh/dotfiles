@@ -1,0 +1,80 @@
+{
+  "cSpell.diagnosticLevel": "Hint",
+  "diffEditor.experimental.collapseUnchangedRegions": true,
+  "diffEditor.experimental.showMoves": true,
+  "diffEditor.experimental.useVersion2": true,
+  "editor.autoClosingDelete": "always",
+  "editor.autoClosingOvertype": "always",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.smartSelect.selectSubwords": false,
+  "editor.smartSelect.selectLeadingAndTrailingWhitespace": false,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  // https://stackoverflow.com/questions/71224911/can-github-copilot-stop-auto-suggesting-instead-be-triggered-by-a-keystroke
+  "github.copilot.editor.enableAutoCompletions": false,
+  "githubPullRequests.commentExpandState": "collapseAll",
+  "githubPullRequests.defaultCommentType": "review",
+  "githubPullRequests.pullBranch": "never",
+  "javascript.suggest.completeFunctionCalls": true,
+  // Disabled because it triggers too frequently when rebasing.
+  "jest.autoRun": "off",
+  "search.useGlobalIgnoreFiles": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.newWindowDimensions": "offset",
+  "workbench.startupEditor": "none",
+
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
+
+  "[markdown]": {
+    "editor.wordWrap": "bounded"
+  },
+
+  "[git-commit]": {
+    "editor.wordWrap": "bounded"
+  },
+
+  // [tag:color-theme]
+  // Goal: syntax highlighting should be identical across all applications i.e. VS Code, bat, and delta.
+  // - In VS Code we use "Dark Modern", as defined here.
+  // - bat doesn't have support for VS Code's "Dark Modern" theme, but it does have "Dark+" which is close enough.
+  // - delta has the same themes as bat.
+  "workbench.colorTheme": "Default Dark Modern",
+
+  // Configure terminal to match editor style.
+  "terminal.integrated.lineHeight": 1.25,
+  "workbench.colorCustomizations": {
+    // To match editor
+    // https://github.com/microsoft/vscode/blob/87baaea6d1c56f6017e6d650d5bf6e0de616c0ab/extensions/theme-defaults/themes/dark_modern.json#L34C26-L34C32
+    // TODO: or not - diff green colour needs fixing
+    // "terminal.background": "#1f1f1f"
+  },
+
+  "p42.overlappingCodeAssistVisibility": "Show all code assists",
+  "copyCodeBlock.formats": [
+    {
+      "formatName": "markdown",
+      "codeBlockHeaderFormat": "```${fileExtnameWithoutDot}${EOL}",
+      "codeBlockFooterFormat": "```${EOL}",
+      "codeLineFormat": "${CODE}${EOL}",
+      "multipleSelectionCreateMultipleCodeBlocks": false,
+      "multipleSelectionsBoundalyMarkerFormat": "---${EOL}",
+      "forcePathSeparatorSlash": true,
+      "forceSpaceIndent": true
+    },
+    {
+      "formatName": "markdownWithRelativePath",
+      "codeBlockHeaderFormat": "`${workspaceFolderRelativePath}`:\n```${fileExtnameWithoutDot}${EOL}",
+      "codeBlockFooterFormat": "```${EOL}",
+      "codeLineFormat": "${CODE}${EOL}",
+      "multipleSelectionCreateMultipleCodeBlocks": false,
+      "multipleSelectionsBoundalyMarkerFormat": "---${EOL}",
+      "forcePathSeparatorSlash": true,
+      "forceSpaceIndent": true
+    }
+  ],
+  "terminal.integrated.macOptionIsMeta": true
+}
