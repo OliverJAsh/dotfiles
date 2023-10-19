@@ -75,6 +75,7 @@
       "airflow"
       "cron"
       "docker"
+      "firefox"
       "google-chrome"
       # Required for rcmd's window management.
       "hammerspoon"
