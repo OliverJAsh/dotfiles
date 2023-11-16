@@ -210,6 +210,7 @@
         prompt_segment normal normal (prompt_pwd)
       end
 
+      # TODO: show name of nix shell e.g. #prod-ops
       # The `$IN_NIX_SHELL` environment variable isn't set in a `nix shell` proper,
       # hence this workaround of checking the `$PATH`.
       #   https://discourse.nixos.org/t/in-nix-shell-env-variable-in-nix-shell-versus-nix-shell/15933
