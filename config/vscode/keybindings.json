@@ -63,5 +63,31 @@
     "key": "ctrl+shift+left",
     "command": "-editor.action.smartSelect.shrink",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+s alt+up",
+    "command": "merge.goToPreviousUnhandledConflict"
+  },
+  {
+    "key": "alt+s alt+down",
+    "command": "merge.goToNextUnhandledConflict"
+  },
+  {
+    "key": "cmd+r",
+    "command": "workbench.action.reloadWindow"
+  },
+  {
+    "key": "cmd+alt+r",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.closeAllEditors",
+        "workbench.files.action.focusFilesExplorer",
+        "workbench.files.action.collapseExplorerFolders",
+        "workbench.action.terminal.killAll",
+        "workbench.action.clearRecentFiles",
+        "workbench.action.reloadWindow"
+      ]
+    }
   }
 ]
