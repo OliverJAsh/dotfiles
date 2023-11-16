@@ -77,8 +77,6 @@
       "docker"
       "firefox"
       "google-chrome"
-      # Required for rcmd's window management.
-      "hammerspoon"
       "iterm2"
       "linear-linear"
       "obsidian"
