@@ -909,14 +909,16 @@
 			</dict>
 			<key>Selection Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.18823529999999999</real>
+				<real>0.062745098039215685</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.18823529999999999</real>
+				<real>0.1803921568627451</real>
 				<key>Red Component</key>
-				<real>0.18823529999999999</real>
+				<real>0.36470588235294116</real>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
