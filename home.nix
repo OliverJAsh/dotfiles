@@ -179,6 +179,10 @@
     ];
 
     interactiveShellInit = ''
+      # https://github.com/direnv/direnv/issues/68
+      # https://stackoverflow.com/questions/51349012/stop-direnv-showing-all-environment-variables-on-load
+      export DIRENV_LOG_FORMAT=
+
       iterm2_shell_integration
 
       # Easy printing with foreground and background colors
