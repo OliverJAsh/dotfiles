@@ -27,6 +27,9 @@ duti -s com.microsoft.VSCode .jsx all
 duti -s com.microsoft.VSCode .json all
 duti -s com.microsoft.VSCode .md all
 duti -s com.microsoft.VSCode .nix all
+duti -s com.microsoft.VSCode .patch all
+duti -s com.microsoft.VSCode .xml all
+duti -s com.microsoft.VSCode com.apple.property-list all
 duti -s com.microsoft.VSCode .sh all
 duti -s com.microsoft.VSCode .snap all
 duti -s com.microsoft.VSCode .ts all
