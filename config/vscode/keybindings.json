@@ -85,6 +85,7 @@
         "workbench.files.action.focusFilesExplorer",
         "workbench.files.action.collapseExplorerFolders",
         "workbench.action.terminal.killAll",
+        "workbench.action.closePanel",
         "workbench.action.clearRecentFiles",
         "workbench.action.reloadWindow"
       ]
