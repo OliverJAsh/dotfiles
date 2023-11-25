@@ -44,7 +44,6 @@
     userEmail = "oliverjash@gmail.com";
 
     # difftastic:
-    # - https://github.com/jesseduffield/lazygit/issues/1853
     # - https://github.com/nix-community/home-manager/issues/3140
 
     lfs = {
@@ -120,6 +119,8 @@
           # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#delta
           colorArg = "always";
           pager = "delta --dark --paging=never";
+
+          externalDiffCommand = "difft --color=always";
         };
       };
 
