@@ -251,6 +251,13 @@
       set --global fish_greeting
     '';
 
+    shellAbbrs = {
+      "cat" = "bat";
+      "z" = "lazygit";
+
+      "up" = "nix run nix-darwin -- switch --flake ~/Code/dotfiles/";
+    };
+
     functions = {
       mkcd = "mkdir -p $argv; cd $argv;";
     };
