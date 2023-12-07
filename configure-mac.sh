@@ -16,6 +16,8 @@ defaults write -g AppleKeyboardUIMode -int 2
 
 killall Dock
 
+# App IDs: https://github.com/moretension/duti/issues/50
+
 duti -s com.microsoft.VSCode .code-snippets all
 duti -s com.microsoft.VSCode .css all
 # This results in an error. Apparently this is safe to ignore.
