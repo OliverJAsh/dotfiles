@@ -59,6 +59,7 @@
         # Default is 2, after which the line is truncated meaning it won't be
         # visible/accessible.
         wrap-max-lines = 40;
+        max-line-distance = 1;
       };
     };
 
