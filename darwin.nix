@@ -81,6 +81,7 @@
       "linear-linear"
       "obsidian"
       "raycast"
+      "screen-studio"
       "slack"
       "spotify"
       "transmission"
