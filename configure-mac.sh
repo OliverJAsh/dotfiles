@@ -25,17 +25,17 @@ duti -s com.microsoft.VSCode .css all
 # https://github.com/moretension/duti/issues/29
 duti -s com.microsoft.VSCode .html all
 duti -s com.microsoft.VSCode .js all
-duti -s com.microsoft.VSCode .jsx all
 duti -s com.microsoft.VSCode .json all
+duti -s com.microsoft.VSCode .jsx all
+duti -s com.microsoft.VSCode .lock all
 duti -s com.microsoft.VSCode .md all
 duti -s com.microsoft.VSCode .nix all
 duti -s com.microsoft.VSCode .patch all
-duti -s com.microsoft.VSCode .xml all
-duti -s com.microsoft.VSCode com.apple.property-list all
 duti -s com.microsoft.VSCode .sh all
 duti -s com.microsoft.VSCode .snap all
 duti -s com.microsoft.VSCode .ts all
 duti -s com.microsoft.VSCode .tsx all
+duti -s com.microsoft.VSCode .xml all
 duti -s com.microsoft.VSCode .yml all
+duti -s com.microsoft.VSCode com.apple.property-list all
 duti -s com.microsoft.VSCode public.data all
-duti -s com.microsoft.VSCode .lock all
