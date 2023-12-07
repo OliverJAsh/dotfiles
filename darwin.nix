@@ -54,6 +54,8 @@
     ];
     brews = [
       # Not available via nix-darwin.
+      "asimov"
+      # Not available via nix-darwin.
       # https://github.com/LnL7/nix-darwin/issues/129
       # TODO: replace with localias?
       # https://github.com/peterldowns/localias

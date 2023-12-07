@@ -18,3 +18,6 @@ ln -s "$PWD"/config/vscode/snippets/ ~/Library/Application\ Support/Code/User/sn
 rm -rf /opt/homebrew/etc/nginx/nginx.conf
 ln -s "$PWD"/config/nginx.conf /opt/homebrew/etc/nginx/nginx.conf
 brew services start nginx
+
+# https://github.com/stevegrunwell/asimov#installation-via-homebrew
+sudo brew services start asimov
