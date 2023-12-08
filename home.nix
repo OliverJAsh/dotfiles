@@ -110,6 +110,17 @@
   programs.lazygit = {
     enable = true;
 
+    # Build lazygit from latest source whilst we wait for a new release (for
+    # Difftastic + commit co-authors).
+    package = pkgs.lazygit.overrideAttrs (_: {
+      src = pkgs.fetchFromGitHub {
+        owner = "jesseduffield";
+        repo = "lazygit";
+        rev = "ccb1ee0";
+        hash = "sha256-VtsIv6tGupe09g+ddeiXzpxY76THy9zRMnDOidZ6h1s=";
+      };
+    });
+
     settings = {
       customCommands = [{
         key = "<space>";
