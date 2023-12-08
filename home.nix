@@ -122,6 +122,12 @@
     });
 
     settings = {
+      customCommands = [{
+        key = "E";
+        context = "global";
+        command = "code {{.SelectedWorktree.Path}}";
+      }];
+
       git = {
         # Override default to add `--oneline`. Default here:
         # https://github.com/jesseduffield/lazygit/blob/c390c9d58edc18083ed7f1a672b03b7c4d982c12/docs/Config.md
