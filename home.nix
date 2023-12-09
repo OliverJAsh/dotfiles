@@ -24,6 +24,7 @@
     github-copilot-cli
     jq
     nixpkgs-fmt
+    saml2aws
 
     nodePackages.fkill-cli
     # TODO:
