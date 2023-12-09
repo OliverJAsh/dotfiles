@@ -75,7 +75,6 @@
     casks = [
       "1password"
       "airflow"
-      "cron"
       "docker"
       "firefox"
       "google-chrome"
