@@ -98,5 +98,6 @@
     "unenhanced",
     "upscaling"
   ],
-  "workbench.colorTheme": "Default Light Modern"
+  "workbench.colorTheme": "Default Light Modern",
+  "comments.openView": "never",
 }
