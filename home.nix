@@ -282,6 +282,8 @@
   programs.vscode = {
     enable = true;
     extensions = with nix-vscode-extensions.extensions.aarch64-darwin.vscode-marketplace; [
+      cardinal90.multi-cursor-case-preserve
+      codespaces-contrib.codeswing
       dbaeumer.vscode-eslint
       dbankier.vscode-quick-select
       esbenp.prettier-vscode
@@ -298,6 +300,7 @@
       streetsidesoftware.code-spell-checker
       tamasfe.even-better-toml
       timonwong.shellcheck
+      vsls-contrib.gistfs
       wmaurer.change-case
     ];
   };
