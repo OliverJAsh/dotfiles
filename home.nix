@@ -282,6 +282,7 @@
   programs.vscode = {
     enable = true;
     extensions = with nix-vscode-extensions.extensions.aarch64-darwin.vscode-marketplace; [
+      bierner.markdown-mermaid
       cardinal90.multi-cursor-case-preserve
       codespaces-contrib.codeswing
       dbaeumer.vscode-eslint
