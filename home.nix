@@ -19,7 +19,6 @@
     difftastic
     duti
     fzf
-    gh
     jq
     nixpkgs-fmt
     saml2aws
@@ -28,6 +27,14 @@
     # TODO:
     # nodePackages.trash-cli
   ];
+
+  programs.gh = {
+    enable = true;
+    extensions = [
+      # https://github.com/NixOS/nixpkgs/issues/291551
+      # pkgs.gh-copilot
+    ];
+  };
 
   home.sessionVariables = {
     EDITOR = "code --wait";
