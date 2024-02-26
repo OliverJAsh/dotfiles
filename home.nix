@@ -18,10 +18,8 @@
     ast-grep
     difftastic
     duti
-    fishPlugins.github-copilot-cli-fish
     fzf
     gh
-    github-copilot-cli
     jq
     nixpkgs-fmt
     saml2aws
