@@ -167,6 +167,8 @@
 
         showFileTree = false;
       };
+
+      promptToReturnFromSubprocess = false;
     };
   };
 
