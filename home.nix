@@ -22,6 +22,7 @@
     jq
     nixpkgs-fmt
     saml2aws
+    sd
 
     nodePackages.fkill-cli
     # TODO:
