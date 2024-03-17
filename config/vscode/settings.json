@@ -36,19 +36,6 @@
   "window.newWindowDimensions": "offset",
   "workbench.startupEditor": "none",
 
-  "[nix]": {
-    "editor.defaultFormatter": "jnoortheen.nix-ide"
-  },
-
-  // TODO: we want this but not for code blocks. how??
-  // "[markdown]": {
-  //   "editor.wordWrap": "bounded"
-  // },
-
-  "[git-commit]": {
-    "editor.wordWrap": "bounded"
-  },
-
   // [tag:color-theme]
   // Goal: syntax highlighting should be identical across all applications i.e. VS Code, bat, and delta.
   // - In VS Code we use "Dark Modern", as defined here.
@@ -105,5 +92,16 @@
   "workbench.colorTheme": "Default Light Modern",
 
   "multiDiffEditor.experimental.enabled": true,
-  "p42.overlappingCodeAssistVisibility": "Show only default code assists"
+  "p42.overlappingCodeAssistVisibility": "Show only default code assists",
+
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
+  // TODO: we want this but not for code blocks. how??
+  // "[markdown]": {
+  //   "editor.wordWrap": "bounded"
+  // },
+  "[git-commit]": {
+    "editor.wordWrap": "bounded"
+  }
 }
