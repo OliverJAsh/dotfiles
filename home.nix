@@ -144,7 +144,7 @@
           # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#delta
           colorArg = "always";
           pager = "delta --dark --paging=never";
-
+          # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#using-external-diff-commands
           externalDiffCommand = "difft --color=always";
         };
       };
