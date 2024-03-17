@@ -90,5 +90,20 @@
         "workbench.action.reloadWindow"
       ]
     }
+  },
+  {
+    "key": "alt+;",
+    "command": "editor.emmet.action.matchTag"
+  },
+  {
+    "key": "ctrl+cmd+b",
+    "command": "editor.action.codeAction",
+    "args": {
+      "kind": "refactor.rewrite.arrow"
+    }
+  },
+  {
+    "key": "shift+alt+cmd+l",
+    "command": "liveshare.start"
   }
 ]
