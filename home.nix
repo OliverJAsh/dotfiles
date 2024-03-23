@@ -34,7 +34,7 @@
     extensions = [
       # https://github.com/NixOS/nixpkgs/issues/291551
       # https://nixpk.gs/pr-tracker.html?pr=297073
-      # pkgs.gh-copilot
+      pkgs.gh-copilot
     ];
   };
 
