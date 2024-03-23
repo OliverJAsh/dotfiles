@@ -118,14 +118,14 @@
   programs.lazygit = {
     enable = true;
 
-    # Build lazygit from latest source whilst we wait for a new release (for
-    # Difftastic + commit co-authors).
+    # Build lazygit from latest source whilst we wait for
+    # https://github.com/NixOS/nixpkgs/pull/298343.
     package = pkgs.lazygit.overrideAttrs (_: {
       src = pkgs.fetchFromGitHub {
         owner = "jesseduffield";
         repo = "lazygit";
-        rev = "fadc2893d21c798e2b64b7f7929927347cf242dd";
-        hash = "sha256-1UhSMbX4MpDPHqbviaL7KLKAjgeFuvPZh5eZRRmIrGU=";
+        rev = "3675570a391b1a49ddd198b4c7e71e17701d4404"; # aka v0.41.0
+        hash = "sha256-Ok6QnXw3oDeSzBekft8cDXM/YsADgF1NZznfNoGNvck=";
       };
     });
 
