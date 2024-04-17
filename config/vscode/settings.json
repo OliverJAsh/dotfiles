@@ -87,6 +87,7 @@
     // "terminal.background": "#1f1f1f"
   },
   "workbench.colorTheme": "Default Light Modern",
+  "workbench.editor.languageDetection": false,
   "workbench.preferredLightColorTheme": "Default Light Modern",
   "workbench.preferredDarkColorTheme": "Default Dark Modern",
   "workbench.startupEditor": "none",
