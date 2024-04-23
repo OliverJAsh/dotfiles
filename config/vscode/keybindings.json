@@ -105,5 +105,9 @@
   {
     "key": "shift+alt+cmd+l",
     "command": "liveshare.start"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "issue.copyGithubPermalink"
   }
 ]
