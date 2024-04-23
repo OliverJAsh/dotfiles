@@ -92,7 +92,7 @@
     }
   },
   {
-    "key": "alt+;",
+    "key": "ctrl+alt+;",
     "command": "editor.emmet.action.matchTag"
   },
   {
