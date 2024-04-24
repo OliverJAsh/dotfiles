@@ -35,6 +35,7 @@ duti -s com.microsoft.VSCode .sh all
 duti -s com.microsoft.VSCode .snap all
 duti -s com.microsoft.VSCode .ts all
 duti -s com.microsoft.VSCode .tsx all
+duti -s com.microsoft.VSCode .txt all
 duti -s com.microsoft.VSCode .xml all
 duti -s com.microsoft.VSCode .yml all
 duti -s com.microsoft.VSCode com.apple.property-list all
