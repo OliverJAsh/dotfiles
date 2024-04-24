@@ -71,6 +71,10 @@
   "terminal.integrated.lineHeight": 1.25,
   "terminal.integrated.macOptionIsMeta": true,
   "typescript.preferences.jsxAttributeCompletionStyle": "braces",
+  // Auto imports slow down completions in large projects.
+  // https://github.com/microsoft/vscode/issues/138449
+  // https://github.com/microsoft/TypeScript/issues/32174
+  "typescript.suggest.autoImports": false,
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "window.newWindowDimensions": "offset",
