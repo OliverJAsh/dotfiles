@@ -33,6 +33,7 @@ duti -s com.microsoft.VSCode .nix all
 duti -s com.microsoft.VSCode .patch all
 duti -s com.microsoft.VSCode .sh all
 duti -s com.microsoft.VSCode .snap all
+duti -s com.microsoft.VSCode .svg all
 duti -s com.microsoft.VSCode .ts all
 duti -s com.microsoft.VSCode .tsx all
 duti -s com.microsoft.VSCode .txt all
