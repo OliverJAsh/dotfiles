@@ -45,7 +45,7 @@
     "command": "workbench.action.debug.selectandstart"
   },
   {
-    "key": "ctrl+shift+up",
+    "key": "alt+a",
     "command": "editor.action.smartSelect.expand",
     "when": "editorTextFocus"
   },
@@ -55,7 +55,7 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+shift+down",
+    "key": "alt+z",
     "command": "editor.action.smartSelect.shrink",
     "when": "editorTextFocus"
   },
