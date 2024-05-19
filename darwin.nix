@@ -79,7 +79,6 @@
       "elgato-wave-link"
       "firefox"
       "google-chrome"
-      "hyperkey"
       "iterm2"
       "linear-linear"
       "messenger"
@@ -91,7 +90,6 @@
       "transmission"
       "tunnelbear"
       "vlc"
-      "whatsapp"
       "zoom"
     ];
   };
