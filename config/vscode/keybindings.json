@@ -64,6 +64,10 @@
     "command": "-editor.action.smartSelect.shrink",
     "when": "editorTextFocus"
   },
+
+  //
+  // Merge editor
+  //
   {
     "key": "alt+s alt+up",
     "command": "merge.goToPreviousUnhandledConflict"
@@ -72,6 +76,7 @@
     "key": "alt+s alt+down",
     "command": "merge.goToNextUnhandledConflict"
   },
+
   {
     "key": "cmd+r",
     "command": "workbench.action.reloadWindow"
