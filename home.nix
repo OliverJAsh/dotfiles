@@ -117,6 +117,17 @@
   programs.lazygit = {
     enable = true;
 
+    # Build lazygit from latest source so we don't have to wait for nixpkgs to
+    # be updated when there's a new release.
+    package = pkgs.lazygit.overrideAttrs (_: {
+      src = pkgs.fetchFromGitHub {
+        owner = "jesseduffield";
+        repo = "lazygit";
+        rev = "v0.42.0";
+        hash = "sha256-w5QL+CuMYyTTnNAfWF8jQuQWfjxaw7bANK69Dc+onGk=";
+      };
+    });
+
     settings = {
       customCommands = [{
         key = "E";
