@@ -145,7 +145,13 @@
           colorArg = "always";
           pager = "delta --dark --paging=never";
           # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#using-external-diff-commands
-          externalDiffCommand = "difft --color=always";
+
+          # Disabling this for now because:
+          # - snapshot diffs are hard to read
+          # - very slow in some cases e.g. snapshots
+          # - poor syntax highlighting
+          # - lazygit needs a command/shortcut to toggle on/off
+          # externalDiffCommand = "difft --color=always";
         };
       };
 
