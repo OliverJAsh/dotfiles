@@ -31,6 +31,9 @@
     nodePackages.fkill-cli
     # TODO:
     # nodePackages.trash-cli
+
+    # TODO: 24.05.0
+    # fishPlugins.forgit
   ];
 
   programs.gh = {
@@ -67,6 +70,9 @@
       options = {
         # [ref:color-theme]
         syntax-theme = "Visual Studio Dark+";
+        # TODO: 
+        # https://github.com/wfxr/forgit/issues/121
+        # https://github.com/dandavison/delta/issues/368
         side-by-side = true;
         # Default is 2, after which the line is truncated meaning it won't be
         # visible/accessible.
@@ -234,6 +240,11 @@
           sha256 = "sha256-JdOLsZZ1VFRv7zA2i/QEZ1eovOym/Wccn0SJyhiP9hI=";
         };
       }
+      # TODO: 
+      # {
+      #   name = "forgit";
+      #   src = pkgs.fishPlugins.forgit;
+      # }
     ];
 
     interactiveShellInit = ''

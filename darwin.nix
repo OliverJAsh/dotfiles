@@ -23,6 +23,9 @@
       # - https://github.com/LnL7/nix-darwin/issues/122
       # - https://d12frosted.io/posts/2021-05-21-path-in-fish-with-nix-darwin.html
       for p in (string split " " $NIX_PROFILES); fish_add_path --prepend --move --path $p/bin; end
+
+      # https://github.com/wfxr/forgit/blob/17394d10569899eded337dec59ef461f8becea51/README.md#homebrew
+      [ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.fish ]; and source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.fish
     '';
   };
 
@@ -50,6 +53,8 @@
     brews = [
       # Not available via nix-darwin.
       "asimov"
+      # Outdated in nixpkgs.
+      "forgit"
       # Install via Brew rather than Nix so we can utilize system services
       # (start on login).
       "caddy"
