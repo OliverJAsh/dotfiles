@@ -75,6 +75,7 @@
     # reasons that I use Homebrew casks instead.
     casks = [
       "1password"
+      "adobe-creative-cloud"
       "airflow"
       "docker"
       "elgato-wave-link"
@@ -93,6 +94,8 @@
       "vlc"
       "zoom"
     ];
+    # Not yet available via package managers:
+    # - https://github.com/FuzzyIdeas/IsThereNet
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
