@@ -78,11 +78,7 @@
   },
 
   {
-    "key": "cmd+r",
-    "command": "workbench.action.reloadWindow"
-  },
-  {
-    "key": "cmd+shift+r",
+    "key": "cmd+shift+alt+r",
     "command": "runCommands",
     "args": {
       "commands": [
