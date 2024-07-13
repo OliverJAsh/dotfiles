@@ -1,4 +1,10 @@
 {
+  // Doesn't yet work with namespace imports, but soon:
+  // https://github.com/microsoft/TypeScript/issues/58740
+  // https://github.com/microsoft/TypeScript/pull/59004
+  // "javascript.experimental.updateImportsOnPaste": true,
+  // "typescript.experimental.updateImportsOnPaste": true,
+
   "copyCodeBlock.formats": [
     {
       "formatName": "markdown",
