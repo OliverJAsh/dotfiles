@@ -69,7 +69,6 @@
   "githubPullRequests.pullBranch": "never",
   "javascript.preferences.jsxAttributeCompletionStyle": "braces",
   "javascript.suggest.completeFunctionCalls": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
   // Disabled because it triggers too frequently when rebasing.
   "jest.autoRun": "off",
   "markdown.experimental.updateLinksOnPaste": true,
@@ -85,7 +84,6 @@
   // https://github.com/microsoft/TypeScript/issues/32174
   "typescript.suggest.autoImports": false,
   "typescript.suggest.completeFunctionCalls": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
   "window.newWindowDimensions": "offset",
   // [tag:color-theme]
   // Goal: syntax highlighting should be identical across all applications i.e. VS Code, bat, and delta.
