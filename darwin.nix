@@ -89,6 +89,7 @@
       "screen-studio"
       "slack"
       "spotify"
+      "stats"
       "transmission"
       "tunnelbear"
       "vlc"
