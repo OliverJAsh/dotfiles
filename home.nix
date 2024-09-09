@@ -319,8 +319,10 @@
       dbaeumer.vscode-eslint
       dbankier.vscode-quick-select
       esbenp.prettier-vscode
+      fastly.vscode-fastly-vcl
       github.copilot
       github.vscode-pull-request-github
+      hashicorp.terraform
       jnoortheen.nix-ide
       matsuyanagi.copy-code-block
       mikestead.dotenv
