@@ -151,7 +151,7 @@
         paging = {
           # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#delta
           colorArg = "always";
-          pager = "delta --dark --paging=never";
+          pager = "delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
           # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#using-external-diff-commands
 
           # Disabling this for now because:
