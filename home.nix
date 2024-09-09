@@ -130,11 +130,18 @@
     });
 
     settings = {
-      customCommands = [{
-        key = "E";
-        context = "global";
-        command = "code {{.SelectedWorktree.Path}}";
-      }];
+      customCommands = [
+        {
+          key = "<c-n>";
+          context = "localBranches";
+          command = "gh pr merge --delete-branch --merge {{.SelectedLocalBranch.Name}}";
+        }
+        {
+          key = "E";
+          context = "global";
+          command = "code {{.SelectedWorktree.Path}}";
+        }
+      ];
 
       git = {
         # Override default to add `--oneline`. Default here:
