@@ -124,8 +124,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "jesseduffield";
         repo = "lazygit";
-        rev = "v0.43.1";
-        hash = "sha256-iFx/ffaijhOqEDRW1QVzhQMvSgnS4lKFOzq1YdlkUzc=";
+        rev = "v0.44.0";
+        hash = "sha256-bJ2wdS0BCAGjfbnMoQSUhw/xAkC5HPRklefXx2ux078=";
       };
     });
 
