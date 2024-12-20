@@ -29,10 +29,6 @@ killall Dock
 
 duti -s com.microsoft.VSCode .code-snippets all
 duti -s com.microsoft.VSCode .css all
-# This results in an error. Apparently this is safe to ignore.
-# > failed to set com.microsoft.VSCode as handler for public.html (error -54)
-# https://github.com/moretension/duti/issues/29
-duti -s com.microsoft.VSCode .html all
 duti -s com.microsoft.VSCode .js all
 duti -s com.microsoft.VSCode .json all
 duti -s com.microsoft.VSCode .jsonc all
@@ -54,3 +50,10 @@ duti -s com.microsoft.VSCode .xml all
 duti -s com.microsoft.VSCode .yml all
 duti -s com.microsoft.VSCode com.apple.property-list all
 duti -s com.microsoft.VSCode public.data all
+
+# This results in an error.
+# > failed to set com.microsoft.VSCode as handler for public.html (error -54)
+# https://github.com/moretension/duti/issues/29
+# https://github.com/moretension/duti/issues/34
+# Do it manually for now.
+# duti -s com.microsoft.VSCode .html all
