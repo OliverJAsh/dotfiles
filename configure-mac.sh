@@ -26,6 +26,7 @@ duti -s com.microsoft.VSCode .css all
 duti -s com.microsoft.VSCode .html all
 duti -s com.microsoft.VSCode .js all
 duti -s com.microsoft.VSCode .json all
+duti -s com.microsoft.VSCode .jsonc all
 duti -s com.microsoft.VSCode .jsx all
 duti -s com.microsoft.VSCode .lock all
 duti -s com.microsoft.VSCode .md all
