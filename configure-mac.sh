@@ -16,7 +16,16 @@ defaults write -g AppleKeyboardUIMode -int 2
 
 killall Dock
 
-# App IDs: https://github.com/moretension/duti/issues/50
+#
+# File associations
+#
+
+# Find an app ID: https://github.com/moretension/duti/issues/50
+
+# Manually view config file:
+# /usr/libexec/PlistBuddy -c "Print" ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist
+# Delete entry:
+# /usr/libexec/PlistBuddy -c "Delete :LSHandlers:1" ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist
 
 duti -s com.microsoft.VSCode .code-snippets all
 duti -s com.microsoft.VSCode .css all

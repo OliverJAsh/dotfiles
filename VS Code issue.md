@@ -23,3 +23,5 @@ $ nix-collect-garbage -d
 $ # https://www.reddit.com/r/Nix/comments/12xqjt3/darwin_home_manger_and_nix_generations/
 $ sudo nix-collect-garbage -d
 ```
+
+You might also need to restart and repeat GC.
