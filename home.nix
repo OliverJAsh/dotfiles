@@ -73,6 +73,10 @@
     };
 
     extraConfig = {
+      # For lazygit and `git show`
+      # https://github.com/jesseduffield/lazygit/issues/3931
+      stash.showIncludeUntracked = true;
+
       # TODO:
       # https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html
       # https://jeppesen.io/git-commit-sign-nix-home-manager-ssh/
