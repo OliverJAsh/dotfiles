@@ -92,6 +92,7 @@
       "stats"
       "transmission"
       "tunnelbear"
+      "visual-studio-code"
       "vlc"
       "zoom"
     ];
