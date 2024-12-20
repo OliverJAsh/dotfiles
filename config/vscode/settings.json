@@ -76,8 +76,6 @@
   "githubPullRequests.pullBranch": "never",
   "javascript.preferences.jsxAttributeCompletionStyle": "braces",
   "javascript.suggest.completeFunctionCalls": true,
-  // Disabled because it triggers too frequently when rebasing.
-  "jest.autoRun": "off",
   "markdown.experimental.updateLinksOnPaste": true,
   "multiDiffEditor.experimental.enabled": true,
   "p42.overlappingCodeAssistVisibility": "Show only default code assists",
