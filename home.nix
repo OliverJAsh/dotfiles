@@ -327,6 +327,9 @@
       version = pkgs.vscode.version;
     };
     extensions = with nix-vscode-extensions.extensions.aarch64-darwin.vscode-marketplace; [
+      albert.TabOut
+      # or
+      # OnlyLys.leaper
       ast-grep.ast-grep-vscode
       bierner.markdown-mermaid
       biomejs.biome
