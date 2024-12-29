@@ -34,6 +34,7 @@ duti -s com.microsoft.VSCode .json all
 duti -s com.microsoft.VSCode .jsonc all
 duti -s com.microsoft.VSCode .jsx all
 duti -s com.microsoft.VSCode .lock all
+duti -s com.microsoft.VSCode .log all
 duti -s com.microsoft.VSCode .md all
 duti -s com.microsoft.VSCode .nix all
 duti -s com.microsoft.VSCode .patch all
