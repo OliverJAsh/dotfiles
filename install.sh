@@ -20,4 +20,4 @@ ln -s "$PWD"/proxy/Caddyfile /opt/homebrew/etc/Caddyfile
 brew services start caddy
 
 # https://github.com/stevegrunwell/asimov#installation-via-homebrew
-sudo brew services start asimov
+brew services start asimov
