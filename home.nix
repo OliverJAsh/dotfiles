@@ -16,7 +16,6 @@
   home.packages = with pkgs; [
     # CLIs
     ast-grep
-    caddy
     curl # includes Brotli compression
     difftastic
     duti

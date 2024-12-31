@@ -55,6 +55,9 @@
     brews = [
       # Not available via nix-darwin.
       "asimov"
+      # Install via Brew rather than Nix so we can utilize system services
+      # (start on login).
+      "caddy"
       # Not available via Nix.
       "itermocil"
     ];

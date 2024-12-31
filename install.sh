@@ -15,7 +15,9 @@ ln -s "$PWD"/config/vscode/keybindings.json ~/Library/Application\ Support/Code/
 ln -s "$PWD"/config/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -s "$PWD"/config/vscode/snippets/ ~/Library/Application\ Support/Code/User/snippets
 
-caddy start -c "$PWD"/proxy/Caddyfile
+rm -rf /opt/homebrew/etc/Caddyfile
+ln -s "$PWD"/proxy/Caddyfile /opt/homebrew/etc/Caddyfile
+brew services start caddy
 
 # https://github.com/stevegrunwell/asimov#installation-via-homebrew
 sudo brew services start asimov
