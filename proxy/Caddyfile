@@ -1,0 +1,9 @@
+# Everything here depends upon other per-project configs.
+
+https://unsplash.localhost {
+	reverse_proxy :3000
+}
+
+https://demos-unsplash.localhost {
+	reverse_proxy :4000
+}

@@ -15,9 +15,7 @@ ln -s "$PWD"/config/vscode/keybindings.json ~/Library/Application\ Support/Code/
 ln -s "$PWD"/config/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -s "$PWD"/config/vscode/snippets/ ~/Library/Application\ Support/Code/User/snippets
 
-rm -rf /opt/homebrew/etc/nginx/nginx.conf
-ln -s "$PWD"/config/nginx.conf /opt/homebrew/etc/nginx/nginx.conf
-brew services start nginx
+caddy start -c "$PWD"/proxy/Caddyfile
 
 # https://github.com/stevegrunwell/asimov#installation-via-homebrew
 sudo brew services start asimov
