@@ -194,6 +194,8 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    # Copied from https://github.com/samhh/dotfiles/blob/4abc312a543c1ddb8fa6e65e14467469b2f39080/home/shell.nix#L87
+    config.global.hide_env_diff = true;
     # Copied from https://github.com/samhh/dotfiles/commit/9a1844c01a2459a4fe795f8f89e27d905f4727a0.
     # Avoid cluttering project directories which often conflicts with tooling,
     # as per:
@@ -239,10 +241,6 @@
     ];
 
     interactiveShellInit = ''
-      # https://github.com/direnv/direnv/issues/68
-      # https://stackoverflow.com/questions/51349012/stop-direnv-showing-all-environment-variables-on-load
-      export DIRENV_LOG_FORMAT=
-
       iterm2_shell_integration
 
       # Easy printing with foreground and background colors
