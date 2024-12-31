@@ -327,7 +327,7 @@
       version = pkgs.vscode.version;
     };
     extensions = with nix-vscode-extensions.extensions.aarch64-darwin.vscode-marketplace; [
-      albert.TabOut
+      albert.tabout
       # or
       # OnlyLys.leaper
       ast-grep.ast-grep-vscode
