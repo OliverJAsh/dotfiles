@@ -58,8 +58,6 @@
       # Install via Brew rather than Nix so we can utilize system services
       # (start on login).
       "caddy"
-      # Not available via Nix.
-      "itermocil"
     ];
     masApps = {
       Keynote = 409183694;
