@@ -335,7 +335,8 @@
       biomejs.biome
       cardinal90.multi-cursor-case-preserve
       codespaces-contrib.codeswing
-      danvk.any-xray
+      # https://github.com/danvk/any-xray/issues/18
+      # danvk.any-xray
       dbaeumer.vscode-eslint
       dbankier.vscode-quick-select
       esbenp.prettier-vscode
