@@ -175,7 +175,7 @@
       gui = {
         # Reduce a little to make more room for the main panel.
         sidePanelWidth = 0.2;
-
+        # Wishlist: halfSidePanelWidth https://github.com/jesseduffield/lazygit/issues/3054
         expandFocusedSidePanel = true;
 
         showCommandLog = false;
