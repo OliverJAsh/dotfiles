@@ -84,7 +84,7 @@
     "args": {
       "commands": [
         "workbench.action.closeAllEditors",
-        "workbench.files.action.focusFilesExplorer",
+        "workbench.action.closeSidebar",
         "workbench.files.action.collapseExplorerFolders",
         "workbench.action.terminal.killAll",
         "workbench.action.closePanel",
