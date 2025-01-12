@@ -47,7 +47,6 @@
   "comments.openView": "never",
   "debug.javascript.autoAttachFilter": "onlyWithFlag",
   "diffEditor.experimental.showMoves": true,
-  "diffEditor.experimental.useVersion2": true,
   "diffEditor.hideUnchangedRegions.enabled": true,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.autoClosingDelete": "always",
