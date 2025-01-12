@@ -118,5 +118,13 @@
   {
     "key": "shift+cmd+alt+o",
     "command": "openInGithub.openInGitHubFile"
+  },
+  {
+    "key": "alt+shift+q",
+    "command": "editor.action.codeAction",
+    "args": {
+      "kind": "source.fixAll",
+      "apply": "first"
+    }
   }
 ]
