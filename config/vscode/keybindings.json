@@ -108,8 +108,15 @@
     "key": "shift+alt+cmd+l",
     "command": "liveshare.start"
   },
+  // Most of the time I want to copy a permalink to code on the default branch.
+  // My preferred workflow is to use this shortcut to open using the default
+  // branch, check the line selection is correct, and then use GitHub's on page
+  // shortcut for copying a permalink. The GitHub Pull Requests extension has
+  // similar functionality, but it only allows opening as permalink. The current
+  // changes may not exist yet on the remote. Related issue:
+  // https://github.com/microsoft/vscode-pull-request-github/issues/4765
   {
-    "key": "shift+cmd+c",
-    "command": "issue.copyGithubPermalink"
+    "key": "shift+cmd+alt+o",
+    "command": "openInGithub.openInGitHubFile"
   }
 ]

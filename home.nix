@@ -359,6 +359,7 @@
       p42ai.refactor
       stkb.rewrap
       streetsidesoftware.code-spell-checker
+      sysoev.vscode-open-in-github
       tamasfe.even-better-toml
       timonwong.shellcheck
       vsls-contrib.gistfs
