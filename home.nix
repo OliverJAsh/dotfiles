@@ -21,6 +21,7 @@
     # https://github.com/NixOS/nixpkgs/issues/337982
     # Workaround: -k
     curl # includes Brotli compression
+    devenv
     difftastic
     duti
     fzf
