@@ -1,4 +1,7 @@
 {
+  // Wishlist:
+  // - Merge editor: add setting to auto navigate to next conflict https://github.com/microsoft/vscode/issues/236160
+
   "copyCodeBlock.formats": [
     {
       "formatName": "markdown",
