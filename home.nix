@@ -356,7 +356,6 @@
       ms-vsliveshare.vsliveshare
       orta.vscode-jest
       orta.vscode-twoslash-queries
-      p42ai.refactor
       stkb.rewrap
       streetsidesoftware.code-spell-checker
       sysoev.vscode-open-in-github

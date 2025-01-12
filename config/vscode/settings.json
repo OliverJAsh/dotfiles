@@ -72,7 +72,6 @@
   "javascript.preferences.jsxAttributeCompletionStyle": "braces",
   "javascript.suggest.completeFunctionCalls": true,
   "multiDiffEditor.experimental.enabled": true,
-  "p42.overlappingCodeAssistVisibility": "Show only default code assists",
   "search.useGlobalIgnoreFiles": true,
   // Configure terminal to match editor style.
   "terminal.integrated.lineHeight": 1.25,
