@@ -45,6 +45,8 @@
   };
 
   home.sessionVariables = {
+    # Issue: `code` temporarily opens duplicate VS Code instance in the dock https://github.com/microsoft/vscode/issues/139634
+    # Wishlist: return focus afterwards https://github.com/microsoft/vscode/issues/68579
     EDITOR = "code --wait";
     LESS = "--ignore-case";
   };
