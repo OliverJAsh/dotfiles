@@ -2,6 +2,48 @@
   // Wishlist:
   // - Merge editor: add setting to auto navigate to next conflict https://github.com/microsoft/vscode/issues/236160
 
+  // TODO: reproduces even with this enabled/disabled?
+  // https://github.com/biomejs/biome/issues/4680
+  // try `biome rage`
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.biome": "explicit"
+  // },
+
+  // TODO: still relevant?
+  // // This fixes an issue whereby TS server is slow to notice changes e.g. to
+  // // generated TS translations files in my work project, requiring restart of
+  // // the server every time we add a new translation.
+  // // https://github.com/microsoft/TypeScript/pull/50366
+  // "typescript.tsserver.watchOptions": {
+  //   "watchFile": "useFsEvents",
+  //   "watchDirectory": "useFsEvents"
+  // },
+
+  //
+  // `fileWatcher` saga
+  //
+
+  // default: 3/5
+
+  // 0/5
+  // https://github.com/microsoft/vscode/issues/226050
+  // https://github.com/microsoft/vscode/issues/214567
+  // https://github.com/microsoft/vscode/issues/232699
+  // https://github.com/microsoft/vscode/issues/226401
+  "typescript.tsserver.experimental.useVsCodeWatcher": false,
+  // "typescript.tsserver.watchOptions": {},
+
+  // 0/5
+  // https://github.com/microsoft/vscode/issues/234643
+  // "files.watcherExclude":{
+  //   "**/.git/objects/**": true,
+  //   "**/.git/subtree-cache/**": true,
+  //   "**/.hg/store/**": true,
+
+  //   "**/.turbo/**": true,
+  //   "**/node_modules/**": true
+  // },
+
   "copyCodeBlock.formats": [
     {
       "formatName": "markdown",
