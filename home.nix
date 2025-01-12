@@ -176,6 +176,8 @@
         # Reduce a little to make more room for the main panel.
         sidePanelWidth = 0.2;
 
+        expandFocusedSidePanel = true;
+
         showCommandLog = false;
 
         theme = {
