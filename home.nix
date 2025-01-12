@@ -16,6 +16,10 @@
   home.packages = with pkgs; [
     # CLIs
     ast-grep
+    # TODO: issues making requests to https://unsplash.localhost
+    # https://github.com/openssl/openssl/discussions/25172
+    # https://github.com/NixOS/nixpkgs/issues/337982
+    # Workaround: -k
     curl # includes Brotli compression
     difftastic
     duti
