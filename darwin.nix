@@ -1,14 +1,16 @@
 { lib, pkgs, nix-vscode-extensions, ... }: {
   system.primaryUser = "oliver";
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system.stateVersion = 6;
 
-  # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   users.users.oliver.home = "/Users/oliver";
+
+  users.users.oliver.shell = pkgs.fish;
+  # https://github.com/nix-darwin/nix-darwin/issues/1237
+  users.knownUsers = [ "oliver" ];
+  users.users.oliver.uid = 501;
 
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -18,11 +20,6 @@
     shellInit = ''
       # As per Homebrew installation instructions.
       eval "$(/opt/homebrew/bin/brew shellenv)"
-
-      # Workaround for the following issue:
-      # - https://github.com/LnL7/nix-darwin/issues/122
-      # - https://d12frosted.io/posts/2021-05-21-path-in-fish-with-nix-darwin.html
-      for p in (string split " " $NIX_PROFILES); fish_add_path --prepend --move --path $p/bin; end
     '';
   };
 
@@ -33,33 +30,38 @@
       autohide = true;
       show-recents = false;
       wvous-br-corner = 1; # Disabled - default is "Quick Note"
+      persistent-apps = [];
     };
 
     NSGlobalDomain = {
+      # https://github.com/nix-darwin/nix-darwin/issues/1207
+      "com.apple.mouse.tapBehavior" = 1;
       # Play feedback when volume is changed.
       "com.apple.sound.beep.feedback" = 1;
+      AppleKeyboardUIMode = 2;
     };
+
+    # https://github.com/nix-darwin/nix-darwin/issues/1207
+    trackpad.Dragging = true;
+
+    universalaccess.closeViewScrollWheelToggle = true;
+
+    controlcenter.Sound = true;
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  # Note: this should only be used when installing via Nix is not possible.
   homebrew = {
     enable = true;
+    onActivation.cleanup = "zap";
     taps = [ "TomAnthony/brews" ];
     brews = [
-      # Not available via nix-darwin.
-      "asimov"
       # Install via Brew rather than Nix so we can utilize system services
       # (start on login).
       "caddy"
     ];
     masApps = {
-      Keynote = 409183694;
-      Numbers = 409203825;
-      OctaVerify = 490179405;
       rcmd = 1596283165;
-      Xcode = 497799835;
     };
     # Most of these GUIs are not available in Nix. Furthermore, when I did try
     # to install some of these using Nix, I experienced various issues e.g.
@@ -67,29 +69,18 @@
     # reasons that I use Homebrew casks instead.
     casks = [
       "1password"
-      "adobe-creative-cloud"
-      "airflow"
-      "docker"
       "figma"
-      "firefox"
       "ghostty"
       "google-chrome"
-      "google-chrome@canary"
       "istherenet"
-      "iterm2"
       "linear-linear"
-      "messenger"
-      "obsidian"
       "raycast"
-      "screen-studio"
       "slack"
       "spotify"
       "stats"
       "transmission"
       "tunnelbear"
       "visual-studio-code"
-      "vlc"
-      "zed"
       "zoom"
     ];
   };

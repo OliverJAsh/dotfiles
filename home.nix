@@ -1,50 +1,25 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   home.username = "oliver";
   home.homeDirectory = "/Users/oliver";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.stateVersion = "25.05";
 
-  home.packages = with pkgs; [
-    # CLIs
-    ast-grep
-    # TODO: issues making requests to https://unsplash.localhost
-    # https://github.com/openssl/openssl/discussions/25172
-    # https://github.com/NixOS/nixpkgs/issues/337982
-    # Workaround: -k
-    curl # includes Brotli compression
-    devenv
-    difftastic
-    duti
-    fzf
-    jq
-    nixfmt
-    saml2aws
-    sd
-
-    nodePackages.fkill-cli
-    # TODO:
-    # nodePackages.trash-cli
-  ];
+  home.packages = with pkgs;
+    [
+      ast-grep
+      difftastic
+      nixfmt
+    ];
 
   programs.gh = {
     enable = true;
     extensions = [
-      # https://github.com/NixOS/nixpkgs/issues/291551
-      # https://nixpk.gs/pr-tracker.html?pr=297073
       pkgs.gh-copilot
     ];
   };
 
   home.sessionVariables = {
     # Issue: `code` temporarily opens duplicate VS Code instance in the dock https://github.com/microsoft/vscode/issues/139634
-    # Wishlist: return focus afterwards https://github.com/microsoft/vscode/issues/68579
     EDITOR = "code --wait";
     LESS = "--ignore-case";
   };
@@ -57,38 +32,28 @@
     userName = "Oliver Joseph Ash";
     userEmail = "oliverjash@gmail.com";
 
-    # difftastic:
-    # - https://github.com/nix-community/home-manager/issues/3140
+    # https://developer.1password.com/docs/ssh/git-commit-signing
+    signing.signByDefault = true;
+    signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJ8xPx84pYYy30FnTdegEo8WTS5aUmFb9HbKXhYl4Vp";
+    extraConfig.gpg.format = "ssh";
+    extraConfig.gpg.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+
+    difftastic.enableAsDifftool = true;
 
     lfs = { enable = true; };
 
     delta = {
       enable = true;
       options = {
-        # [ref:color-theme]
-        syntax-theme = "Visual Studio Dark+";
         side-by-side = true;
         # Default is 2, after which the line is truncated meaning it won't be
         # visible/accessible.
         wrap-max-lines = "unlimited";
-        max-line-distance = 1;
       };
     };
 
     extraConfig = {
-      # For lazygit and `git show`
-      # https://github.com/jesseduffield/lazygit/issues/3931
       stash.showIncludeUntracked = true;
-
-      # TODO:
-      # https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html
-      # https://jeppesen.io/git-commit-sign-nix-home-manager-ssh/
-      # https://blog.1password.com/git-commit-signing/
-      # https://developer.1password.com/docs/ssh/git-commit-signing
-      # commit.gpgSign = true;
-      # tag.gpgSign = true;
-      # gpg.format = "ssh";
-      # user.signingkey = "";
 
       init.defaultBranch = "main";
 
@@ -137,9 +102,32 @@
           context = "global";
           command = "code {{.SelectedWorktree.Path}}";
         }
+
+        # https://github.com/jesseduffield/lazygit/issues/3396#issuecomment-2995028974
+        {
+          key = "X";
+          description = "Commits clipboard";
+          commandMenu = [
+            {
+              key = "c";
+              command =
+                "git format-patch --stdout {{.SelectedCommitRange.From}}^..{{.SelectedCommitRange.To}} | pbcopy";
+              context = "commits, subCommits";
+              description = "Copy selected commits to clipboard";
+            }
+            {
+              key = "v";
+              command = "pbpaste | git am";
+              context = "commits";
+              description = "Paste selected commits from clipboard";
+            }
+          ];
+        }
       ];
 
       git = {
+        overrideGpg = true;
+
         # Override default to add `--oneline`. Default here:
         # https://github.com/jesseduffield/lazygit/blob/c390c9d58edc18083ed7f1a672b03b7c4d982c12/docs/Config.md
         branchLogCmd =
@@ -157,7 +145,7 @@
           # - very slow in some cases e.g. snapshots
           # - poor syntax highlighting
           # - lazygit needs a command/shortcut to toggle on/off
-          # externalDiffCommand = "difft --color=always";
+          externalDiffCommand = "difft --color=always";
         };
       };
 
@@ -186,13 +174,10 @@
     };
   };
 
-  # https://github.com/nix-community/nix-direnv#via-home-manager
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-    # Copied from https://github.com/samhh/dotfiles/blob/4abc312a543c1ddb8fa6e65e14467469b2f39080/home/shell.nix#L87
     config.global.hide_env_diff = true;
-    # Copied from https://github.com/samhh/dotfiles/commit/9a1844c01a2459a4fe795f8f89e27d905f4727a0.
     # Avoid cluttering project directories which often conflicts with tooling,
     # as per:
     #   https://github.com/direnv/direnv/wiki/Customizing-cache-location
@@ -210,21 +195,12 @@
 
   programs.bat = {
     enable = true;
-    config = {
-      # [ref:color-theme]
-      theme = "Visual Studio Dark+";
-    };
   };
 
   programs.fish = {
     enable = true;
 
     plugins = [
-      # https://alexpearce.me/2021/07/managing-dotfiles-with-nix/#fish-shell:~:text=My%20final%20tweak%20was%20to%20include%20iTerm2%E2%80%99s%20shell%20integration%20as%20a%20fish%20plugin
-      {
-        name = "iterm2-shell-integration";
-        src = ./config/iterm2/iterm2_shell_integration;
-      }
       {
         name = "fish-completion-sync";
         src = pkgs.fetchFromGitHub {
@@ -294,23 +270,18 @@
       end
 
       set --global fish_greeting
-
-      iterm2_shell_integration
     '';
 
     shellAbbrs = {
-      "cat" = "bat";
-      "z" = "lazygit";
-
-      "up" = "nix run nix-darwin -- switch --flake ~/Code/dotfiles/";
+      cat = "bat";
+      z = "lazygit";
+      sh = "nix shell nixpkgs#";
+      up = "sudo darwin-rebuild switch --flake ~/Dev/dotfiles/";
     };
 
     functions = { mkcd = "mkdir -p $argv; cd $argv;"; };
   };
 
-  # TODO: conditionally enable extensions for individual workspaces/projects
-  # https://github.com/microsoft/vscode/issues/40239
-  # https://code.visualstudio.com/docs/editor/profiles
   programs.vscode = {
     enable = true;
     # https://github.com/nix-community/home-manager/issues/3375
@@ -320,43 +291,27 @@
     };
     profiles = {
       default = {
-        extensions = with pkgs.vscode-marketplace; [
-          albert.tabout
-          # or
-          # OnlyLys.leaper
-          ast-grep.ast-grep-vscode
-          bierner.markdown-mermaid
-          biomejs.biome
-          cardinal90.multi-cursor-case-preserve
-          codespaces-contrib.codeswing
-          # https://github.com/danvk/any-xray/issues/18
-          # danvk.any-xray
-          dbaeumer.vscode-eslint
-          dbankier.vscode-quick-select
-          esbenp.prettier-vscode
-          fastly.vscode-fastly-vcl
-          github.copilot
-          github.copilot-chat
-          github.vscode-pull-request-github
-          hashicorp.terraform
-          jnoortheen.nix-ide
-          jq-syntax-highlighting.jq-syntax-highlighting
-          matsuyanagi.copy-code-block
-          mikestead.dotenv
-          mizdra.css-modules-kit-vscode
-          ms-playwright.playwright
-          ms-vsliveshare.vsliveshare
-          orta.vscode-jest
-          orta.vscode-twoslash-queries
-          stkb.rewrap
-          streetsidesoftware.code-spell-checker
-          sysoev.vscode-open-in-github
-          tamasfe.even-better-toml
-          timonwong.shellcheck
-          vsls-contrib.gistfs
-          wmaurer.change-case
-        ];
+        extensions = with pkgs.vscode-marketplace;
+          [
+            ast-grep.ast-grep-vscode
+            dbankier.vscode-quick-select
+            jnoortheen.nix-ide
+            matsuyanagi.copy-code-block
+            stkb.rewrap
+            sysoev.vscode-open-in-github
+          ];
       };
     };
   };
+
+  home.activation.vscode = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ln -sf ~/Dev/dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+    ln -sf ~/Dev/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+    ln -sf ~/Dev/dotfiles/vscode/snippets/ ~/Library/Application\ Support/Code/User/snippets
+  '';
+  home.activation.caddy = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ln -sf ~/Dev/dotfiles/proxy/Caddyfile /opt/homebrew/etc/Caddyfile
+    /opt/homebrew/bin/brew services start caddy
+  '';
+
 }

@@ -13,21 +13,13 @@
       "formatName": "markdownWithRelativePath"
     }
   },
+
   {
     "key": "alt+w",
     "command": "editor.action.insertSnippet",
     "when": "editorTextFocus",
     "args": {
       "snippet": "$LINE_COMMENT TODO: "
-    }
-  },
-  {
-    "key": "alt+f",
-    "command": "editor.action.insertSnippet",
-    "when": "editorTextFocus",
-    "args": {
-      "langId": "typescript",
-      "name": "function"
     }
   },
   {
@@ -39,11 +31,7 @@
       "name": "function call"
     }
   },
-  // Override default to ask for selection before starting.
-  {
-    "key": "f5",
-    "command": "workbench.action.debug.selectandstart"
-  },
+
   {
     "key": "alt+a",
     "command": "editor.action.smartSelect.expand",
@@ -65,9 +53,6 @@
     "when": "editorTextFocus"
   },
 
-  //
-  // Merge editor
-  //
   {
     "key": "alt+s alt+up",
     "command": "merge.goToPreviousUnhandledConflict"
@@ -77,13 +62,31 @@
     "command": "merge.goToNextUnhandledConflict"
   },
 
-  // Reset
+  {
+    "key": "ctrl+cmd+b",
+    "command": "editor.action.codeAction",
+    "args": {
+      "kind": "refactor.rewrite.arrow"
+    }
+  },
+  {
+    "key": "alt+shift+q",
+    "command": "editor.action.codeAction",
+    "args": {
+      "kind": "source.fixAll",
+      "apply": "first"
+    }
+  },
+
+  //
+  // Misc
+  //
   {
     "key": "cmd+shift+alt+r",
     "command": "runCommands",
     "args": {
       "commands": [
-        "workbench.action.closeAllEditors",
+        "workbench.action.closeAllGroups",
         "workbench.action.closeSidebar",
         "workbench.files.action.collapseExplorerFolders",
         "workbench.action.terminal.killAll",
@@ -96,13 +99,6 @@
   {
     "key": "ctrl+alt+;",
     "command": "editor.emmet.action.matchTag"
-  },
-  {
-    "key": "ctrl+cmd+b",
-    "command": "editor.action.codeAction",
-    "args": {
-      "kind": "refactor.rewrite.arrow"
-    }
   },
   {
     "key": "shift+alt+cmd+l",
@@ -119,12 +115,4 @@
     "key": "shift+cmd+alt+o",
     "command": "openInGithub.openInGitHubFile"
   },
-  {
-    "key": "alt+shift+q",
-    "command": "editor.action.codeAction",
-    "args": {
-      "kind": "source.fixAll",
-      "apply": "first"
-    }
-  }
 ]

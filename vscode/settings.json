@@ -1,0 +1,29 @@
+{
+  "copyCodeBlock.formats": [
+    {
+      "formatName": "markdown",
+      "codeBlockHeaderFormat": "```${fileExtnameWithoutDot}${EOL}",
+      "codeBlockFooterFormat": "```${EOL}",
+      "codeLineFormat": "${CODE}${EOL}",
+      "multipleSelectionCreateMultipleCodeBlocks": false,
+      "multipleSelectionsBoundalyMarkerFormat": "---${EOL}",
+      "forcePathSeparatorSlash": true,
+      "forceSpaceIndent": true
+    },
+    {
+      "formatName": "markdownWithRelativePath",
+      "codeBlockHeaderFormat": "`${workspaceFolderRelativePath}`:\n```${fileExtnameWithoutDot}${EOL}",
+      "codeBlockFooterFormat": "```${EOL}",
+      "codeLineFormat": "${CODE}${EOL}",
+      "multipleSelectionCreateMultipleCodeBlocks": false,
+      "multipleSelectionsBoundalyMarkerFormat": "---${EOL}",
+      "forcePathSeparatorSlash": true,
+      "forceSpaceIndent": true
+    }
+  ],
+  "editor.stickyScroll.enabled": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "typescript.referencesCodeLens.enabled": true,
+  "workbench.startupEditor": "none"
+}
