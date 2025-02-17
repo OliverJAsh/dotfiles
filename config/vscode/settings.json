@@ -88,8 +88,6 @@
   // https://github.com/microsoft/TypeScript/issues/32174
   "typescript.suggest.autoImports": false,
   "typescript.suggest.completeFunctionCalls": true,
-  // Workaround slow paste https://github.com/microsoft/vscode/issues/235959
-  "typescript.updateImportsOnPaste.enabled": false,
   "window.newWindowDimensions": "offset",
   // [tag:color-theme]
   // Goal: syntax highlighting should be identical across all applications i.e. VS Code, bat, and delta.
