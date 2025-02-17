@@ -76,6 +76,7 @@
       "docker"
       "elgato-wave-link"
       "firefox"
+      "ghostty"
       "google-chrome"
       "iterm2"
       "linear-linear"
