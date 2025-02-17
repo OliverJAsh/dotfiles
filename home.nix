@@ -349,6 +349,7 @@
       esbenp.prettier-vscode
       fastly.vscode-fastly-vcl
       github.copilot
+      github.copilot-chat
       github.vscode-pull-request-github
       hashicorp.terraform
       jnoortheen.nix-ide
