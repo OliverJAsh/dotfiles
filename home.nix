@@ -26,7 +26,7 @@
     duti
     fzf
     jq
-    nixpkgs-fmt
+    nixfmt
     saml2aws
     sd
 

@@ -1,6 +1,0 @@
-{
-  "[nix]": {
-    // https://github.com/nix-community/vscode-nix-ide/issues/428
-    "editor.formatOnSave": false
-  }
-}
