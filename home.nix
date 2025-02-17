@@ -62,9 +62,7 @@
     # difftastic:
     # - https://github.com/nix-community/home-manager/issues/3140
 
-    lfs = {
-      enable = true;
-    };
+    lfs = { enable = true; };
 
     delta = {
       enable = true;
@@ -108,7 +106,8 @@
 
       rerere.enabled = true;
 
-      "mergetool \"code\"".cmd = "code --wait --merge $REMOTE $LOCAL $BASE $MERGED";
+      "mergetool \"code\"".cmd =
+        "code --wait --merge $REMOTE $LOCAL $BASE $MERGED";
       merge.tool = "code";
       merge.conflictstyle = "zdiff3";
 
@@ -121,9 +120,7 @@
       };
     };
 
-    ignores = [
-      ".envrc"
-    ];
+    ignores = [ ".envrc" ];
   };
 
   programs.lazygit = {
@@ -134,7 +131,8 @@
         {
           key = "<c-n>";
           context = "localBranches";
-          command = "gh pr merge --delete-branch --merge {{.SelectedLocalBranch.Name}}";
+          command =
+            "gh pr merge --delete-branch --merge {{.SelectedLocalBranch.Name}}";
         }
         {
           key = "E";
@@ -146,12 +144,14 @@
       git = {
         # Override default to add `--oneline`. Default here:
         # https://github.com/jesseduffield/lazygit/blob/c390c9d58edc18083ed7f1a672b03b7c4d982c12/docs/Config.md
-        branchLogCmd = "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --";
+        branchLogCmd =
+          "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --";
 
         paging = {
           # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#delta
           colorArg = "always";
-          pager = "delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+          pager = ''
+            delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"'';
           # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#using-external-diff-commands
 
           # Disabling this for now because:
@@ -307,9 +307,7 @@
       "up" = "nix run nix-darwin -- switch --flake ~/Code/dotfiles/";
     };
 
-    functions = {
-      mkcd = "mkdir -p $argv; cd $argv;";
-    };
+    functions = { mkcd = "mkdir -p $argv; cd $argv;"; };
   };
 
   # TODO: conditionally enable extensions for individual workspaces/projects
@@ -322,39 +320,40 @@
       pname = pkgs.vscode.pname;
       version = pkgs.vscode.version;
     };
-    extensions = with nix-vscode-extensions.extensions.aarch64-darwin.vscode-marketplace; [
-      albert.tabout
-      # or
-      # OnlyLys.leaper
-      ast-grep.ast-grep-vscode
-      bierner.markdown-mermaid
-      biomejs.biome
-      cardinal90.multi-cursor-case-preserve
-      codespaces-contrib.codeswing
-      # https://github.com/danvk/any-xray/issues/18
-      # danvk.any-xray
-      dbaeumer.vscode-eslint
-      dbankier.vscode-quick-select
-      esbenp.prettier-vscode
-      fastly.vscode-fastly-vcl
-      github.copilot
-      github.copilot-chat
-      github.vscode-pull-request-github
-      hashicorp.terraform
-      jnoortheen.nix-ide
-      matsuyanagi.copy-code-block
-      mikestead.dotenv
-      ms-playwright.playwright
-      ms-vsliveshare.vsliveshare
-      orta.vscode-jest
-      orta.vscode-twoslash-queries
-      stkb.rewrap
-      streetsidesoftware.code-spell-checker
-      sysoev.vscode-open-in-github
-      tamasfe.even-better-toml
-      timonwong.shellcheck
-      vsls-contrib.gistfs
-      wmaurer.change-case
-    ];
+    extensions =
+      with nix-vscode-extensions.extensions.aarch64-darwin.vscode-marketplace; [
+        albert.tabout
+        # or
+        # OnlyLys.leaper
+        ast-grep.ast-grep-vscode
+        bierner.markdown-mermaid
+        biomejs.biome
+        cardinal90.multi-cursor-case-preserve
+        codespaces-contrib.codeswing
+        # https://github.com/danvk/any-xray/issues/18
+        # danvk.any-xray
+        dbaeumer.vscode-eslint
+        dbankier.vscode-quick-select
+        esbenp.prettier-vscode
+        fastly.vscode-fastly-vcl
+        github.copilot
+        github.copilot-chat
+        github.vscode-pull-request-github
+        hashicorp.terraform
+        jnoortheen.nix-ide
+        matsuyanagi.copy-code-block
+        mikestead.dotenv
+        ms-playwright.playwright
+        ms-vsliveshare.vsliveshare
+        orta.vscode-jest
+        orta.vscode-twoslash-queries
+        stkb.rewrap
+        streetsidesoftware.code-spell-checker
+        sysoev.vscode-open-in-github
+        tamasfe.even-better-toml
+        timonwong.shellcheck
+        vsls-contrib.gistfs
+        wmaurer.change-case
+      ];
   };
 }
