@@ -68,6 +68,7 @@
   "files.trimFinalNewlines": true,
   // https://stackoverflow.com/questions/71224911/can-github-copilot-stop-auto-suggesting-instead-be-triggered-by-a-keystroke
   "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.nextEditSuggestions.enabled": true,
   "githubPullRequests.commentExpandState": "collapseAll",
   "githubPullRequests.defaultCommentType": "review",
   "githubPullRequests.focusedMode": "multiDiff",
