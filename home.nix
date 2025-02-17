@@ -129,23 +129,6 @@
   programs.lazygit = {
     enable = true;
 
-    # Build lazygit from latest source so we don't have to wait for nixpkgs to
-    # be updated when there's a new release.
-    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/la/lazygit/package.nix
-    package = pkgs.lazygit.overrideAttrs (_: {
-      src = pkgs.fetchFromGitHub {
-        owner = "jesseduffield";
-        repo = "lazygit";
-        rev = "v0.46.0";
-        hash = "sha256-KUJ6+GPtQ5wNbbmCnOopifdxHTo67Y9kW3zwm6f9bXc=";
-      };
-
-      ldflags = [
-        "-X main.version=0.46.0"
-        "-X main.buildSource=nix"
-      ];
-    });
-
     settings = {
       customCommands = [
         {
