@@ -131,6 +131,7 @@
 
     # Build lazygit from latest source so we don't have to wait for nixpkgs to
     # be updated when there's a new release.
+    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/la/lazygit/package.nix
     package = pkgs.lazygit.overrideAttrs (_: {
       src = pkgs.fetchFromGitHub {
         owner = "jesseduffield";
