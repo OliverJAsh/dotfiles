@@ -28,5 +28,11 @@
     "scope": "javascript,javascriptreact,typescript,typescriptreact",
     "prefix": "impns",
     "body": ["import * as ${2:Namespace} from '$1';"]
+  },
+  "JSX fragment": {
+    "description": "JSX fragment",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "prefix": "frag",
+    "body": "<>$SELECTION$1</>"
   }
 }
