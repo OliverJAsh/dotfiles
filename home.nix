@@ -332,9 +332,11 @@
     profiles = {
       default = {
         extensions = with pkgs.vscode-marketplace; [
-          albert.tabout
+          # TODO: breaks copilot next edit suggestion tab
+          # albert.tabout
           # or
-          # OnlyLys.leaper
+          # https://github.com/OnlyLys/Leaper/issues/19
+          # onlylys.leaper
           ast-grep.ast-grep-vscode
           bierner.markdown-mermaid
           biomejs.biome
