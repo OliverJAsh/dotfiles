@@ -1,5 +1,4 @@
-{ lib, pkgs, ... }:
-{
+{ lib, pkgs, ... }: {
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
@@ -49,9 +48,7 @@
   # Note: this should only be used when installing via Nix is not possible.
   homebrew = {
     enable = true;
-    taps = [
-      "TomAnthony/brews"
-    ];
+    taps = [ "TomAnthony/brews" ];
     brews = [
       # Not available via nix-darwin.
       "asimov"
@@ -97,8 +94,6 @@
     # - https://github.com/FuzzyIdeas/IsThereNet
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "vscode"
-    "gh-copilot"
-  ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [ "vscode" "gh-copilot" ];
 }
