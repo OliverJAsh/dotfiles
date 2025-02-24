@@ -8,9 +8,6 @@
 
   users.users.oliver.home = "/Users/oliver";
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   nix.settings.experimental-features = "nix-command flakes";
 
   programs.fish = {
