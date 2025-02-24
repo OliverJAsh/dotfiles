@@ -320,40 +320,44 @@
       pname = pkgs.vscode.pname;
       version = pkgs.vscode.version;
     };
-    extensions =
-      with nix-vscode-extensions.extensions.aarch64-darwin.vscode-marketplace; [
-        albert.tabout
-        # or
-        # OnlyLys.leaper
-        ast-grep.ast-grep-vscode
-        bierner.markdown-mermaid
-        biomejs.biome
-        cardinal90.multi-cursor-case-preserve
-        codespaces-contrib.codeswing
-        # https://github.com/danvk/any-xray/issues/18
-        # danvk.any-xray
-        dbaeumer.vscode-eslint
-        dbankier.vscode-quick-select
-        esbenp.prettier-vscode
-        fastly.vscode-fastly-vcl
-        github.copilot
-        github.copilot-chat
-        github.vscode-pull-request-github
-        hashicorp.terraform
-        jnoortheen.nix-ide
-        matsuyanagi.copy-code-block
-        mikestead.dotenv
-        ms-playwright.playwright
-        ms-vsliveshare.vsliveshare
-        orta.vscode-jest
-        orta.vscode-twoslash-queries
-        stkb.rewrap
-        streetsidesoftware.code-spell-checker
-        sysoev.vscode-open-in-github
-        tamasfe.even-better-toml
-        timonwong.shellcheck
-        vsls-contrib.gistfs
-        wmaurer.change-case
-      ];
+    profiles = {
+      default = {
+        extensions =
+          with nix-vscode-extensions.extensions.aarch64-darwin.vscode-marketplace; [
+            albert.tabout
+            # or
+            # OnlyLys.leaper
+            ast-grep.ast-grep-vscode
+            bierner.markdown-mermaid
+            biomejs.biome
+            cardinal90.multi-cursor-case-preserve
+            codespaces-contrib.codeswing
+            # https://github.com/danvk/any-xray/issues/18
+            # danvk.any-xray
+            dbaeumer.vscode-eslint
+            dbankier.vscode-quick-select
+            esbenp.prettier-vscode
+            fastly.vscode-fastly-vcl
+            github.copilot
+            github.copilot-chat
+            github.vscode-pull-request-github
+            hashicorp.terraform
+            jnoortheen.nix-ide
+            matsuyanagi.copy-code-block
+            mikestead.dotenv
+            ms-playwright.playwright
+            ms-vsliveshare.vsliveshare
+            orta.vscode-jest
+            orta.vscode-twoslash-queries
+            stkb.rewrap
+            streetsidesoftware.code-spell-checker
+            sysoev.vscode-open-in-github
+            tamasfe.even-better-toml
+            timonwong.shellcheck
+            vsls-contrib.gistfs
+            wmaurer.change-case
+          ];
+      };
+    };
   };
 }
