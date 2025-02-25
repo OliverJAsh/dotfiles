@@ -239,8 +239,6 @@
     ];
 
     interactiveShellInit = ''
-      iterm2_shell_integration
-
       # Easy printing with foreground and background colors
       function prompt_segment
         set -l bg $argv[1]
@@ -298,6 +296,8 @@
       end
 
       set --global fish_greeting
+
+      iterm2_shell_integration
     '';
 
     shellAbbrs = {
