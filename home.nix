@@ -343,6 +343,7 @@
             github.vscode-pull-request-github
             hashicorp.terraform
             jnoortheen.nix-ide
+            jq-syntax-highlighting.jq-syntax-highlighting
             matsuyanagi.copy-code-block
             mikestead.dotenv
             ms-playwright.playwright
