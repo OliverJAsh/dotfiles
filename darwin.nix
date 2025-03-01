@@ -39,7 +39,7 @@
     };
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Note: this should only be used when installing via Nix is not possible.
   homebrew = {
