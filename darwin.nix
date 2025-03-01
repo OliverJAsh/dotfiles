@@ -34,7 +34,6 @@
     };
 
     NSGlobalDomain = {
-      AppleShowScrollBars = "Always";
       # Play feedback when volume is changed.
       "com.apple.sound.beep.feedback" = 1;
     };
