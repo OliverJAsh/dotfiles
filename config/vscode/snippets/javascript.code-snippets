@@ -34,5 +34,11 @@
     "scope": "javascript,javascriptreact,typescript,typescriptreact",
     "prefix": "frag",
     "body": "<>$SELECTION$1</>"
+  },
+  "Ternary": {
+    "description": "Ternary",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "prefix": "tern",
+    "body": "${1:condition} ? ${2:${SELECTION:{\\}}} : ${3:{\\}}"
   }
 }
