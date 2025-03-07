@@ -6,6 +6,8 @@
 	<array/>
 	<key>AlternateMouseScroll</key>
 	<true/>
+	<key>AutoComposer</key>
+	<false/>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>base16-chalk-256</key>
