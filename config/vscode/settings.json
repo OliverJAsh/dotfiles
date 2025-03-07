@@ -63,6 +63,8 @@
   "editor.smartSelect.selectLeadingAndTrailingWhitespace": false,
   "editor.smartSelect.selectSubwords": false,
   "editor.stickyScroll.enabled": true,
+  // To match the formatter
+  "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
