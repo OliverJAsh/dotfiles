@@ -85,10 +85,6 @@
   "typescript.preferences.jsxAttributeCompletionStyle": "braces",
   // Optimize TS initialization https://github.com/microsoft/TypeScript/issues/60854
   "typescript.preferences.includePackageJsonAutoImports": "off",
-  // Auto imports slow down completions in large projects.
-  // https://github.com/microsoft/vscode/issues/138449
-  // https://github.com/microsoft/TypeScript/issues/32174
-  "typescript.suggest.autoImports": false,
   "typescript.suggest.completeFunctionCalls": true,
   "window.newWindowDimensions": "offset",
   // [tag:color-theme]
