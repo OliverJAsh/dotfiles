@@ -71,6 +71,7 @@
       "firefox"
       "ghostty"
       "google-chrome"
+      "google-chrome@canary"
       "iterm2"
       "linear-linear"
       "messenger"
