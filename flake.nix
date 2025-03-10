@@ -12,18 +12,22 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = inputs@{ darwin, home-manager, nix-vscode-extensions, ... }: {
-    darwinConfigurations."Olivers-MacBook-Pro" = darwin.lib.darwinSystem {
-      modules = [
-        ./darwin.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.oliver = import ./home.nix;
-          home-manager.extraSpecialArgs = { inherit nix-vscode-extensions; };
-        }
-      ];
+  outputs =
+    inputs@{ darwin, home-manager, nixpkgs, nix-vscode-extensions, ... }: {
+      darwinConfigurations."Olivers-MacBook-Pro" = darwin.lib.darwinSystem {
+        modules = [
+          ./darwin.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.oliver = import ./home.nix;
+            home-manager.extraSpecialArgs = {
+              inherit nixpkgs;
+              inherit nix-vscode-extensions;
+            };
+          }
+        ];
+      };
     };
-  };
 }

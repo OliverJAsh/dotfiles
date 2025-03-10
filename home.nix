@@ -1,6 +1,12 @@
-{ pkgs, nix-vscode-extensions, ... }:
-
-{
+{ pkgs, nixpkgs, nix-vscode-extensions, ... }:
+let
+  pkgs-ext = import nixpkgs {
+    inherit (pkgs) system;
+    config.allowUnfree = true;
+    overlays = [ nix-vscode-extensions.overlays.default ];
+  };
+  vscode-marketplace = pkgs-ext.vscode-marketplace;
+in {
   home.username = "oliver";
   home.homeDirectory = "/Users/oliver";
 
@@ -322,42 +328,41 @@
     };
     profiles = {
       default = {
-        extensions =
-          with nix-vscode-extensions.extensions.aarch64-darwin.vscode-marketplace; [
-            albert.tabout
-            # or
-            # OnlyLys.leaper
-            ast-grep.ast-grep-vscode
-            bierner.markdown-mermaid
-            biomejs.biome
-            cardinal90.multi-cursor-case-preserve
-            codespaces-contrib.codeswing
-            # https://github.com/danvk/any-xray/issues/18
-            # danvk.any-xray
-            dbaeumer.vscode-eslint
-            dbankier.vscode-quick-select
-            esbenp.prettier-vscode
-            fastly.vscode-fastly-vcl
-            github.copilot
-            github.copilot-chat
-            github.vscode-pull-request-github
-            hashicorp.terraform
-            jnoortheen.nix-ide
-            jq-syntax-highlighting.jq-syntax-highlighting
-            matsuyanagi.copy-code-block
-            mikestead.dotenv
-            ms-playwright.playwright
-            ms-vsliveshare.vsliveshare
-            orta.vscode-jest
-            orta.vscode-twoslash-queries
-            stkb.rewrap
-            streetsidesoftware.code-spell-checker
-            sysoev.vscode-open-in-github
-            tamasfe.even-better-toml
-            timonwong.shellcheck
-            vsls-contrib.gistfs
-            wmaurer.change-case
-          ];
+        extensions = with vscode-marketplace; [
+          albert.tabout
+          # or
+          # OnlyLys.leaper
+          ast-grep.ast-grep-vscode
+          bierner.markdown-mermaid
+          biomejs.biome
+          cardinal90.multi-cursor-case-preserve
+          codespaces-contrib.codeswing
+          # https://github.com/danvk/any-xray/issues/18
+          # danvk.any-xray
+          dbaeumer.vscode-eslint
+          dbankier.vscode-quick-select
+          esbenp.prettier-vscode
+          fastly.vscode-fastly-vcl
+          github.copilot
+          github.copilot-chat
+          github.vscode-pull-request-github
+          hashicorp.terraform
+          jnoortheen.nix-ide
+          jq-syntax-highlighting.jq-syntax-highlighting
+          matsuyanagi.copy-code-block
+          mikestead.dotenv
+          ms-playwright.playwright
+          ms-vsliveshare.vsliveshare
+          orta.vscode-jest
+          orta.vscode-twoslash-queries
+          stkb.rewrap
+          streetsidesoftware.code-spell-checker
+          sysoev.vscode-open-in-github
+          tamasfe.even-better-toml
+          timonwong.shellcheck
+          vsls-contrib.gistfs
+          wmaurer.change-case
+        ];
       };
     };
   };
