@@ -91,5 +91,5 @@
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "vscode" "gh-copilot" ];
+    builtins.elem (lib.getName pkg) [ "gh-copilot" ];
 }
