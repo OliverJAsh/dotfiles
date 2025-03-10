@@ -90,6 +90,5 @@
     ];
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "gh-copilot" ];
+  nixpkgs.config.allowUnfree = true;
 }
