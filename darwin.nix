@@ -72,6 +72,7 @@
       "ghostty"
       "google-chrome"
       "google-chrome@canary"
+      "istherenet"
       "iterm2"
       "linear-linear"
       "messenger"
@@ -87,8 +88,6 @@
       "vlc"
       "zoom"
     ];
-    # Not yet available via package managers:
-    # - https://github.com/FuzzyIdeas/IsThereNet
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
