@@ -5,7 +5,6 @@ let
     config.allowUnfree = true;
     overlays = [ nix-vscode-extensions.overlays.default ];
   };
-  vscode-marketplace = pkgs-ext.vscode-marketplace;
 in {
   home.username = "oliver";
   home.homeDirectory = "/Users/oliver";
@@ -328,7 +327,7 @@ in {
     };
     profiles = {
       default = {
-        extensions = with vscode-marketplace; [
+        extensions = with pkgs-ext.vscode-marketplace; [
           albert.tabout
           # or
           # OnlyLys.leaper
