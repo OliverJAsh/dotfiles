@@ -1,11 +1,4 @@
-{ pkgs, nixpkgs, nix-vscode-extensions, ... }:
-let
-  pkgs-ext = import nixpkgs {
-    inherit (pkgs) system;
-    config.allowUnfree = true;
-    overlays = [ nix-vscode-extensions.overlays.default ];
-  };
-in {
+{ pkgs, ... }: {
   home.username = "oliver";
   home.homeDirectory = "/Users/oliver";
 
@@ -327,7 +320,7 @@ in {
     };
     profiles = {
       default = {
-        extensions = with pkgs-ext.vscode-marketplace; [
+        extensions = with pkgs.vscode-marketplace; [
           albert.tabout
           # or
           # OnlyLys.leaper

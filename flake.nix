@@ -22,12 +22,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.oliver = import ./home.nix;
-            home-manager.extraSpecialArgs = {
-              inherit nixpkgs;
-              inherit nix-vscode-extensions;
-            };
           }
         ];
+        specialArgs = { inherit nix-vscode-extensions; };
       };
     };
 }

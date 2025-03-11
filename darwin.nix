@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, nix-vscode-extensions, ... }: {
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
@@ -91,4 +91,5 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ];
 }
