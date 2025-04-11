@@ -68,6 +68,7 @@
       "airflow"
       "docker"
       "elgato-wave-link"
+      "figma"
       "firefox"
       "ghostty"
       "google-chrome"
@@ -86,6 +87,7 @@
       "tunnelbear"
       "visual-studio-code"
       "vlc"
+      "zed"
       "zoom"
     ];
   };
