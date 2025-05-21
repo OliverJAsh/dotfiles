@@ -67,7 +67,6 @@
       "adobe-creative-cloud"
       "airflow"
       "docker"
-      "elgato-wave-link"
       "figma"
       "firefox"
       "ghostty"
