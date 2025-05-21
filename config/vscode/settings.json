@@ -70,6 +70,7 @@
   "editor.wordWrap": "on",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
+  // https://bsky.app/profile/oliverjash.me/post/3lmkjabhl2225
   // https://stackoverflow.com/questions/71224911/can-github-copilot-stop-auto-suggesting-instead-be-triggered-by-a-keystroke
   "github.copilot.editor.enableAutoCompletions": false,
   "github.copilot.nextEditSuggestions.enabled": true,
@@ -81,12 +82,14 @@
   "javascript.suggest.completeFunctionCalls": true,
   "multiDiffEditor.experimental.enabled": true,
   "search.useGlobalIgnoreFiles": true,
+  "search.useParentIgnoreFiles": true,
   // Configure terminal to match editor style.
   "terminal.integrated.lineHeight": 1.25,
   "terminal.integrated.macOptionIsMeta": true,
   "typescript.preferences.jsxAttributeCompletionStyle": "braces",
   // Optimize TS initialization https://github.com/microsoft/TypeScript/issues/60854
   "typescript.preferences.includePackageJsonAutoImports": "off",
+  "typescript.referencesCodeLens.enabled": true,
   "typescript.suggest.completeFunctionCalls": true,
   "window.newWindowDimensions": "offset",
   // [tag:color-theme]
@@ -115,6 +118,8 @@
     "editor.wordWrap": "bounded"
   },
   "[git-commit]": {
-    "editor.wordWrap": "bounded"
+    "editor.wordWrap": "bounded",
+    // Fix annoying auto close when typing backticks for code blocks.
+    "editor.autoClosingQuotes": "never"
   }
 }
