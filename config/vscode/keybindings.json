@@ -126,5 +126,12 @@
       "kind": "source.fixAll",
       "apply": "first"
     }
+  },
+
+  // Conflicts with insert snippet. Still not working though?
+  {
+    "key": "alt+cmd+j",
+    "command": "-liveshare.join",
+    "when": "liveshare:state != 'Joined' && liveshare:state != 'Shared'"
   }
 ]

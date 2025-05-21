@@ -164,4 +164,5 @@
     // Fix annoying auto close when typing backticks for code blocks.
     "editor.autoClosingQuotes": "never"
   }
+  // "inlineChat.lineNaturalLanguageHint": false
 }
