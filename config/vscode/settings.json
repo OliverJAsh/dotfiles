@@ -56,7 +56,9 @@
   "editor.autoClosingOvertype": "always",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "editor.linkedEditing": true,
+  // Disabled because it breaks auto imports:
+  // https://github.com/microsoft/vscode/issues/224460
+  // "editor.linkedEditing": true,
   "editor.multiCursorPaste": "full",
   "editor.parameterHints.enabled": false,
   "editor.rulers": [80],
