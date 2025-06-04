@@ -57,6 +57,7 @@
     masApps = {
       Keynote = 409183694;
       Numbers = 409203825;
+      OctaVerify = 490179405;
       rcmd = 1596283165;
       Xcode = 497799835;
     };
