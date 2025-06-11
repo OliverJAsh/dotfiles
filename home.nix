@@ -316,7 +316,7 @@
     # https://github.com/nix-community/home-manager/issues/3375
     package = pkgs.runCommand "dummy" { } "mkdir $out" // {
       pname = pkgs.vscode.pname;
-      version = pkgs.vscode.version;
+      version = "0.0.0";
     };
     profiles = {
       default = {
