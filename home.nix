@@ -325,6 +325,7 @@
   programs.vscode = {
     enable = true;
     # https://github.com/nix-community/home-manager/issues/3375
+    # TODO: error https://github.com/nix-community/home-manager/issues/3375#issuecomment-2963916094
     package = pkgs.runCommand "dummy" { } "mkdir $out" // {
       pname = pkgs.vscode.pname;
       version = "0.0.0";
