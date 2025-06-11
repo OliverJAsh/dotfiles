@@ -343,6 +343,7 @@
           jq-syntax-highlighting.jq-syntax-highlighting
           matsuyanagi.copy-code-block
           mikestead.dotenv
+          mizdra.css-modules-kit-vscode
           ms-playwright.playwright
           ms-vsliveshare.vsliveshare
           orta.vscode-jest
