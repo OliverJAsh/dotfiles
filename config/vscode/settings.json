@@ -141,10 +141,18 @@
   // - delta has the same themes as bat.
   "window.autoDetectColorScheme": true,
   "workbench.colorCustomizations": {
-    // To match editor
-    // https://github.com/microsoft/vscode/blob/87baaea6d1c56f6017e6d650d5bf6e0de616c0ab/extensions/theme-defaults/themes/dark_modern.json#L34C26-L34C32
-    // TODO: or not - diff green colour needs fixing
-    // "terminal.background": "#1f1f1f"
+    "[Default Light Modern]": {
+      // Add transparency so we can still see selections.
+      // https://github.com/microsoft/vscode/issues/34105
+      "editor.findMatchBackground": "#a8ac9450",
+    },
+    "[Default Dark Modern]": {
+      // To match editor
+      // https://github.com/microsoft/vscode/blob/87baaea6d1c56f6017e6d650d5bf6e0de616c0ab/extensions/theme-defaults/themes/dark_modern.json#L34C26-L34C32
+      // TODO: or not - diff green colour needs fixing
+      // "terminal.background": "#1f1f1f"
+      "editor.findMatchBackground": "#9E6A0350",
+    }
   },
   "workbench.colorTheme": "Default Light Modern",
   "workbench.editor.languageDetection": false,
