@@ -6,8 +6,7 @@ set -e
 cd "$(dirname "$0")"
 
 nix run nix-darwin -- switch --flake .
-
-chsh -s /run/current-system/sw/bin/fish
+# sudo darwin-rebuild switch --flake .
 
 ./configure-mac.sh
 
@@ -20,4 +19,4 @@ ln -s "$PWD"/proxy/Caddyfile /opt/homebrew/etc/Caddyfile
 brew services start caddy
 
 # https://github.com/stevegrunwell/asimov#installation-via-homebrew
-brew services start asimov
+# brew services start asimov

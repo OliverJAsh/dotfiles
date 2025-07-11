@@ -26,7 +26,7 @@
       # duti
       # fzf
       # jq
-      # nixfmt
+      nixfmt
       # saml2aws
       # sd
 
@@ -42,7 +42,6 @@
     enable = true;
     extensions = [
       # https://github.com/NixOS/nixpkgs/issues/291551
-      # https://nixpk.gs/pr-tracker.html?pr=297073
       pkgs.gh-copilot
     ];
   };
@@ -329,14 +328,14 @@
 
       set --global fish_greeting
 
-      iterm2_shell_integration
+      # iterm2_shell_integration
     '';
 
     shellAbbrs = {
-      "cat" = "bat";
-      "z" = "lazygit";
-
-      "up" = "nix run nix-darwin -- switch --flake ~/Code/dotfiles/";
+      cat = "bat";
+      z = "lazygit";
+      sh = "nix shell nixpkgs#";
+      up = "sudo darwin-rebuild switch --flake ~/Dev/dotfiles/";
     };
 
     functions = { mkcd = "mkdir -p $argv; cd $argv;"; };
@@ -378,22 +377,7 @@
             # github.copilot-chat
             # github.vscode-pull-request-github
             # hashicorp.terraform
-            # jnoortheen.nix-ide
-            # jq-syntax-highlighting.jq-syntax-highlighting
-            # matsuyanagi.copy-code-block
-            # mikestead.dotenv
-            # mizdra.css-modules-kit-vscode
-            # ms-playwright.playwright
-            # ms-vsliveshare.vsliveshare
-            # orta.vscode-jest
-            # orta.vscode-twoslash-queries
-            # stkb.rewrap
-            # streetsidesoftware.code-spell-checker
-            # sysoev.vscode-open-in-github
-            # tamasfe.even-better-toml
-            # timonwong.shellcheck
-            # vsls-contrib.gistfs
-            # wmaurer.change-case
+            jnoortheen.nix-ide
           ];
       };
     };

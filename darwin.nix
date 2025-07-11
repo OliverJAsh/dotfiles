@@ -10,6 +10,12 @@
 
   users.users.oliver.home = "/Users/oliver";
 
+  # Set fish as the default shell
+  users.users.oliver.shell = pkgs.fish;
+  # https://github.com/nix-darwin/nix-darwin/issues/1237
+  users.knownUsers = [ "oliver" ];
+  users.users.oliver.uid = 501;
+
   nix.settings.experimental-features = "nix-command flakes";
 
   programs.fish = {
@@ -31,20 +37,23 @@
 
   environment.shells = [ pkgs.fish ];
 
-  # system.defaults = {
-  #   dock = {
-  #     autohide = true;
-  #     show-recents = false;
-  #     wvous-br-corner = 1; # Disabled - default is "Quick Note"
-  #   };
+  system.defaults = {
+    dock = {
+      autohide = true;
+      show-recents = false;
+      wvous-br-corner = 1; # Disabled - default is "Quick Note"
+      persistent-apps = [];
+    };
 
-  #   # NSGlobalDomain = {
-  #   #   # Play feedback when volume is changed.
-  #   #   "com.apple.sound.beep.feedback" = 1;
-  #   # };
-  # };
+    NSGlobalDomain = {
+      # Play feedback when volume is changed.
+      # TODO: not working?
+      "com.apple.sound.beep.feedback" = 1;
+      AppleKeyboardUIMode = 2;
+    };
+  };
 
-  # security.pam.services.sudo_local.touchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Note: this should only be used when installing via Nix is not possible.
   homebrew = {
@@ -72,31 +81,31 @@
     # configuration was reset each time Nix was re-applied. It is for these
     # reasons that I use Homebrew casks instead.
     casks = [
-      # "1password"
+      "1password"
       # "adobe-creative-cloud"
       # "airflow"
       # "docker"
-      # "figma"
+      "figma"
       # "firefox"
-      # "ghostty"
-      # "google-chrome"
+      "ghostty"
+      "google-chrome"
       # "google-chrome@canary"
-      # "istherenet"
+      "istherenet"
       # "iterm2"
-      # "linear-linear"
+      "linear-linear"
       # "messenger"
       # "obsidian"
-      # "raycast"
+      "raycast"
       # "screen-studio"
-      # "slack"
-      # "spotify"
+      "slack"
+      "spotify"
       # "stats"
-      # "transmission"
+      "transmission"
       # "tunnelbear"
       "visual-studio-code"
       # "vlc"
-      # "zed"
-      # "zoom"
+      "zed"
+      "zoom"
     ];
   };
 

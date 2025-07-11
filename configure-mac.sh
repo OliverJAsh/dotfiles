@@ -2,20 +2,6 @@
 
 set -e
 
-# Remove all apps from dock
-# In the future it might be possible to configure this via nix-darwin:
-# https://github.com/LnL7/nix-darwin/pull/619
-defaults write com.apple.dock persistent-apps -array
-# Remove all folders from dock
-defaults write com.apple.dock persistent-others -array
-
-# Keyboard navigation to move focus between controls.
-# In the future it might be possible to configure this via nix-darwin:
-# https://github.com/nix-darwin/nix-darwin/pull/735
-defaults write -g AppleKeyboardUIMode -int 2
-
-killall Dock
-
 #
 # File associations
 #
