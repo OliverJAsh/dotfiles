@@ -118,7 +118,7 @@
       };
     };
 
-    ignores = [ ".envrc" ];
+    ignores = [ ".envrc" ".DS_Store" ];
   };
 
   programs.lazygit = {
