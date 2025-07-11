@@ -64,6 +64,7 @@
       Numbers = 409203825;
       OctaVerify = 490179405;
       rcmd = 1596283165;
+      UniFI = 1057750338;
       Xcode = 497799835;
     };
     # Most of these GUIs are not available in Nix. Furthermore, when I did try

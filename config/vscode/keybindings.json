@@ -83,13 +83,14 @@
     "command": "runCommands",
     "args": {
       "commands": [
-        "workbench.action.closeAllEditors",
+        // "workbench.action.closeAllEditors",
+        "workbench.action.closeAllGroups",
         "workbench.action.closeSidebar",
         "workbench.files.action.collapseExplorerFolders",
         "workbench.action.terminal.killAll",
         "workbench.action.closePanel",
         "workbench.action.clearRecentFiles",
-        "workbench.action.reloadWindow"
+        "workbench.action.reloadWindow",
       ]
     }
   },

@@ -83,7 +83,9 @@
     "pino",
     "pipeable",
     "remapper",
+    "Respondable",
     "Semigroup",
+    "Topnav",
     "typecheck",
     "unenhanced",
     "ungroup",
@@ -171,6 +173,9 @@
     "editor.wordWrap": "bounded",
     // Fix annoying auto close when typing backticks for code blocks.
     "editor.autoClosingQuotes": "never"
-  }
+  },
+  "biome.suggestInstallingGlobally": false,
+  "security.promptForLocalFileProtocolHandling": false,
+  "workbench.editor.closeEmptyGroups": false
   // "inlineChat.lineNaturalLanguageHint": false
 }

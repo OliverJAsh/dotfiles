@@ -18,6 +18,7 @@
     # https://github.com/openssl/openssl/discussions/25172
     # https://github.com/NixOS/nixpkgs/issues/337982
     # Workaround: -k
+    claude-code
     curl # includes Brotli compression
     devenv
     difftastic
@@ -142,6 +143,27 @@
           key = "E";
           context = "global";
           command = "code {{.SelectedWorktree.Path}}";
+        }
+
+        # https://github.com/jesseduffield/lazygit/issues/3396#issuecomment-2995028974
+        {
+          key = "X";
+          description = "Commits clipboard";
+          commandMenu = [
+            {
+              key = "c";
+              command =
+                "git format-patch --stdout {{.SelectedCommitRange.From}}^..{{.SelectedCommitRange.To}} | pbcopy";
+              context = "commits, subCommits";
+              description = "Copy selected commits to clipboard";
+            }
+            {
+              key = "v";
+              command = "pbpaste | git am";
+              context = "commits";
+              description = "Paste selected commits from clipboard";
+            }
+          ];
         }
       ];
 
@@ -333,6 +355,7 @@
     profiles = {
       default = {
         extensions = with pkgs.vscode-marketplace; [
+          anthropic.claude-code
           # TODO: breaks copilot next edit suggestion tab
           # albert.tabout
           # or
