@@ -9,33 +9,34 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.stateVersion = "25.05"; # Please read the comment before changing.
 
-  home.packages = with pkgs; [
-    # CLIs
-    ast-grep
-    # TODO: issues making requests to https://unsplash.localhost
-    # https://github.com/openssl/openssl/discussions/25172
-    # https://github.com/NixOS/nixpkgs/issues/337982
-    # Workaround: -k
-    claude-code
-    curl # includes Brotli compression
-    devenv
-    difftastic
-    duti
-    fzf
-    jq
-    nixfmt
-    saml2aws
-    sd
+  home.packages = with pkgs;
+    [
+      # CLIs
+      # ast-grep
+      # TODO: issues making requests to https://unsplash.localhost
+      # https://github.com/openssl/openssl/discussions/25172
+      # https://github.com/NixOS/nixpkgs/issues/337982
+      # Workaround: -k
+      # claude-code
+      # curl # includes Brotli compression
+      # devenv
+      # difftastic
+      # duti
+      # fzf
+      # jq
+      # nixfmt
+      # saml2aws
+      # sd
 
-    nodePackages.fkill-cli
-    # TODO:
-    # nodePackages.trash-cli
+      # nodePackages.fkill-cli
+      # TODO:
+      # nodePackages.trash-cli
 
-    # TODO: 24.05.0
-    # fishPlugins.forgit
-  ];
+      # TODO: 24.05.0
+      # fishPlugins.forgit
+    ];
 
   programs.gh = {
     enable = true;
@@ -354,45 +355,46 @@
     };
     profiles = {
       default = {
-        extensions = with pkgs.vscode-marketplace; [
-          anthropic.claude-code
-          # TODO: breaks copilot next edit suggestion tab
-          # albert.tabout
-          # or
-          # https://github.com/OnlyLys/Leaper/issues/19
-          # onlylys.leaper
-          ast-grep.ast-grep-vscode
-          bierner.markdown-mermaid
-          biomejs.biome
-          cardinal90.multi-cursor-case-preserve
-          codespaces-contrib.codeswing
-          # https://github.com/danvk/any-xray/issues/18
-          # danvk.any-xray
-          dbaeumer.vscode-eslint
-          dbankier.vscode-quick-select
-          esbenp.prettier-vscode
-          fastly.vscode-fastly-vcl
-          github.copilot
-          github.copilot-chat
-          github.vscode-pull-request-github
-          hashicorp.terraform
-          jnoortheen.nix-ide
-          jq-syntax-highlighting.jq-syntax-highlighting
-          matsuyanagi.copy-code-block
-          mikestead.dotenv
-          mizdra.css-modules-kit-vscode
-          ms-playwright.playwright
-          ms-vsliveshare.vsliveshare
-          orta.vscode-jest
-          orta.vscode-twoslash-queries
-          stkb.rewrap
-          streetsidesoftware.code-spell-checker
-          sysoev.vscode-open-in-github
-          tamasfe.even-better-toml
-          timonwong.shellcheck
-          vsls-contrib.gistfs
-          wmaurer.change-case
-        ];
+        extensions = with pkgs.vscode-marketplace;
+          [
+            # anthropic.claude-code
+            # # TODO: breaks copilot next edit suggestion tab
+            # # albert.tabout
+            # # or
+            # # https://github.com/OnlyLys/Leaper/issues/19
+            # # onlylys.leaper
+            # ast-grep.ast-grep-vscode
+            # bierner.markdown-mermaid
+            # biomejs.biome
+            # cardinal90.multi-cursor-case-preserve
+            # codespaces-contrib.codeswing
+            # # https://github.com/danvk/any-xray/issues/18
+            # # danvk.any-xray
+            # dbaeumer.vscode-eslint
+            # dbankier.vscode-quick-select
+            # esbenp.prettier-vscode
+            # fastly.vscode-fastly-vcl
+            # github.copilot
+            # github.copilot-chat
+            # github.vscode-pull-request-github
+            # hashicorp.terraform
+            # jnoortheen.nix-ide
+            # jq-syntax-highlighting.jq-syntax-highlighting
+            # matsuyanagi.copy-code-block
+            # mikestead.dotenv
+            # mizdra.css-modules-kit-vscode
+            # ms-playwright.playwright
+            # ms-vsliveshare.vsliveshare
+            # orta.vscode-jest
+            # orta.vscode-twoslash-queries
+            # stkb.rewrap
+            # streetsidesoftware.code-spell-checker
+            # sysoev.vscode-open-in-github
+            # tamasfe.even-better-toml
+            # timonwong.shellcheck
+            # vsls-contrib.gistfs
+            # wmaurer.change-case
+          ];
       };
     };
   };
