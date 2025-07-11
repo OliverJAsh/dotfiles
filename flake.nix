@@ -14,7 +14,7 @@
 
   outputs =
     inputs@{ darwin, home-manager, nixpkgs, nix-vscode-extensions, ... }: {
-      darwinConfigurations."Olivers-MacBook-Pro" = darwin.lib.darwinSystem {
+      darwinConfigurations."Olivers-MacBook-Pro-2" = darwin.lib.darwinSystem {
         modules = [
           ./darwin.nix
           home-manager.darwinModules.home-manager
