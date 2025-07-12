@@ -14,7 +14,7 @@
   home.packages = with pkgs;
     [
       # CLIs
-      # ast-grep
+      ast-grep
       # TODO: issues making requests to https://unsplash.localhost
       # https://github.com/openssl/openssl/discussions/25172
       # https://github.com/NixOS/nixpkgs/issues/337982
@@ -29,13 +29,6 @@
       nixfmt
       # saml2aws
       # sd
-
-      # nodePackages.fkill-cli
-      # TODO:
-      # nodePackages.trash-cli
-
-      # TODO: 24.05.0
-      # fishPlugins.forgit
     ];
 
   programs.gh = {
@@ -48,7 +41,6 @@
 
   home.sessionVariables = {
     # Issue: `code` temporarily opens duplicate VS Code instance in the dock https://github.com/microsoft/vscode/issues/139634
-    # Wishlist: return focus afterwards https://github.com/microsoft/vscode/issues/68579
     EDITOR = "code --wait";
     LESS = "--ignore-case";
   };
@@ -61,6 +53,11 @@
     userName = "Oliver Joseph Ash";
     userEmail = "oliverjash@gmail.com";
 
+    signing.signByDefault = true;
+    signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJ8xPx84pYYy30FnTdegEo8WTS5aUmFb9HbKXhYl4Vp"; # from 1Password
+    extraConfig.gpg.format = "ssh";
+    extraConfig.gpg.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+
     # difftastic:
     # - https://github.com/nix-community/home-manager/issues/3140
 
@@ -71,20 +68,14 @@
       options = {
         # [ref:color-theme]
         syntax-theme = "Visual Studio Dark+";
-        # TODO: 
-        # https://github.com/wfxr/forgit/issues/121
-        # https://github.com/dandavison/delta/issues/368
         side-by-side = true;
         # Default is 2, after which the line is truncated meaning it won't be
         # visible/accessible.
         wrap-max-lines = "unlimited";
-        max-line-distance = 1;
       };
     };
 
     extraConfig = {
-      # For lazygit and `git show`
-      # https://github.com/jesseduffield/lazygit/issues/3931
       stash.showIncludeUntracked = true;
 
       # TODO:
@@ -248,11 +239,6 @@
     enable = true;
 
     plugins = [
-      # https://alexpearce.me/2021/07/managing-dotfiles-with-nix/#fish-shell:~:text=My%20final%20tweak%20was%20to%20include%20iTerm2%E2%80%99s%20shell%20integration%20as%20a%20fish%20plugin
-      {
-        name = "iterm2-shell-integration";
-        src = ./config/iterm2/iterm2_shell_integration;
-      }
       {
         name = "fish-completion-sync";
         src = pkgs.fetchFromGitHub {
@@ -262,11 +248,6 @@
           sha256 = "sha256-JdOLsZZ1VFRv7zA2i/QEZ1eovOym/Wccn0SJyhiP9hI=";
         };
       }
-      # TODO: 
-      # {
-      #   name = "forgit";
-      #   src = pkgs.fishPlugins.forgit;
-      # }
     ];
 
     interactiveShellInit = ''
@@ -327,8 +308,6 @@
       end
 
       set --global fish_greeting
-
-      # iterm2_shell_integration
     '';
 
     shellAbbrs = {
@@ -341,9 +320,6 @@
     functions = { mkcd = "mkdir -p $argv; cd $argv;"; };
   };
 
-  # TODO: conditionally enable extensions for individual workspaces/projects
-  # https://github.com/microsoft/vscode/issues/40239
-  # https://code.visualstudio.com/docs/editor/profiles
   programs.vscode = {
     enable = true;
     # https://github.com/nix-community/home-manager/issues/3375
@@ -362,21 +338,17 @@
             # # or
             # # https://github.com/OnlyLys/Leaper/issues/19
             # # onlylys.leaper
-            # ast-grep.ast-grep-vscode
+            ast-grep.ast-grep-vscode
             # bierner.markdown-mermaid
-            # biomejs.biome
             # cardinal90.multi-cursor-case-preserve
             # codespaces-contrib.codeswing
             # # https://github.com/danvk/any-xray/issues/18
             # # danvk.any-xray
-            # dbaeumer.vscode-eslint
             # dbankier.vscode-quick-select
             # esbenp.prettier-vscode
-            # fastly.vscode-fastly-vcl
             # github.copilot
             # github.copilot-chat
             # github.vscode-pull-request-github
-            # hashicorp.terraform
             jnoortheen.nix-ide
           ];
       };
