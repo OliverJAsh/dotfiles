@@ -134,12 +134,8 @@
             delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"'';
           # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#using-external-diff-commands
 
-          # Disabling this for now because:
-          # - snapshot diffs are hard to read
-          # - very slow in some cases e.g. snapshots
-          # - poor syntax highlighting
-          # - lazygit needs a command/shortcut to toggle on/off
-          externalDiffCommand = "difft --color=always";
+          # Disabling this for now because poor syntax highlighting.
+          # externalDiffCommand = "difft --color=always";
         };
       };
 
