@@ -268,9 +268,9 @@
 
     shellAbbrs = {
       cat = "bat";
-      z = "lazygit";
       sh = "nix shell nixpkgs#";
       up = "sudo darwin-rebuild switch --flake ~/Dev/dotfiles/";
+      z = "lazygit";
     };
 
     functions = { mkcd = "mkdir -p $argv; cd $argv;"; };
