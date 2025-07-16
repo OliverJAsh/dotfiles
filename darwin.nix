@@ -34,6 +34,7 @@
     };
 
     NSGlobalDomain = {
+      "com.apple.keyboard.fnState" = true;
       # https://github.com/nix-darwin/nix-darwin/issues/1207
       "com.apple.mouse.tapBehavior" = 1;
       # Play feedback when volume is changed.
