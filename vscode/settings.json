@@ -21,9 +21,11 @@
       "forceSpaceIndent": true
     }
   ],
+  "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.stickyScroll.enabled": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "typescript.referencesCodeLens.enabled": true,
+  "window.autoDetectColorScheme": true,
   "workbench.startupEditor": "none"
 }
