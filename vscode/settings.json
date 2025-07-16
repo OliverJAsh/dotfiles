@@ -1,4 +1,27 @@
 {
+  // Fixes issue whereby TS server hangs e.g. after running `just typecheck`.
+  // Potentially related:
+  // - https://github.com/microsoft/vscode/issues/226050
+  // - https://github.com/microsoft/vscode/issues/214567
+  // - https://github.com/microsoft/vscode/issues/232699
+  // - https://github.com/microsoft/vscode/issues/226401
+  // - https://github.com/microsoft/vscode/issues/234643
+  // Default is `"vscode"`.
+  // This setting was previously
+  // `"typescript.tsserver.experimental.useVsCodeWatcher": false`.
+  "typescript.tsserver.watchOptions": {},
+  // Alternatively:
+  // "files.watcherExclude": {
+  //   // This effectively sets `useVsCodeWatcher` to `false`:
+  //   // https://github.com/microsoft/vscode/blob/71d320f7f250d79b4e3e0b5385be0e2ff25f7435/extensions/typescript-language-features/src/configuration/configuration.ts#L232
+  //   // "**/node_modules/**": true,
+
+  //   "**/.turbo/**": true,
+  //   "**/declarations/**": true,
+  //   "**/lang/**": true,
+  //   "**/*.tsbuildinfo": true
+  // }
+
   "copyCodeBlock.formats": [
     {
       "formatName": "markdown",
