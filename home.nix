@@ -32,12 +32,6 @@
     userName = "Oliver Joseph Ash";
     userEmail = "oliverjash@gmail.com";
 
-    # https://developer.1password.com/docs/ssh/git-commit-signing
-    signing.signByDefault = true;
-    signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJ8xPx84pYYy30FnTdegEo8WTS5aUmFb9HbKXhYl4Vp";
-    extraConfig.gpg.format = "ssh";
-    extraConfig.gpg.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-
     difftastic.enableAsDifftool = true;
 
     lfs = { enable = true; };
