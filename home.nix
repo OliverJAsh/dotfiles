@@ -268,6 +268,8 @@
 
     shellAbbrs = {
       cat = "bat";
+      cdw = "cd ~/Dev/unsplash/unsplash-web/";
+      cdd = "cd ~/Dev/dotfiles/";
       sh = "nix shell nixpkgs#";
       up = "sudo darwin-rebuild switch --flake ~/Dev/dotfiles/";
       z = "lazygit";
