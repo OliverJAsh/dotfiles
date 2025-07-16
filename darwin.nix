@@ -42,7 +42,7 @@
     };
 
     # https://github.com/nix-darwin/nix-darwin/issues/1207
-    trackpad.Dragging = true;
+    trackpad.TrackpadThreeFingerDrag = true;
 
     universalaccess.closeViewScrollWheelToggle = true;
 
