@@ -1,7 +1,7 @@
 # Everything here depends upon other per-project configs.
 
 https://unsplash.localhost {
-	reverse_proxy :3000
+	reverse_proxy :3001
 }
 
 https://demos-unsplash.localhost {
