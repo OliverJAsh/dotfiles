@@ -9,6 +9,7 @@
   // Default is `"vscode"`.
   // This setting was previously
   // `"typescript.tsserver.experimental.useVsCodeWatcher": false`.
+  "typescript.tsserver.experimental.useVsCodeWatcher": false,
   "typescript.tsserver.watchOptions": {},
   // Alternatively:
   // "files.watcherExclude": {
@@ -44,10 +45,13 @@
       "forceSpaceIndent": true
     }
   ],
+  "editor.autoClosingDelete": "always",
   "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.smartSelect.selectSubwords": false,
   "editor.stickyScroll.enabled": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
   "typescript.referencesCodeLens.enabled": true,
   "window.autoDetectColorScheme": true,
   "workbench.startupEditor": "none"
