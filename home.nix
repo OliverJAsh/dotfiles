@@ -7,6 +7,7 @@
   home.packages = with pkgs;
     [
       ast-grep
+      curl # for Brotli compression support
       difftastic
       nixfmt
     ];
