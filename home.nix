@@ -10,6 +10,9 @@
       claude-code
       curl # for Brotli compression support
       difftastic
+      jjui
+      jujutsu
+      lazyjj
       nixfmt
     ];
 
