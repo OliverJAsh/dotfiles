@@ -87,6 +87,7 @@
     "args": {
       "commands": [
         "workbench.action.closeAllGroups",
+        "workbench.action.closeAuxiliaryBar",
         "workbench.action.closeSidebar",
         "workbench.files.action.collapseExplorerFolders",
         "workbench.action.terminal.killAll",
