@@ -7,6 +7,7 @@
   home.packages = with pkgs;
     [
       ast-grep
+      claude-code
       curl # for Brotli compression support
       difftastic
       nixfmt
@@ -286,6 +287,7 @@
       default = {
         extensions = with pkgs.vscode-marketplace;
           [
+            anthropic.claude-code
             ast-grep.ast-grep-vscode
             dbankier.vscode-quick-select
             jnoortheen.nix-ide
