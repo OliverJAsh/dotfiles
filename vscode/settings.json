@@ -23,6 +23,8 @@
   //   "**/*.tsbuildinfo": true
   // }
 
+  // Else it appears all the time when opening file outside of workspace.
+  "biome.suggestInstallingGlobally": false,
   "copyCodeBlock.formats": [
     {
       "formatName": "markdown",
@@ -52,7 +54,9 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "github.copilot.nextEditSuggestions.enabled": true,
+  "githubPullRequests.pullBranch": "never",
   "typescript.referencesCodeLens.enabled": true,
   "window.autoDetectColorScheme": true,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.startupEditor": "none"
 }
