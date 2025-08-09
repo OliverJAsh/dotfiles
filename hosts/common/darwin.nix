@@ -40,7 +40,6 @@
     casks = [
       "1password"
       "istherenet"
-      "raycast"
       "spotify"
     ];
   };

@@ -44,6 +44,7 @@
       "google-chrome"
       "google-chrome@beta"
       "linear-linear"
+      "raycast"
       "slack"
       "stats"
       "tunnelbear"
