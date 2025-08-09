@@ -37,9 +37,6 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
-    masApps = {
-      rcmd = 1596283165;
-    };
     casks = [
       "1password"
       "istherenet"

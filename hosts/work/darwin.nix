@@ -30,6 +30,9 @@
       # (start on login).
       "caddy"
     ];
+    masApps = {
+      rcmd = 1596283165;
+    };
     casks = [
       "figma"
       # TODO: Ghostty
