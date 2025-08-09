@@ -305,7 +305,8 @@
   home.activation.vscode = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ln -sf ~/Dev/dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
     ln -sf ~/Dev/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-    ln -sf ~/Dev/dotfiles/vscode/snippets/ ~/Library/Application\ Support/Code/User/snippets
+    rm -f ~/Library/Application\ Support/Code/User/snippets
+    ln -sf ~/Dev/dotfiles/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
   '';
   home.activation.caddy = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ln -sf ~/Dev/dotfiles/proxy/Caddyfile /opt/homebrew/etc/Caddyfile
