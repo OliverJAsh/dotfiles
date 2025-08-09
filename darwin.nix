@@ -71,6 +71,11 @@
     casks = [
       "1password"
       "figma"
+      # TODO: Ghostty
+      # Fix alt+e in Fish:
+      # macos-option-as-alt = true
+      # Configuring it via home-manager results in thin cursor for some reason, and
+      # the setting doesn't work.
       "ghostty"
       "google-chrome"
       "google-chrome@beta"
