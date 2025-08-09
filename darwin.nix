@@ -73,6 +73,7 @@
       "figma"
       "ghostty"
       "google-chrome"
+      "google-chrome@beta"
       "istherenet"
       "linear-linear"
       "raycast"
