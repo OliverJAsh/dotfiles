@@ -24,6 +24,16 @@ in
       user = {
         inherit name email;
       };
+      ui = {
+        # Until there's a programs.jujutsu.delta.enable option:
+        #   https://github.com/nix-community/home-manager/issues/4887
+        pager = lib.getExe pkgs.delta;
+        diff-formatter = ":git";
+        # https://github.com/idursun/jjui/discussions/163#discussioncomment-13672946
+        # diff-formatter = lib.getExe pkgs.delta;
+
+        merge-editor = "vscode";
+      };
     };
   };
 
