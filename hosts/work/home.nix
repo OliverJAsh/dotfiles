@@ -1,4 +1,10 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+
+let
+  name = "Oliver Joseph Ash";
+  email = "oliverjash@gmail.com";
+in
+{
   imports = [ ../common/home.nix ];
 
   home.packages = with pkgs;
@@ -8,10 +14,18 @@
       curl # for Brotli compression support
       difftastic
       jjui
-      jujutsu
       lazyjj
       nixfmt
     ];
+
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        inherit name email;
+      };
+    };
+  };
 
   programs.gh = {
     enable = true;
@@ -29,8 +43,8 @@
   programs.git = {
     enable = true;
 
-    userName = "Oliver Joseph Ash";
-    userEmail = "oliverjash@gmail.com";
+    userName = name;
+    userEmail = email;
 
     difftastic.enableAsDifftool = true;
 
