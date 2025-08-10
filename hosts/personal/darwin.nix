@@ -6,6 +6,7 @@
       "1Password for Safari" = 1569813296;
     };
     casks = [
+      "plex-media-server"
       "transmission"
     ];
   };
