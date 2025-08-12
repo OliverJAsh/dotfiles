@@ -287,6 +287,232 @@ in
       pname = pkgs.vscode.pname;
       version = "0.0.0";
     };
+
+    userSettings = {
+      # Fixes issue whereby TS server hangs e.g. after running `just typecheck`.
+      # Potentially related:
+      # - https://github.com/microsoft/vscode/issues/226050
+      # - https://github.com/microsoft/vscode/issues/214567
+      # - https://github.com/microsoft/vscode/issues/232699
+      # - https://github.com/microsoft/vscode/issues/226401
+      # - https://github.com/microsoft/vscode/issues/234643
+      # Default is "vscode".
+      # This setting was previously
+      # "typescript.tsserver.experimental.useVsCodeWatcher": false.
+      "typescript.tsserver.experimental.useVsCodeWatcher" = false;
+      "typescript.tsserver.watchOptions" = {};
+      # Alternatively:
+      # "files.watcherExclude" = {
+      #   # This effectively sets `useVsCodeWatcher` to `false`:
+      #   # https://github.com/microsoft/vscode/blob/71d320f7f250d79b4e3e0b5385be0e2ff25f7435/extensions/typescript-language-features/src/configuration/configuration.ts#L232
+      #   # "**/node_modules/**" = true;
+
+      #   "**/.turbo/**" = true;
+      #   "**/declarations/**" = true;
+      #   "**/lang/**" = true;
+      #   "**/*.tsbuildinfo" = true;
+      # };
+
+      # Else it appears all the time when opening file outside of workspace.
+      "biome.suggestInstallingGlobally" = false;
+      "copyCodeBlock.formats" = [
+        {
+          formatName = "markdown";
+          codeBlockHeaderFormat = "```\${fileExtnameWithoutDot}\${EOL}";
+          codeBlockFooterFormat = "```\${EOL}";
+          codeLineFormat = "\${CODE}\${EOL}";
+          multipleSelectionCreateMultipleCodeBlocks = false;
+          multipleSelectionsBoundalyMarkerFormat = "---\${EOL}";
+          forcePathSeparatorSlash = true;
+          forceSpaceIndent = true;
+        }
+        {
+          formatName = "markdownWithRelativePath";
+          codeBlockHeaderFormat = "`\${workspaceFolderRelativePath}`:\n```\${fileExtnameWithoutDot}\${EOL}";
+          codeBlockFooterFormat = "```\${EOL}";
+          codeLineFormat = "\${CODE}\${EOL}";
+          multipleSelectionCreateMultipleCodeBlocks = false;
+          multipleSelectionsBoundalyMarkerFormat = "---\${EOL}";
+          forcePathSeparatorSlash = true;
+          forceSpaceIndent = true;
+        }
+      ];
+      "editor.autoClosingDelete" = "always";
+      "editor.gotoLocation.multipleDefinitions" = "goto";
+      "editor.smartSelect.selectSubwords" = false;
+      "editor.stickyScroll.enabled" = true;
+      "files.insertFinalNewline" = true;
+      "files.trimFinalNewlines" = true;
+      "github.copilot.nextEditSuggestions.enabled" = true;
+      "githubPullRequests.pullBranch" = "never";
+      "typescript.referencesCodeLens.enabled" = true;
+      "window.autoDetectColorScheme" = true;
+      "workbench.secondarySideBar.defaultVisibility" = "hidden";
+      "workbench.startupEditor" = "none";
+    };
+
+    keybindings = [
+      {
+        key = "alt+j alt+1";
+        command = "extension.copyCodeBlock";
+        args = {
+          formatName = "markdown";
+        };
+      }
+      {
+        key = "alt+j alt+2";
+        command = "extension.copyCodeBlock";
+        args = {
+          formatName = "markdownWithRelativePath";
+        };
+      }
+      {
+        key = "alt+w";
+        command = "editor.action.insertSnippet";
+        when = "editorTextFocus";
+        args = {
+          snippet = "$LINE_COMMENT TODO: ";
+        };
+      }
+      {
+        key = "alt+c";
+        command = "editor.action.insertSnippet";
+        when = "editorTextFocus";
+        args = {
+          langId = "typescript";
+          name = "function call";
+        };
+      }
+      {
+        key = "alt+a";
+        command = "editor.action.smartSelect.expand";
+        when = "editorTextFocus";
+      }
+      {
+        key = "ctrl+shift+right";
+        command = "-editor.action.smartSelect.expand";
+        when = "editorTextFocus";
+      }
+      {
+        key = "alt+z";
+        command = "editor.action.smartSelect.shrink";
+        when = "editorTextFocus";
+      }
+      {
+        key = "ctrl+shift+left";
+        command = "-editor.action.smartSelect.shrink";
+        when = "editorTextFocus";
+      }
+      {
+        key = "alt+s alt+up";
+        command = "merge.goToPreviousUnhandledConflict";
+      }
+      {
+        key = "alt+s alt+down";
+        command = "merge.goToNextUnhandledConflict";
+      }
+      {
+        key = "ctrl+cmd+b";
+        command = "editor.action.codeAction";
+        args = {
+          kind = "refactor.rewrite.arrow";
+        };
+      }
+      {
+        key = "alt+shift+q";
+        command = "editor.action.codeAction";
+        args = {
+          kind = "source.fixAll";
+          apply = "first";
+        };
+      }
+      # Misc
+      {
+        key = "cmd+shift+alt+r";
+        command = "runCommands";
+        args = {
+          commands = [
+            "workbench.action.closeAllGroups"
+            "workbench.action.closeAuxiliaryBar"
+            "workbench.action.closeSidebar"
+            "workbench.files.action.collapseExplorerFolders"
+            "workbench.action.terminal.killAll"
+            "workbench.action.closePanel"
+            "workbench.action.clearRecentFiles"
+            "workbench.action.reloadWindow"
+          ];
+        };
+      }
+      {
+        key = "ctrl+alt+;";
+        command = "editor.emmet.action.matchTag";
+      }
+      {
+        key = "shift+alt+cmd+l";
+        command = "liveshare.start";
+      }
+      # Most of the time I want to copy a permalink to code on the default branch.
+      # My preferred workflow is to use this shortcut to open using the default
+      # branch, check the line selection is correct, and then use GitHub's on page
+      # shortcut for copying a permalink. The GitHub Pull Requests extension has
+      # similar functionality, but it only allows opening as permalink. The current
+      # changes may not exist yet on the remote. Related issue:
+      # https://github.com/microsoft/vscode-pull-request-github/issues/4765
+      {
+        key = "shift+cmd+alt+o";
+        command = "openInGithub.openInGitHubFile";
+      }
+    ];
+
+    globalSnippets = {
+      "function" = {
+        description = "function";
+        scope = "javascript,javascriptreact,typescript,typescriptreact";
+        prefix = "f";
+        body = "(\$1)\$2 => \${3:{ \${4:return \${5:\${SELECTION:null}}} }}";
+      };
+      "function call" = {
+        description = "function call";
+        scope = "javascript,javascriptreact,typescript,typescriptreact";
+        prefix = "fc";
+        body = "\${1:fn}(\${2:\$SELECTION})";
+      };
+      "destructured const" = {
+        description = "destructured const";
+        scope = "typescript,typescriptreact,javascript,javascriptreact";
+        prefix = "const";
+        body = [
+          "const { \${2:name} } = \${1:value};"
+        ];
+      };
+      "IIFE" = {
+        description = "IIFE";
+        scope = "javascript,javascriptreact,typescript,typescriptreact";
+        prefix = "iife";
+        body = "(() => { \$SELECTION\$1 })()";
+      };
+      "namespace import" = {
+        description = "namespace import";
+        scope = "javascript,javascriptreact,typescript,typescriptreact";
+        prefix = "impns";
+        body = [
+          "import * as \${2:Namespace} from '\$1';"
+        ];
+      };
+      "JSX fragment" = {
+        description = "JSX fragment";
+        scope = "javascript,javascriptreact,typescript,typescriptreact";
+        prefix = "frag";
+        body = "<>\$SELECTION\$1</>";
+      };
+      "ternary" = {
+        description = "ternary";
+        scope = "javascript,javascriptreact,typescript,typescriptreact";
+        prefix = "tern";
+        body = "\${1:condition} ? \${2:\${SELECTION:{}}} : \${3:{}}";
+      };
+    };
+
     profiles = {
       default = {
         extensions = with pkgs.vscode-marketplace;
@@ -303,12 +529,6 @@ in
     };
   };
 
-  home.activation.vscode = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ln -sf ~/Dev/dotfiles/hosts/work/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-    ln -sf ~/Dev/dotfiles/hosts/work/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-    rm -f ~/Library/Application\ Support/Code/User/snippets
-    ln -sf ~/Dev/dotfiles/hosts/work/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
-  '';
   home.activation.caddy = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ln -sf ~/Dev/dotfiles/hosts/work/proxy/Caddyfile /opt/homebrew/etc/Caddyfile
     /opt/homebrew/bin/brew services start caddy
