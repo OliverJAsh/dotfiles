@@ -343,6 +343,7 @@ in
       "editor.stickyScroll.enabled" = true;
       "files.insertFinalNewline" = true;
       "files.trimFinalNewlines" = true;
+      "files.trimTrailingWhitespace" = true;
       "github.copilot.nextEditSuggestions.enabled" = true;
       "githubPullRequests.pullBranch" = "never";
       "typescript.referencesCodeLens.enabled" = true;
