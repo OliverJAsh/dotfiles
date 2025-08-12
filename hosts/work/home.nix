@@ -238,62 +238,6 @@ in
     ];
 
     interactiveShellInit = ''
-      # Easy printing with foreground and background colors
-      function prompt_segment
-        set -l bg $argv[1]
-        set -l fg $argv[2]
-
-        set_color -b $bg
-        set_color $fg
-
-        if [ -n "$argv[3]" ]
-          echo -n -s $argv[3]
-        end
-      end
-
-      function spacer
-        prompt_segment normal normal " "
-      end
-
-      # Display status if previous command returned an error
-      function show_status
-        if [ $RETVAL -ne 0 ]
-          prompt_segment normal red "!"
-          spacer
-        end
-      end
-
-      function show_pwd
-        prompt_segment normal normal (prompt_pwd)
-      end
-
-      # TODO: show name of nix shell e.g. #prod-ops
-      # The `$IN_NIX_SHELL` environment variable isn't set in a `nix shell` proper,
-      # hence this workaround of checking the `$PATH`.
-      #   https://discourse.nixos.org/t/in-nix-shell-env-variable-in-nix-shell-versus-nix-shell/15933
-      #   https://github.com/NixOS/nix/issues/3862#issuecomment-707320241
-      function is_nix_shell
-        echo $PATH | grep -q /nix/store
-      end
-
-      function show_prompt
-        if is_nix_shell
-          prompt_segment normal normal "λ"
-        else
-          prompt_segment normal normal "\$"
-        end
-      end
-
-      function fish_prompt
-        set -g RETVAL $status
-        show_pwd
-        fish_git_prompt
-        spacer
-        show_status
-        show_prompt
-        spacer
-      end
-
       set --global fish_greeting
     '';
 
@@ -307,6 +251,33 @@ in
     };
 
     functions = { mkcd = "mkdir -p $argv; cd $argv;"; };
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      # scan_timeout = 5;
+
+      character = {
+        success_symbol = "λ";
+        error_symbol = "!";
+      };
+      format = "$character";
+      right_format = "$direnv$nix_shell$directory$git_branch";
+
+      direnv = {
+        disabled = false;
+        format = "[$allowed]($style)";
+        style = "red";
+        allowed_msg = "";
+        not_allowed_msg = "? ";
+        denied_msg = " ";
+      };
+      nix_shell = {
+        format = "[$symbol]($style)";
+        symbol = " ";
+      };
+    };
   };
 
   programs.vscode = {
