@@ -18,6 +18,17 @@ in
       nixfmt
     ];
 
+  programs.ghostty = {
+    enable = true;
+    package = pkgs.runCommand "noop" { meta.mainProgram = "noop"; } "mkdir $out";
+    # https://github.com/nix-community/home-manager/pull/6235#issuecomment-2567896192
+    installBatSyntax = false;
+    settings = {
+      macos-option-as-alt = true;
+      shell-integration-features = "no-cursor";
+    };
+  };
+
   programs.jujutsu = {
     enable = true;
     settings = {
