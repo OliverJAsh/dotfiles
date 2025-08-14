@@ -172,6 +172,7 @@ in
           # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#using-external-diff-commands
 
           # Disabling this for now because poor syntax highlighting.
+          # https://github.com/Wilfred/difftastic/issues/541
           # externalDiffCommand = "difft --color=always";
         };
 
