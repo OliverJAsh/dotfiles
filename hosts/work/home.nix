@@ -18,6 +18,8 @@ in
       nixfmt
     ];
 
+  programs.mergiraf = { enable = true; };
+
   programs.ghostty = {
     enable = true;
     package = pkgs.runCommand "noop" { meta.mainProgram = "noop"; } "mkdir $out";
