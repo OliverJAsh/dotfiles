@@ -174,6 +174,8 @@ in
           # Disabling this for now because poor syntax highlighting.
           # externalDiffCommand = "difft --color=always";
         };
+
+        ignoreWhitespaceInDiffView = true;
       };
 
       gui = {
