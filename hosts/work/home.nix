@@ -103,7 +103,8 @@ in
       "mergetool \"code\"".cmd =
         "code --wait --merge $REMOTE $LOCAL $BASE $MERGED";
       merge.tool = "code";
-      merge.conflictstyle = "zdiff3";
+      # Using diff3 instead of zdiff3 because it works better with Mergiraf.
+      merge.conflictstyle = "diff3";
 
       mergetool.keepBackup = false;
 
