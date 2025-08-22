@@ -172,9 +172,9 @@ in
             delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"'';
           # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#using-external-diff-commands
 
-          # Disabling this for now because poor syntax highlighting.
+          # difftastic needs better syntax highlighting.
           # https://github.com/Wilfred/difftastic/issues/541
-          # externalDiffCommand = "difft --color=always";
+          externalDiffCommand = "difft --color=always";
         };
 
         ignoreWhitespaceInDiffView = true;
