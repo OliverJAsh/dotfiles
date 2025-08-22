@@ -38,12 +38,8 @@ in
         inherit name email;
       };
       ui = {
-        # Until there's a programs.jujutsu.delta.enable option:
-        #   https://github.com/nix-community/home-manager/issues/4887
-        pager = lib.getExe pkgs.delta;
-        diff-formatter = ":git";
-        # https://github.com/idursun/jjui/discussions/163#discussioncomment-13672946
-        # diff-formatter = lib.getExe pkgs.delta;
+        # https://difftastic.wilfred.me.uk/jj.html
+        diff-formatter = "${lib.getExe pkgs.difftastic} --color=always $left $right";
 
         merge-editor = "vscode";
       };
@@ -172,9 +168,9 @@ in
             delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"'';
           # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#using-external-diff-commands
 
-          # Disabling this for now because poor syntax highlighting.
+          # difftastic needs better syntax highlighting.
           # https://github.com/Wilfred/difftastic/issues/541
-          # externalDiffCommand = "difft --color=always";
+          externalDiffCommand = "difft --color=always";
         };
 
         ignoreWhitespaceInDiffView = true;
