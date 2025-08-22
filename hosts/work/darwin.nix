@@ -36,6 +36,7 @@
     casks = [
       "figma"
       "ghostty"
+      "gitbutler"
       "google-chrome"
       "google-chrome@beta"
       "linear-linear"
