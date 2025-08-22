@@ -344,7 +344,6 @@ in
         }
       ];
       "editor.autoClosingDelete" = "always";
-      "editor.gotoLocation.multipleDefinitions" = "goto";
       "editor.smartSelect.selectSubwords" = false;
       "editor.stickyScroll.enabled" = true;
       "files.insertFinalNewline" = true;
