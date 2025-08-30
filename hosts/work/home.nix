@@ -69,16 +69,6 @@ in
 
     lfs = { enable = true; };
 
-    delta = {
-      enable = true;
-      options = {
-        side-by-side = true;
-        # Default is 2, after which the line is truncated meaning it won't be
-        # visible/accessible.
-        wrap-max-lines = "unlimited";
-      };
-    };
-
     extraConfig = {
       stash.showIncludeUntracked = true;
 
@@ -162,12 +152,6 @@ in
           "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --";
 
         paging = {
-          # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#delta
-          colorArg = "always";
-          pager = ''
-            delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"'';
-          # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md#using-external-diff-commands
-
           # difftastic needs better syntax highlighting.
           # https://github.com/Wilfred/difftastic/issues/541
           externalDiffCommand = "difft --color=always";
