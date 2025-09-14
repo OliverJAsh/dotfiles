@@ -433,7 +433,7 @@ in
     profiles = {
       default = {
         extensions = with pkgs.vscode-marketplace; [
-          anthropic.claude-code
+          # anthropic.claude-code
           ast-grep.ast-grep-vscode
           dbankier.vscode-quick-select
           jnoortheen.nix-ide

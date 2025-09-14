@@ -3,7 +3,7 @@
 
   homebrew = {
     casks = [
-      "plex-media-server"
+      # "plex-media-server"
       "transmission"
     ];
   };
