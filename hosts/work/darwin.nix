@@ -35,6 +35,7 @@
     };
     casks = [
       "figma"
+      "firefox"
       "ghostty"
       "gitbutler"
       "google-chrome"
