@@ -68,6 +68,9 @@ in
     userName = name;
     userEmail = email;
 
+    # difftastic needs better syntax highlighting.
+    # https://github.com/Wilfred/difftastic/issues/541
+    # Also: https://github.com/Wilfred/difftastic/issues/304
     difftastic = {
       enable = true;
       enableAsDifftool = true;
@@ -159,9 +162,6 @@ in
           "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --";
 
         paging = {
-          # difftastic needs better syntax highlighting.
-          # https://github.com/Wilfred/difftastic/issues/541
-          # Also: https://github.com/Wilfred/difftastic/issues/304
           externalDiffCommand = "difft --color=always";
         };
 
