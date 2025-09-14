@@ -68,7 +68,11 @@ in
     userName = name;
     userEmail = email;
 
-    difftastic.enableAsDifftool = true;
+    difftastic = {
+      enable = true;
+      enableAsDifftool = true;
+      color = "always";
+    };
 
     lfs = { enable = true; };
 
