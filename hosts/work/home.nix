@@ -275,6 +275,8 @@ in
     };
   };
 
+  # Storing settings in Nix means they are not writable:
+  # https://github.com/nix-community/home-manager/issues/1800
   programs.vscode = {
     enable = true;
     # https://github.com/nix-community/home-manager/issues/3375
