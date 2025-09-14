@@ -1,5 +1,8 @@
 { lib, pkgs, nix-vscode-extensions, ... }: {
-  imports = [ ../common/darwin.nix ];
+  imports = [
+    ../common/darwin.nix
+    ../personal/darwin.nix
+  ];
 
   users.users.oliver.shell = pkgs.fish;
   # https://github.com/nix-darwin/nix-darwin/issues/1237

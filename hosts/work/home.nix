@@ -5,7 +5,10 @@ let
   email = "oliverjash@gmail.com";
 in
 {
-  imports = [ ../common/home.nix ];
+  imports = [
+    ../common/home.nix
+    ../personal/home.nix
+  ];
 
   home.packages = with pkgs;
     [
