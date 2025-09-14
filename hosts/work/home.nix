@@ -157,6 +157,7 @@ in
         paging = {
           # difftastic needs better syntax highlighting.
           # https://github.com/Wilfred/difftastic/issues/541
+          # Also: https://github.com/Wilfred/difftastic/issues/304
           externalDiffCommand = "difft --color=always";
         };
 
