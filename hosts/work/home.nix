@@ -15,7 +15,6 @@ in
       ast-grep
       claude-code
       curl # for Brotli compression support
-      difftastic
       jjui
       lazyjj
       nixfmt
