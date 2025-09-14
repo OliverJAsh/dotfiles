@@ -193,6 +193,8 @@ in
   home.sessionVariables = {
     # Issue: `code` temporarily opens duplicate VS Code instance in the dock https://github.com/microsoft/vscode/issues/139634
     EDITOR = "code --wait";
+    # TODO: -FRX
+    # https://stackoverflow.com/questions/32469204/scrolling-down-git-diff-from-mac-terminal
     LESS = "--ignore-case";
   };
 
