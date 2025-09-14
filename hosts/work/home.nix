@@ -161,6 +161,8 @@ in
           "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --";
 
         paging = {
+          # https://github.com/jesseduffield/lazygit/pull/4832#issuecomment-3289371491
+          # useExternalDiffGitConfig = true;
           externalDiffCommand = "difft --color=always";
         };
 
