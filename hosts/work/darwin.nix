@@ -37,6 +37,7 @@
       rcmd = 1596283165;
     };
     casks = [
+      "browserstacklocal"
       "figma"
       "firefox"
       "ghostty"
