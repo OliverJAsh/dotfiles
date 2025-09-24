@@ -15,7 +15,6 @@ in
       ast-grep
       claude-code
       curl # for Brotli compression support
-      jjui
       lazyjj
       nixfmt
     ];
@@ -33,6 +32,78 @@ in
     };
   };
 
+  programs.jjui = {
+    enable = true;
+    settings = {
+      leader = {
+        # https://idursun.github.io/jjui/Leader-Key.html#edit-a-file-from-revision-detail-idea-from-184
+        # https://github.com/idursun/jjui/issues/184#issuecomment-3315056343
+        e = {
+          context = [ "$file" "$change_id" ];
+          help = "Edit file in @";
+          # send = [ "$" "$EDITOR $file" "enter" ];
+          send = [ "$" "code $file" "enter" ];
+        };
+        E = {
+          context = [ "$file" "$change_id" ];
+          help = "Edit file in change";
+          # send = [ "$" "jj edit $change_id && $EDITOR $file" "enter" ];
+          send = [ "$" "jj edit $change_id && code $file" "enter" ];
+        };
+
+        n = {
+          context = [ "$change_id" ];
+          help = "New change";
+        };
+        na = {
+          context = [ "$change_id" ];
+          help = "After";
+          # send = [ ":" "new -A $change_id" "enter" "@" ];
+          # Faster
+          send = [ "ctrl+a" "@" ];
+        };
+        nb = {
+          context = [ "$change_id" ];
+          help = "Before";
+          # send = [ ":" "new -B $change_id" "enter" "@" ];
+          # Faster
+          send = [ "ctrl+b" "@" ];
+        };
+      };
+      custom_commands = {
+        # https://idursun.github.io/jjui/Custom-Commands.html#new-note-commit-insert-an-empty-commit-inline-after--idea-from-278
+        # https://github.com/idursun/jjui/issues/278
+        # Or: `nrJa⏎`
+        "new after" = {
+          key = [ "ctrl+a" ];
+          args = [ "new" "-A" "$change_id" ];
+        };
+        "new before" = {
+          key = [ "ctrl+b" ];
+          args = [ "new" "-B" "$change_id" ];
+        };
+        "resolve" = {
+          # Conflicts with Revert
+          # key = [ "R" ];
+          args = [ "resolve" ];
+        };
+        "resolve mergiraf" = {
+          # Conflicts with Revert
+          # key = [ "R" ];
+          args = [ "resolve" "--tool" "mergiraf" ];
+        };
+      };
+      ui = {
+        auto_refresh_interval = 3;
+      };
+      # Same as default with customised tool. # Prefer inline display due to narrow window.
+      preview = {
+        revision_command = [ "show" "--color" "always" "-r" "$change_id" "--tool" "difftInline" ];
+        file_command = [ "diff" "--color=always" "-r" "$change_id" "$file" "--tool" "difftInline" ];
+      };
+    };
+  };
+
   programs.jujutsu = {
     enable = true;
     settings = {
@@ -41,9 +112,14 @@ in
       };
       ui = {
         # https://difftastic.wilfred.me.uk/jj.html
-        diff-formatter = "${lib.getExe pkgs.difftastic} --color=always $left $right";
-
+        diff-formatter = [ "${lib.getExe pkgs.difftastic}" "--color=always" "$left" "$right" ];
         merge-editor = "vscode";
+      };
+      merge-tools = {
+        difftInline = {
+          program = lib.getExe pkgs.difftastic;
+          diff-args = ["--color=always" "$left" "$right" "--display=inline"];
+        };
       };
     };
   };
@@ -242,7 +318,7 @@ in
       cdd = "cd ~/Dev/dotfiles/";
       sh = "nix shell nixpkgs#";
       up = "sudo darwin-rebuild switch --flake ~/Dev/dotfiles/";
-      z = "lazygit";
+      z = "jjui";
     };
 
     functions = { mkcd = "mkdir -p $argv; cd $argv;"; };
