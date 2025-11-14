@@ -196,26 +196,31 @@ in
     LESS = "--ignore-case";
   };
 
-  programs.git = {
-    enable = true;
-
-    userName = name;
-    userEmail = email;
-
+  programs.difftastic = {
     # difftastic needs better syntax highlighting.
     # https://github.com/Wilfred/difftastic/issues/541
     # Also: https://github.com/Wilfred/difftastic/issues/304
-    difftastic = {
-      enable = true;
-      enableAsDifftool = true;
+
+    enable = true;
+    git.diffToolMode = true;
+    options = {
       color = "always";
     };
+  };
+
+  programs.git = {
+    enable = true;
 
     lfs = {
       enable = true;
     };
 
-    extraConfig = {
+    settings = {
+      user = {
+        name = name;
+        email = email;
+      };
+
       stash.showIncludeUntracked = true;
 
       init.defaultBranch = "main";
