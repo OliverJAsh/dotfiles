@@ -101,9 +101,6 @@ in
           ];
         };
       };
-      ui = {
-        auto_refresh_interval = 3;
-      };
       # Same as default with customised tool. # Prefer inline display due to narrow window.
       preview = {
         revision_command = [
