@@ -109,27 +109,6 @@ in
           ];
         };
       };
-      # Same as default with customised tool. # Prefer inline display due to narrow window.
-      preview = {
-        revision_command = [
-          "show"
-          "--color"
-          "always"
-          "-r"
-          "$change_id"
-          "--tool"
-          "difftInline"
-        ];
-        file_command = [
-          "diff"
-          "--color=always"
-          "-r"
-          "$change_id"
-          "$file"
-          "--tool"
-          "difftInline"
-        ];
-      };
     };
   };
 
@@ -148,17 +127,6 @@ in
           "$right"
         ];
         merge-editor = "vscode";
-      };
-      merge-tools = {
-        difftInline = {
-          program = lib.getExe pkgs.difftastic;
-          diff-args = [
-            "--color=always"
-            "$left"
-            "$right"
-            "--display=inline"
-          ];
-        };
       };
     };
   };
