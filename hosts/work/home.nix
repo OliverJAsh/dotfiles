@@ -243,7 +243,7 @@ in
         };
 
         ignoreWhitespaceInDiffView = true;
-      };
+            };
 
       gui = {
         # Reduce a little to make more room for the main panel.
