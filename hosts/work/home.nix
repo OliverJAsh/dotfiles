@@ -67,6 +67,22 @@ in
         };
       };
       custom_commands = {
+        # https://github.com/idursun/jjui/issues/310
+        # https://github.com/idursun/jjui/pull/422
+        "inline commit" = {
+          key_sequence = [
+            "w"
+            "x"
+          ];
+          lua = ''
+            if revisions.start_inline_describe() then
+              jj("new")
+              revisions.refresh()
+              local new_change_id = jj("log", "-r", "@", "-T", "change_id.shortest()", "--no-graph")
+              revisions.navigate{to=new_change_id}
+            end
+          '';
+        };
         "new after" = {
           key = [ "ctrl+a" ];
           args = [
