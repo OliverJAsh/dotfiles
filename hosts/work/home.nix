@@ -87,17 +87,14 @@ in
           ];
         };
         "resolve" = {
-          # Conflicts with Revert
-          # key = [ "R" ];
-          args = [ "resolve" ];
-        };
-        "resolve mergiraf" = {
-          # Conflicts with Revert
-          # key = [ "R" ];
+          key = [ "ctrl+c" ];
           args = [
-            "resolve"
-            "--tool"
-            "mergiraf"
+            "util"
+            "exec"
+            "--"
+            "bash"
+            "-c"
+            "jj resolve --tool mergiraf && jj resolve"
           ];
         };
       };
