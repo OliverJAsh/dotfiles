@@ -36,37 +36,22 @@ in
   programs.jjui = {
     enable = true;
     settings = {
-      leader = {
-        # https://idursun.github.io/jjui/Leader-Key.html#edit-a-file-from-revision-detail-idea-from-184
-        # https://github.com/idursun/jjui/issues/184#issuecomment-3315056343
-        e = {
-          context = [
-            "$file"
-            "$change_id"
-          ];
-          help = "Edit file in @";
-          # send = [ "$" "$EDITOR $file" "enter" ];
-          send = [
-            "$"
-            "code $file"
-            "enter"
-          ];
-        };
-        E = {
-          context = [
-            "$file"
-            "$change_id"
-          ];
-          help = "Edit file in change";
-          # send = [ "$" "jj edit $change_id && $EDITOR $file" "enter" ];
-          send = [
-            "$"
-            "jj edit $change_id && code $file"
-            "enter"
-          ];
-        };
-      };
       custom_commands = {
+        "edit file" = {
+          key_sequence = [
+            "w"
+            "e"
+          ];
+          args = [
+            "util"
+            "exec"
+            "--"
+            "bash"
+            "-c"
+            # Strip 'file:' prefix
+            ''f="$file"; code "''${f#file:}"''
+          ];
+        };
         # https://github.com/idursun/jjui/issues/310
         # https://github.com/idursun/jjui/pull/422
         "inline commit" = {
