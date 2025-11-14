@@ -97,6 +97,17 @@ in
             "jj resolve --tool mergiraf && jj resolve"
           ];
         };
+        "copy git diff" = {
+          key = [ "ctrl+x" ];
+          args = [
+            "util"
+            "exec"
+            "--"
+            "bash"
+            "-c"
+            "jj show --git $change_id | pbcopy"
+          ];
+        };
       };
       # Same as default with customised tool. # Prefer inline display due to narrow window.
       preview = {
