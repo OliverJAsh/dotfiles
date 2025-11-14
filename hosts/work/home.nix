@@ -10,16 +10,17 @@ in
     ../personal/home.nix
   ];
 
-  home.packages = with pkgs;
-    [
-      ast-grep
-      claude-code
-      curl # for Brotli compression support
-      lazyjj
-      nixfmt
-    ];
+  home.packages = with pkgs; [
+    ast-grep
+    claude-code
+    curl # for Brotli compression support
+    lazyjj
+    nixfmt
+  ];
 
-  programs.mergiraf = { enable = true; };
+  programs.mergiraf = {
+    enable = true;
+  };
 
   programs.ghostty = {
     enable = true;
@@ -39,16 +40,30 @@ in
         # https://idursun.github.io/jjui/Leader-Key.html#edit-a-file-from-revision-detail-idea-from-184
         # https://github.com/idursun/jjui/issues/184#issuecomment-3315056343
         e = {
-          context = [ "$file" "$change_id" ];
+          context = [
+            "$file"
+            "$change_id"
+          ];
           help = "Edit file in @";
           # send = [ "$" "$EDITOR $file" "enter" ];
-          send = [ "$" "code $file" "enter" ];
+          send = [
+            "$"
+            "code $file"
+            "enter"
+          ];
         };
         E = {
-          context = [ "$file" "$change_id" ];
+          context = [
+            "$file"
+            "$change_id"
+          ];
           help = "Edit file in change";
           # send = [ "$" "jj edit $change_id && $EDITOR $file" "enter" ];
-          send = [ "$" "jj edit $change_id && code $file" "enter" ];
+          send = [
+            "$"
+            "jj edit $change_id && code $file"
+            "enter"
+          ];
         };
 
         n = {
@@ -60,14 +75,20 @@ in
           help = "After";
           # send = [ ":" "new -A $change_id" "enter" "@" ];
           # Faster
-          send = [ "ctrl+a" "@" ];
+          send = [
+            "ctrl+a"
+            "@"
+          ];
         };
         nb = {
           context = [ "$change_id" ];
           help = "Before";
           # send = [ ":" "new -B $change_id" "enter" "@" ];
           # Faster
-          send = [ "ctrl+b" "@" ];
+          send = [
+            "ctrl+b"
+            "@"
+          ];
         };
       };
       custom_commands = {
@@ -76,11 +97,19 @@ in
         # Or: `nrJa⏎`
         "new after" = {
           key = [ "ctrl+a" ];
-          args = [ "new" "-A" "$change_id" ];
+          args = [
+            "new"
+            "-A"
+            "$change_id"
+          ];
         };
         "new before" = {
           key = [ "ctrl+b" ];
-          args = [ "new" "-B" "$change_id" ];
+          args = [
+            "new"
+            "-B"
+            "$change_id"
+          ];
         };
         "resolve" = {
           # Conflicts with Revert
@@ -90,7 +119,11 @@ in
         "resolve mergiraf" = {
           # Conflicts with Revert
           # key = [ "R" ];
-          args = [ "resolve" "--tool" "mergiraf" ];
+          args = [
+            "resolve"
+            "--tool"
+            "mergiraf"
+          ];
         };
       };
       ui = {
@@ -98,8 +131,24 @@ in
       };
       # Same as default with customised tool. # Prefer inline display due to narrow window.
       preview = {
-        revision_command = [ "show" "--color" "always" "-r" "$change_id" "--tool" "difftInline" ];
-        file_command = [ "diff" "--color=always" "-r" "$change_id" "$file" "--tool" "difftInline" ];
+        revision_command = [
+          "show"
+          "--color"
+          "always"
+          "-r"
+          "$change_id"
+          "--tool"
+          "difftInline"
+        ];
+        file_command = [
+          "diff"
+          "--color=always"
+          "-r"
+          "$change_id"
+          "$file"
+          "--tool"
+          "difftInline"
+        ];
       };
     };
   };
@@ -112,13 +161,23 @@ in
       };
       ui = {
         # https://difftastic.wilfred.me.uk/jj.html
-        diff-formatter = [ "${lib.getExe pkgs.difftastic}" "--color=always" "$left" "$right" ];
+        diff-formatter = [
+          "${lib.getExe pkgs.difftastic}"
+          "--color=always"
+          "$left"
+          "$right"
+        ];
         merge-editor = "vscode";
       };
       merge-tools = {
         difftInline = {
           program = lib.getExe pkgs.difftastic;
-          diff-args = ["--color=always" "$left" "$right" "--display=inline"];
+          diff-args = [
+            "--color=always"
+            "$left"
+            "$right"
+            "--display=inline"
+          ];
         };
       };
     };
@@ -152,7 +211,9 @@ in
       color = "always";
     };
 
-    lfs = { enable = true; };
+    lfs = {
+      enable = true;
+    };
 
     extraConfig = {
       stash.showIncludeUntracked = true;
@@ -171,8 +232,7 @@ in
 
       rerere.enabled = true;
 
-      "mergetool \"code\"".cmd =
-        "code --wait --merge $REMOTE $LOCAL $BASE $MERGED";
+      "mergetool \"code\"".cmd = "code --wait --merge $REMOTE $LOCAL $BASE $MERGED";
       merge.tool = "code";
       # Using diff3 instead of zdiff3 because it works better with Mergiraf.
       merge.conflictstyle = "diff3";
@@ -186,7 +246,10 @@ in
       };
     };
 
-    ignores = [ ".envrc" ".DS_Store" ];
+    ignores = [
+      ".envrc"
+      ".DS_Store"
+    ];
   };
 
   programs.lazygit = {
@@ -197,8 +260,7 @@ in
         {
           key = "<c-n>";
           context = "localBranches";
-          command =
-            "gh pr merge --delete-branch --merge {{.SelectedLocalBranch.Name}}";
+          command = "gh pr merge --delete-branch --merge {{.SelectedLocalBranch.Name}}";
         }
         {
           key = "E";
@@ -213,8 +275,7 @@ in
           commandMenu = [
             {
               key = "c";
-              command =
-                "git format-patch --stdout {{.SelectedCommitRange.From}}^..{{.SelectedCommitRange.To}} | pbcopy";
+              command = "git format-patch --stdout {{.SelectedCommitRange.From}}^..{{.SelectedCommitRange.To}} | pbcopy";
               context = "commits, subCommits";
               description = "Copy selected commits to clipboard";
             }
@@ -233,8 +294,7 @@ in
 
         # Override default to add `--oneline`. Default here:
         # https://github.com/jesseduffield/lazygit/blob/c390c9d58edc18083ed7f1a672b03b7c4d982c12/docs/Config.md
-        branchLogCmd =
-          "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --";
+        branchLogCmd = "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --";
 
         paging = {
           # https://github.com/jesseduffield/lazygit/pull/4832#issuecomment-3289371491
@@ -243,7 +303,7 @@ in
         };
 
         ignoreWhitespaceInDiffView = true;
-            };
+      };
 
       gui = {
         # Reduce a little to make more room for the main panel.
@@ -321,7 +381,9 @@ in
       z = "jjui";
     };
 
-    functions = { mkcd = "mkdir -p $argv; cd $argv;"; };
+    functions = {
+      mkcd = "mkdir -p $argv; cd $argv;";
+    };
   };
 
   programs.starship = {
@@ -361,20 +423,17 @@ in
       version = "0.0.0";
     };
 
-
-
     profiles = {
       default = {
-        extensions = with pkgs.vscode-marketplace;
-          [
-            anthropic.claude-code
-            ast-grep.ast-grep-vscode
-            dbankier.vscode-quick-select
-            jnoortheen.nix-ide
-            matsuyanagi.copy-code-block
-            stkb.rewrap
-            sysoev.vscode-open-in-github
-          ];
+        extensions = with pkgs.vscode-marketplace; [
+          anthropic.claude-code
+          ast-grep.ast-grep-vscode
+          dbankier.vscode-quick-select
+          jnoortheen.nix-ide
+          matsuyanagi.copy-code-block
+          stkb.rewrap
+          sysoev.vscode-open-in-github
+        ];
       };
     };
   };
