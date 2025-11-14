@@ -412,6 +412,7 @@ in
         extensions = with pkgs.vscode-marketplace; [
           # anthropic.claude-code
           ast-grep.ast-grep-vscode
+          cardinal90.multi-cursor-case-preserve
           dbankier.vscode-quick-select
           jnoortheen.nix-ide
           matsuyanagi.copy-code-block
