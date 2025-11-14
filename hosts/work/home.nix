@@ -65,31 +65,6 @@ in
             "enter"
           ];
         };
-
-        n = {
-          context = [ "$change_id" ];
-          help = "New change";
-        };
-        na = {
-          context = [ "$change_id" ];
-          help = "After";
-          # send = [ ":" "new -A $change_id" "enter" "@" ];
-          # Faster
-          send = [
-            "ctrl+a"
-            "@"
-          ];
-        };
-        nb = {
-          context = [ "$change_id" ];
-          help = "Before";
-          # send = [ ":" "new -B $change_id" "enter" "@" ];
-          # Faster
-          send = [
-            "ctrl+b"
-            "@"
-          ];
-        };
       };
       custom_commands = {
         # https://idursun.github.io/jjui/Custom-Commands.html#new-note-commit-insert-an-empty-commit-inline-after--idea-from-278
