@@ -296,11 +296,13 @@ in
         # https://github.com/jesseduffield/lazygit/blob/c390c9d58edc18083ed7f1a672b03b7c4d982c12/docs/Config.md
         branchLogCmd = "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --";
 
-        paging = {
-          # https://github.com/jesseduffield/lazygit/pull/4832#issuecomment-3289371491
-          # useExternalDiffGitConfig = true;
-          externalDiffCommand = "difft --color=always";
-        };
+        pagers = [
+          {
+            # https://github.com/jesseduffield/lazygit/pull/4832#issuecomment-3289371491
+            # useExternalDiffGitConfig = true;
+            externalDiffCommand = "difft --color=always";
+          }
+        ];
 
         ignoreWhitespaceInDiffView = true;
       };
