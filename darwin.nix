@@ -74,8 +74,6 @@
       "browserstacklocal"
       "codex-app"
       "copilot-cli"
-      "cursor-cli"
-      "cursor"
       "discord"
       "figma"
       "firefox"
