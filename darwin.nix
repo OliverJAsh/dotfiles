@@ -72,6 +72,7 @@
     casks = [
       "1password"
       "browserstacklocal"
+      "codex-app"
       "copilot-cli"
       "cursor-cli"
       "cursor"
