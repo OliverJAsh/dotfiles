@@ -14,6 +14,7 @@ in
   home.packages = with pkgs; [
     ast-grep
     claude-code
+    colima
     curl # for Brotli compression support
     gh
     kajji
