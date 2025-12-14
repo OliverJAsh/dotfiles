@@ -67,9 +67,6 @@ in
         };
       };
       custom_commands = {
-        # https://idursun.github.io/jjui/Custom-Commands.html#new-note-commit-insert-an-empty-commit-inline-after--idea-from-278
-        # https://github.com/idursun/jjui/issues/278
-        # Or: `nrJa⏎`
         "new after" = {
           key = [ "ctrl+a" ];
           args = [
