@@ -473,7 +473,6 @@ in
     profiles = {
       default = {
         extensions = with pkgs.vscode-marketplace; [
-          # anthropic.claude-code
           ast-grep.ast-grep-vscode
           cardinal90.multi-cursor-case-preserve
           dbankier.vscode-quick-select
