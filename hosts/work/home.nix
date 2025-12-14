@@ -135,6 +135,9 @@ in
       user = {
         inherit name email;
       };
+      revset-aliases = {
+        "closest_bookmark(to)" = "heads(::to & bookmarks())";
+      };
       aliases = {
         pr = [
           "util"
@@ -150,7 +153,7 @@ in
             head="$(jj log -r "$rev" --no-graph -T bookmarks | awk '{print $1}')"
             [ -n "$head" ] || exit 0
 
-            base="$(jj log -n 1 -r "((ancestors($rev) ~ ancestors(trunk())) & bookmarks()) ~ $rev" --no-graph -T bookmarks | awk '{print $1}')"
+            base="$(jj log -n 1 -r "closest_bookmark($rev-) ~ ::trunk()" --no-graph -T bookmarks | awk '{print $1}')"
 
             if [ -n "$base" ]; then
               gh pr create --web --head "$head" --base "$base"
