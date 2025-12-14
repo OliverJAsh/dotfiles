@@ -59,7 +59,7 @@
     {
       darwinConfigurations."Olivers-MacBook-Pro" = darwin.lib.darwinSystem {
         modules = [
-          ./hosts/work/darwin.nix
+          ./darwin.nix
           home-manager.darwinModules.home-manager
           {
             nixpkgs.overlays = [
@@ -69,22 +69,10 @@
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.oliver = import ./hosts/work/home.nix;
+            home-manager.users.oliver = import ./home.nix;
           }
         ];
         specialArgs = { inherit nix-vscode-extensions; };
-      };
-
-      darwinConfigurations."Olivers-MacBook-Pro-Personal" = darwin.lib.darwinSystem {
-        modules = [
-          ./hosts/personal/darwin.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.oliver = import ./hosts/personal/home.nix;
-          }
-        ];
       };
     };
 }

@@ -5,10 +5,11 @@ let
   email = "oliverjash@gmail.com";
 in
 {
-  imports = [
-    ../common/home.nix
-    ../personal/home.nix
-  ];
+  home.username = "oliver";
+  home.homeDirectory = "/Users/oliver";
+  home.stateVersion = "25.05";
+
+  programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
     ast-grep
@@ -430,11 +431,11 @@ in
         style = "red";
         allowed_msg = "";
         not_allowed_msg = "? ";
-        denied_msg = " ";
+        denied_msg = " ";
       };
       nix_shell = {
         format = "[$symbol]($style)";
-        symbol = " ";
+        symbol = " ";
       };
     };
   };
@@ -466,13 +467,13 @@ in
   };
 
   home.activation.vscode = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ln -sf ~/Dev/dotfiles/hosts/work/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-    ln -sf ~/Dev/dotfiles/hosts/work/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+    ln -sf ~/Dev/dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+    ln -sf ~/Dev/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
     rm -f ~/Library/Application\ Support/Code/User/snippets
-    ln -sf ~/Dev/dotfiles/hosts/work/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
+    ln -sf ~/Dev/dotfiles/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
   '';
   home.activation.caddy = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ln -sf ~/Dev/dotfiles/hosts/work/proxy/Caddyfile /opt/homebrew/etc/Caddyfile
+    ln -sf ~/Dev/dotfiles/proxy/Caddyfile /opt/homebrew/etc/Caddyfile
     /opt/homebrew/bin/brew services start caddy
   '';
 }
