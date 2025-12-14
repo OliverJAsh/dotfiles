@@ -145,8 +145,28 @@ in
         inherit name email;
       };
       revset-aliases = {
+        # https://github.com/samhh/dotfiles/blob/e1479cab9e068542db1c840b93335ca0cfa07221/home/vcs.nix#L62-L79
+        "anon()" = "stack(mine() ~ ::remote_bookmarks(), 1)";
+        "here()" = "stack(@, 1)";
+        # https://github.com/jj-vcs/jj/discussions/7588#discussioncomment-14832469
+        "mega()" = "heads(merges() & ::@)";
+        "null()" = "empty() & description(exact:'')";
+        "open()" = "stack(mine() | @, 1)";
+        "ready()" = "open() ~ stack(wip(), 1)";
+        "stack()" = "stack(@)";
+        "stack(x)" = "stack(x, 2)";
+        "stack(x, n)" = "ancestors(reachable(x, mutable()), n)";
+        "symdiff(x, y)" = "(x ~ y) | (y ~ x)";
+        "toggle(x)" = "toggle(mega(), x)";
+        "toggle(x, y)" = "symdiff(parents(x), y)";
+        "wip()" = "null() | description(regex:\"^[A-Z]+:\")";
+
+        # https://github.com/jj-vcs/jj/blob/v0.37.0/cli/src/config/revsets.toml#L10
+        "log_default()" = "present(@) | ancestors(immutable_heads().., 2) | present(trunk())";
+
         "closest_bookmark(to)" = "heads(::to & bookmarks())";
       };
+      revsets.log = "here()";
       aliases = {
         pr = [
           "util"
@@ -187,6 +207,7 @@ in
         ];
       };
       ui = {
+        default-command = [ "log" ];
         # https://difftastic.wilfred.me.uk/jj.html
         diff-formatter = [
           "${lib.getExe pkgs.difftastic}"
