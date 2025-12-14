@@ -16,13 +16,15 @@ in
     claude-code
     curl # for Brotli compression support
     gh
-    jj-ryu
-    jj-stack
     kajji
     lazyjj
     # Not using `programs.mergiraf` due to https://github.com/gitbutlerapp/gitbutler/issues/10509
     mergiraf
     nixfmt
+
+    # https://github.com/davidpdrsn/jj-sync-prs
+    jj-ryu
+    jj-stack
   ];
 
   programs.ghostty = {
