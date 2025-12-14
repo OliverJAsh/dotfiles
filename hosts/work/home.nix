@@ -38,6 +38,44 @@ in
     settings = {
       # https://github.com/idursun/jjui/issues/352
       custom_commands = {
+        "create pr" = {
+          key_sequence = [
+            "w"
+            "p"
+          ];
+          lua = ''
+            local rev = revisions.current()
+            if not rev then return end
+
+            local head_out = jj{ "log", "-r", rev, "--no-graph", "-T", "bookmarks" }
+            local head = head_out and head_out:match("(%S+)")
+            if not head then return end
+
+            local base = nil
+            local base_out = jj{
+              "log",
+              "-n", "1",
+              "-r", "((ancestors(" .. rev .. ") ~ ancestors(trunk())) & bookmarks()) ~ " .. rev,
+              "--no-graph",
+              "-T", "bookmarks"
+            }
+            local found = base_out and base_out:match("(%S+)")
+            if found then base = found end
+
+            local args = {
+              "util", "exec", "--",
+              "gh", "pr", "create",
+              "--web",
+              "--head", head,
+            }
+            if base then
+              table.insert(args, "--base")
+              table.insert(args, base)
+            end
+
+            jj(args)
+          '';
+        };
         "edit file" = {
           key_sequence = [
             "w"
