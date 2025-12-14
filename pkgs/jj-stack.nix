@@ -1,3 +1,4 @@
+# https://github.com/NixOS/nixpkgs/pull/457754
 {
   lib,
   buildNpmPackage,
