@@ -68,5 +68,8 @@ in
     git.enable = true;
     git.diffToolMode = true;
     jujutsu.enable = true;
+    options = {
+      tab-width = 2;
+    };
   };
 }
