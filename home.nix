@@ -17,12 +17,10 @@ in
     curl # for Brotli compression support
     jj-stack
     lazyjj
+    # Not using `programs.mergiraf` due to https://github.com/gitbutlerapp/gitbutler/issues/10509
+    mergiraf
     nixfmt
   ];
-
-  programs.mergiraf = {
-    enable = true;
-  };
 
   programs.ghostty = {
     enable = true;
