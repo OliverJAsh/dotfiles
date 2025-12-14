@@ -212,13 +212,13 @@ in
     EDITOR = "code --wait";
     # TODO: -FRX
     # https://stackoverflow.com/questions/32469204/scrolling-down-git-diff-from-mac-terminal
+    # https://x.com/OliverJAsh/status/1963512778808820089
     LESS = "--ignore-case";
   };
 
   programs.difftastic = {
-    # difftastic needs better syntax highlighting.
-    # https://github.com/Wilfred/difftastic/issues/541
-    # Also: https://github.com/Wilfred/difftastic/issues/304
+    # - needs better syntax highlighting https://github.com/Wilfred/difftastic/issues/541
+    # - missing function names in hunk headers https://github.com/Wilfred/difftastic/issues/304
 
     enable = true;
     git.diffToolMode = true;
