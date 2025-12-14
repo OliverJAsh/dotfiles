@@ -78,19 +78,19 @@ in
         };
         "new after" = {
           key = [ "ctrl+a" ];
-          args = [
-            "new"
-            "-A"
-            "$change_id"
-          ];
+          lua = ''
+            jj("new", "-A", revisions.current())
+            revisions.refresh()
+            revisions.navigate { to = "@" }
+          '';
         };
         "new before" = {
           key = [ "ctrl+b" ];
-          args = [
-            "new"
-            "-B"
-            "$change_id"
-          ];
+          lua = ''
+            jj("new", "-B", revisions.current())
+            revisions.refresh()
+            revisions.navigate { to = "@" }
+          '';
         };
         "resolve" = {
           key = [ "ctrl+c" ];
