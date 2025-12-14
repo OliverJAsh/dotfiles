@@ -36,6 +36,9 @@ in
   programs.jjui = {
     enable = true;
     settings = {
+      keys = {
+        commit = [ "C" ];
+      };
       # https://github.com/idursun/jjui/issues/352
       custom_commands = {
         "pr" = {
@@ -66,16 +69,10 @@ in
         # https://github.com/idursun/jjui/issues/310
         # https://github.com/idursun/jjui/pull/422
         "inline commit" = {
-          key_sequence = [
-            "w"
-            "x"
-          ];
+          key = [ "c" ];
           lua = ''
             if revisions.start_inline_describe() then
-              jj("new")
-              revisions.refresh()
-              local new_change_id = jj("log", "-r", "@", "-T", "change_id.shortest()", "--no-graph")
-              revisions.navigate{to=new_change_id}
+              jj("new", revisions.current())
             end
           '';
         };
