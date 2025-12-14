@@ -118,11 +118,8 @@ in
         "toggle parent" = {
           key = [ "ctrl+p" ];
           args = [
-            "rebase"
-            "-r"
-            "@"
-            "-d"
-            "(parents(@) | $change_id) ~ (parents(@) & $change_id)"
+            "toggle-parent"
+            "$change_id"
           ];
         };
       };
@@ -160,6 +157,19 @@ in
             else
               gh pr create --web --head "$head"
             fi
+          ''
+          "--"
+        ];
+        toggle-parent = [
+          "util"
+          "exec"
+          "--"
+          "bash"
+          "-c"
+          ''
+            set -euo pipefail
+            rev="$1"
+            jj rebase -r @ -d "(parents(@) | $rev) ~ (parents(@) & $rev)"
           ''
           "--"
         ];
