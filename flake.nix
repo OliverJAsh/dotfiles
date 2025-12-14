@@ -33,6 +33,28 @@
           vendorHash = "sha256-2TlJJY/eM6yYFOdq8CcH9l2lFHJmFrihuGwLS7jMwJ0=";
         });
       };
+
+      jjStackOverlay = final: prev: {
+        jj-stack = prev.buildNpmPackage rec {
+          pname = "jj-stack";
+          version = "1.2.1";
+
+          src = prev.fetchFromGitHub {
+            owner = "keanemind";
+            repo = "jj-stack";
+            rev = "v${version}";
+            sha256 = "sha256-fk+FZv4lu+noM6ig4NFGAlRy4AWdEjkLIDZZ877bKLs=";
+          };
+
+          npmDepsHash = "sha256-RVOnxdzSpgyxfS+EZS1oIlX+chUl8GyLXKrmVlEmLPg=";
+
+          meta = with prev.lib; {
+            description = "Stacked PRs on GitHub for Jujutsu";
+            homepage = "https://github.com/keanemind/jj-stack";
+            license = licenses.mit;
+          };
+        };
+      };
     in
     {
       darwinConfigurations."Olivers-MacBook-Pro" = darwin.lib.darwinSystem {
@@ -40,7 +62,10 @@
           ./hosts/work/darwin.nix
           home-manager.darwinModules.home-manager
           {
-            nixpkgs.overlays = [ jjuiOverlay ];
+            nixpkgs.overlays = [
+              jjuiOverlay
+              jjStackOverlay
+            ];
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
