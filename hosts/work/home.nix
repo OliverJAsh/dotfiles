@@ -122,6 +122,18 @@ in
             "$change_id"
           ];
         };
+        "rebase onto trunk" = {
+          key_sequence = [
+            "w"
+            "r"
+            "t"
+          ];
+          args = [
+            "rebase"
+            "--onto"
+            "trunk()"
+          ];
+        };
       };
     };
   };
