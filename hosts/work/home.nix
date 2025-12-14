@@ -36,6 +36,7 @@ in
   programs.jjui = {
     enable = true;
     settings = {
+      # https://github.com/idursun/jjui/issues/352
       custom_commands = {
         "edit file" = {
           key_sequence = [
