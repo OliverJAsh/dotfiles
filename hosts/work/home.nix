@@ -107,6 +107,17 @@ in
             "jj show --git $change_id | pbcopy"
           ];
         };
+        # https://idursun.github.io/jjui/Custom-Commands.html#toggle-selected-revision-as-parent-to-the-working-copy
+        "toggle parent" = {
+          key = [ "ctrl+p" ];
+          args = [
+            "rebase"
+            "-r"
+            "@"
+            "-d"
+            "(parents(@) | $change_id) ~ (parents(@) & $change_id)"
+          ];
+        };
       };
     };
   };
