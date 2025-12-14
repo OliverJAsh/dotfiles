@@ -65,6 +65,7 @@
             nixpkgs.overlays = [
               jjuiOverlay
               jjStackOverlay
+              nix-vscode-extensions.overlays.default
             ];
 
             home-manager.useGlobalPkgs = true;
