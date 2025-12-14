@@ -80,8 +80,6 @@
           ./hosts/personal/darwin.nix
           home-manager.darwinModules.home-manager
           {
-            nixpkgs.overlays = [ jjuiOverlay ];
-
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.oliver = import ./hosts/personal/home.nix;
