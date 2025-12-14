@@ -21,19 +21,6 @@
       ...
     }:
     let
-      jjuiOverlay = final: prev: {
-        jjui = prev.jjui.overrideAttrs (_old: {
-          version = "0.9.8";
-          src = prev.fetchFromGitHub {
-            owner = "idursun";
-            repo = "jjui";
-            tag = "v0.9.8";
-            hash = "sha256-YEEcSaIm21IUp7EFdYvDG2h55YIqzghYdGxdXmZnp9I=";
-          };
-          vendorHash = "sha256-2TlJJY/eM6yYFOdq8CcH9l2lFHJmFrihuGwLS7jMwJ0=";
-        });
-      };
-
       jjStackOverlay = final: prev: {
         jj-stack = prev.buildNpmPackage rec {
           pname = "jj-stack";
@@ -63,7 +50,6 @@
           home-manager.darwinModules.home-manager
           {
             nixpkgs.overlays = [
-              jjuiOverlay
               jjStackOverlay
               nix-vscode-extensions.overlays.default
             ];
