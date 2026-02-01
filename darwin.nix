@@ -72,8 +72,9 @@
     casks = [
       "1password"
       "browserstacklocal"
-      "cursor"
+      "copilot-cli"
       "cursor-cli"
+      "cursor"
       "discord"
       "figma"
       "firefox"

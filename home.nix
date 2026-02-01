@@ -15,6 +15,7 @@ in
     ast-grep
     claude-code
     curl # for Brotli compression support
+    gh
     jj-stack
     lazyjj
     # Not using `programs.mergiraf` due to https://github.com/gitbutlerapp/gitbutler/issues/10509
@@ -218,13 +219,6 @@ in
         merge-editor = "vscode";
       };
     };
-  };
-
-  programs.gh = {
-    enable = true;
-    extensions = [
-      pkgs.gh-copilot
-    ];
   };
 
   home.sessionVariables = {
