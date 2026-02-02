@@ -17,6 +17,7 @@ in
     curl # for Brotli compression support
     gh
     jj-stack
+    kajji
     lazyjj
     # Not using `programs.mergiraf` due to https://github.com/gitbutlerapp/gitbutler/issues/10509
     mergiraf

@@ -42,6 +42,37 @@
           };
         };
       };
+      kajjiOverlay = final: prev: {
+        kajji = prev.stdenvNoCC.mkDerivation rec {
+          pname = "kajji";
+          version = "0.7.0";
+
+          src = prev.fetchurl {
+            url = "https://github.com/eliaskc/kajji/releases/download/v${version}/kajji-darwin-arm64.zip";
+            sha256 = "sha256-c4pBDKUQ2FIVpT99F90gM/vW+WFaPBkX7iW9u2wxpcw=";
+          };
+
+          nativeBuildInputs = [ prev.unzip ];
+          dontUnpack = true;
+
+          installPhase = ''
+            runHook preInstall
+            mkdir -p $out/bin
+            tmp="$(mktemp -d)"
+            unzip -q "$src" -d "$tmp"
+            install -m755 "$tmp/kajji" "$out/bin/kajji"
+            runHook postInstall
+          '';
+
+          meta = with prev.lib; {
+            description = "A simple jj TUI for local code review and day-to-day jj usage";
+            homepage = "https://github.com/eliaskc/kajji";
+            license = licenses.mit;
+            mainProgram = "kajji";
+            platforms = [ "aarch64-darwin" ];
+          };
+        };
+      };
     in
     {
       darwinConfigurations."Olivers-MacBook-Pro" = darwin.lib.darwinSystem {
@@ -51,6 +82,7 @@
           {
             nixpkgs.overlays = [
               jjStackOverlay
+              kajjiOverlay
               nix-vscode-extensions.overlays.default
             ];
 
