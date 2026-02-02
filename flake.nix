@@ -73,6 +73,35 @@
           };
         };
       };
+      jjRyuOverlay = final: prev: {
+        jj-ryu = prev.rustPlatform.buildRustPackage rec {
+          pname = "jj-ryu";
+          version = "0.0.1-alpha.11";
+
+          src = prev.fetchFromGitHub {
+            owner = "dmmulroy";
+            repo = "jj-ryu";
+            rev = "v${version}";
+            hash = "sha256-gE4lvqyC2LRAWNDUGePklORWjyEofs/dHLHVBAub424=";
+          };
+
+          cargoLock = {
+            lockFile = "${src}/Cargo.lock";
+          };
+          cargoHash = prev.lib.fakeHash;
+
+          # tests require `jj` in PATH; nix build sandbox doesn't have it
+          doCheck = false;
+
+          meta = with prev.lib; {
+            description = "Stacked PRs for Jujutsu (push bookmark stacks to GitHub/GitLab as chained PRs)";
+            homepage = "https://github.com/dmmulroy/jj-ryu";
+            license = licenses.mit;
+            mainProgram = "ryu";
+            platforms = [ "aarch64-darwin" ];
+          };
+        };
+      };
     in
     {
       darwinConfigurations."Olivers-MacBook-Pro" = darwin.lib.darwinSystem {
@@ -83,6 +112,7 @@
             nixpkgs.overlays = [
               jjStackOverlay
               kajjiOverlay
+              jjRyuOverlay
               nix-vscode-extensions.overlays.default
             ];
 

@@ -16,6 +16,7 @@ in
     claude-code
     curl # for Brotli compression support
     gh
+    jj-ryu
     jj-stack
     kajji
     lazyjj
