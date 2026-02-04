@@ -103,7 +103,7 @@ in
             "--"
             "bash"
             "-c"
-            "jj resolve --tool mergiraf && jj resolve"
+            "jj resolve -r $change_id --tool mergiraf && jj resolve -r $change_id"
           ];
         };
         "copy git diff" = {
