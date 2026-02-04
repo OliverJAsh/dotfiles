@@ -45,11 +45,11 @@
       kajjiOverlay = final: prev: {
         kajji = prev.stdenvNoCC.mkDerivation rec {
           pname = "kajji";
-          version = "0.7.0";
+          version = "0.8.0";
 
           src = prev.fetchurl {
             url = "https://github.com/eliaskc/kajji/releases/download/v${version}/kajji-darwin-arm64.zip";
-            sha256 = "sha256-c4pBDKUQ2FIVpT99F90gM/vW+WFaPBkX7iW9u2wxpcw=";
+            sha256 = "sha256-q5IVv/d+f1vqm7JlhDwONMBkFb4rThAX10/qckKqFe8=";
           };
 
           nativeBuildInputs = [ prev.unzip ];
