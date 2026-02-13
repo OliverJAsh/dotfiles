@@ -39,6 +39,10 @@ in
   programs.jjui = {
     enable = true;
     settings = {
+      ui.colors.selected = {
+        bg = "#171a1f";
+      };
+
       keys = {
         commit = [ "C" ];
       };
