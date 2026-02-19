@@ -42,6 +42,7 @@ in
   programs.jjui = {
     enable = true;
     settings = {
+      # TODO: ? https://github.com/idursun/jjui/commit/1b1aa46dad4d9d96435cfeed63d46c3c559cb5a9
       ui.colors.selected = {
         bg = "#171a1f";
       };
