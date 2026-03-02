@@ -124,7 +124,13 @@ in
             "--"
             "bash"
             "-c"
-            "jj resolve -r $change_id --tool mergiraf && jj resolve -r $change_id"
+            ''
+              set -euo pipefail
+              jj resolve -r "$change_id" --tool mergiraf
+              if jj log -r "conflicts() & $change_id" --no-graph -T 'change_id' | grep -q .; then
+                jj resolve -r "$change_id"
+              fi
+            ''
           ];
         };
         "copy git diff" = {
