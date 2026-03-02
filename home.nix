@@ -261,11 +261,8 @@ in
         ];
         merge-editor = "vscode";
       };
-      git = {
-        sign-on-push = true;
-      };
       signing = {
-        behavior = "drop";
+        behavior = "own";
         backend = "ssh";
         key = sshSigningKey;
       };
