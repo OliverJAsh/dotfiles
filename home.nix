@@ -41,6 +41,20 @@ in
     }
   '';
 
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    matchBlocks = {
+      "github.com" = {
+        addKeysToAgent = "yes";
+        identityFile = "~/.ssh/id_ed25519";
+        extraOptions = {
+          UseKeychain = "yes";
+        };
+      };
+    };
+  };
+
   programs.ghostty = {
     enable = true;
     package = pkgs.runCommand "noop" { meta.mainProgram = "noop"; } "mkdir $out";
