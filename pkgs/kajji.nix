@@ -7,11 +7,11 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "kajji";
-  version = "0.9.0";
+  version = "0.10.1";
 
   src = fetchurl {
     url = "https://github.com/eliaskc/kajji/releases/download/v${version}/kajji-darwin-arm64.zip";
-    sha256 = "sha256-I7N1gOVos/jWOWaq++56eaqfaYfXV5FCb1E0jCAHHx4=";
+    sha256 = "sha256-VzbzxLeA6vjIjLdPqE7S6Ss4nU3e735jyOQI/8g/EIs=";
   };
 
   nativeBuildInputs = [ unzip ];
