@@ -265,8 +265,10 @@ in
     signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJ8xPx84pYYy30FnTdegEo8WTS5aUmFb9HbKXhYl4Vp";
 
     settings = {
-      gpg.format = "ssh";
-      gpg.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      gpg = {
+        format = "ssh";
+        ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      };
 
       user = {
         name = name;
