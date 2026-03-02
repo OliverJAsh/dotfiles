@@ -28,6 +28,17 @@ in
     jj-stack
   ];
 
+  home.file.".config/kajji/config.json".text = ''
+    {
+      "ui": {
+        "showFileTree": false
+      },
+      "diff": {
+        "useJjFormatter": true
+      }
+    }
+  '';
+
   programs.ghostty = {
     enable = true;
     package = pkgs.runCommand "noop" { meta.mainProgram = "noop"; } "mkdir $out";
