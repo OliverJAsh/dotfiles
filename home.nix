@@ -3,6 +3,8 @@
 let
   name = "Oliver Joseph Ash";
   email = "oliverjash@gmail.com";
+  sshSigningKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJ8xPx84pYYy30FnTdegEo8WTS5aUmFb9HbKXhYl4Vp";
+  opSshSignProgram = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
 in
 {
   home.username = "oliver";
@@ -240,6 +242,12 @@ in
         ];
         merge-editor = "vscode";
       };
+      signing = {
+        behavior = "own";
+        backend = "ssh";
+        key = sshSigningKey;
+        backends.ssh.program = opSshSignProgram;
+      };
     };
   };
 
@@ -273,12 +281,12 @@ in
 
     # https://developer.1password.com/docs/ssh/git-commit-signing
     signing.signByDefault = true;
-    signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJ8xPx84pYYy30FnTdegEo8WTS5aUmFb9HbKXhYl4Vp";
+    signing.key = sshSigningKey;
 
     settings = {
       gpg = {
         format = "ssh";
-        ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        ssh.program = opSshSignProgram;
       };
 
       user = {
