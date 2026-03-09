@@ -73,111 +73,152 @@ in
         bg = "#171a1f";
       };
 
-      keys = {
-        commit = [ "C" ];
-      };
-      # https://github.com/idursun/jjui/issues/352
-      custom_commands = {
-        "pr" = {
-          key_sequence = [
-            "w"
-            "p"
-          ];
-          args = [
-            "pr"
-            "$change_id"
-          ];
-        };
-        "edit file" = {
-          key_sequence = [
-            "w"
-            "e"
-          ];
-          args = [
-            "util"
-            "exec"
-            "--"
-            "bash"
-            "-c"
-            # Strip 'file:' prefix
-            ''f="$file"; code "''${f#file:}"''
-          ];
-        };
+      actions = [
+        {
+          name = "pr";
+          lua = ''
+            jj_async("pr", context.change_id())
+          '';
+        }
+        {
+          name = "edit-file";
+          lua = ''
+            local f = context.file()
+            if not f then
+              return
+            end
+            jj_async("util", "exec", "--", "code", f)
+          '';
+        }
         # https://github.com/idursun/jjui/issues/310
         # https://github.com/idursun/jjui/pull/422
-        "inline commit" = {
-          key = [ "c" ];
+        {
+          name = "inline-commit";
           lua = ''
-            if revisions.start_inline_describe() then
+            revisions.open_inline_describe()
+            if wait_close() then
               jj("new", revisions.current())
             end
           '';
-        };
-        "new after" = {
-          key = [ "ctrl+a" ];
+        }
+        {
+          name = "new-after";
           lua = ''
             jj("new", "-A", revisions.current())
             revisions.refresh()
             revisions.navigate { to = "@" }
           '';
-        };
-        "new before" = {
-          key = [ "ctrl+b" ];
+        }
+        {
+          name = "new-before";
           lua = ''
             jj("new", "-B", revisions.current())
             revisions.refresh()
             revisions.navigate { to = "@" }
           '';
-        };
-        "resolve" = {
-          key = [ "ctrl+c" ];
-          args = [
-            "util"
-            "exec"
-            "--"
-            "bash"
-            "-c"
-            ''
-              set -euo pipefail
-              jj resolve -r "$change_id" --tool mergiraf
-              if jj log -r "conflicts() & $change_id" --no-graph -T 'change_id' | grep -q .; then
-                jj resolve -r "$change_id"
-              fi
-            ''
+        }
+        {
+          name = "resolve";
+          lua = ''
+            local change = context.change_id()
+            jj_async("resolve", "-r", change, "--tool", "mergiraf")
+            local out = jj("log", "-r", "conflicts() & " .. change, "--no-graph", "-T", "change_id")
+            if out and out ~= "" then
+              jj_interactive("resolve", "-r", change)
+            end
+          '';
+        }
+        {
+          name = "copy-git-diff";
+          lua = ''
+            local out, err = jj("show", "--git", context.change_id())
+            if err then
+              flash({ text = err, error = true })
+              return
+            end
+            local ok, copy_err = copy_to_clipboard(out)
+            if not ok then
+              flash({ text = copy_err, error = true })
+            end
+          '';
+        }
+        {
+          name = "toggle-parent";
+          lua = ''
+            jj_async("toggle-parent", context.change_id())
+          '';
+        }
+        {
+          name = "rebase-onto-trunk";
+          lua = ''
+            jj_async("rebase", "--onto", "trunk()")
+          '';
+        }
+      ];
+
+      # https://github.com/idursun/jjui/issues/352
+      bindings = [
+        {
+          action = "revisions.commit";
+          key = "C";
+          scope = "revisions";
+        }
+        {
+          action = "pr";
+          seq = [
+            "w"
+            "p"
           ];
-        };
-        "copy git diff" = {
-          key = [ "ctrl+x" ];
-          args = [
-            "util"
-            "exec"
-            "--"
-            "bash"
-            "-c"
-            "jj show --git $change_id | pbcopy"
+          scope = "revisions";
+        }
+        {
+          action = "edit-file";
+          seq = [
+            "w"
+            "e"
           ];
-        };
-        # https://idursun.github.io/jjui/Custom-Commands.html#toggle-selected-revision-as-parent-to-the-working-copy
-        "toggle parent" = {
-          key = [ "ctrl+p" ];
-          args = [
-            "toggle-parent"
-            "$change_id"
-          ];
-        };
-        "rebase onto trunk" = {
-          key_sequence = [
+          scope = "revisions.details";
+        }
+        {
+          action = "inline-commit";
+          key = "c";
+          scope = "revisions";
+        }
+        {
+          action = "new-after";
+          key = "ctrl+a";
+          scope = "revisions";
+        }
+        {
+          action = "new-before";
+          key = "ctrl+b";
+          scope = "revisions";
+        }
+        {
+          action = "resolve";
+          key = "ctrl+c";
+          scope = "revisions";
+        }
+        {
+          action = "copy-git-diff";
+          key = "ctrl+x";
+          scope = "revisions";
+        }
+        {
+          action = "toggle-parent";
+          key = "ctrl+p";
+          scope = "revisions";
+        }
+        {
+          action = "rebase-onto-trunk";
+          seq = [
             "w"
             "r"
             "t"
           ];
-          args = [
-            "rebase"
-            "--onto"
-            "trunk()"
-          ];
-        };
-      };
+          scope = "revisions";
+        }
+      ];
     };
   };
 

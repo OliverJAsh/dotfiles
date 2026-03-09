@@ -36,6 +36,18 @@
               (final: prev: {
                 jj-ryu = prev.callPackage ./pkgs/jj-ryu.nix { };
               })
+              (final: prev: {
+                jjui = prev.jjui.overrideAttrs (old: rec {
+                  version = "0.10.0";
+                  src = prev.fetchFromGitHub {
+                    owner = "idursun";
+                    repo = "jjui";
+                    tag = "v${version}";
+                    hash = "sha256-wGal1aulnbacP6Ovms82XKPMbUvH/rs9Rg/B40E3uls=";
+                  };
+                  vendorHash = "sha256-egPW+YgRkdOdnzei5J2JmSt/98fpoo1lphsoQIK41Lg=";
+                });
+              })
               nix-vscode-extensions.overlays.default
             ];
 
