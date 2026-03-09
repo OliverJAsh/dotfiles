@@ -468,7 +468,7 @@ in
 
     shellAbbrs = {
       cat = "bat";
-      cdw = "cd ~/Dev/unsplash/unsplash-web/";
+      cdg = "cd ~/Dev/gitbutler/";
       cdd = "cd ~/Dev/dotfiles/";
       sh = "nix shell nixpkgs#";
       up = "sudo darwin-rebuild switch --flake ~/Dev/dotfiles/";
