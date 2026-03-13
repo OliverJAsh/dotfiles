@@ -23,6 +23,7 @@ in
     # Not using `programs.mergiraf` due to https://github.com/gitbutlerapp/gitbutler/issues/10509
     mergiraf
     nixfmt
+    ripgrep
 
     # https://github.com/davidpdrsn/jj-sync-prs
     jj-ryu
