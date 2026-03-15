@@ -37,6 +37,9 @@
                 jj-ryu = prev.callPackage ./pkgs/jj-ryu.nix { };
               })
               (final: prev: {
+                weave = prev.callPackage ./pkgs/weave.nix { };
+              })
+              (final: prev: {
                 jjui = prev.jjui.overrideAttrs (old: rec {
                   version = "0.10.0";
                   src = prev.fetchFromGitHub {

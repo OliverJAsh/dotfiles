@@ -24,6 +24,7 @@ in
     mergiraf
     nixfmt
     ripgrep
+    weave
 
     # https://github.com/davidpdrsn/jj-sync-prs
     jj-ryu
