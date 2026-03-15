@@ -329,7 +329,7 @@ in
       # https://github.com/jj-vcs/jj/wiki/Diff-and-merge-tools#weave
       # https://github.com/jj-vcs/jj/pull/8833
       merge-tools.weave = {
-        program = "/opt/homebrew/bin/weave";
+        program = "/opt/homebrew/bin/weave-driver";
         merge-args = [
           "$base"
           "$left"
