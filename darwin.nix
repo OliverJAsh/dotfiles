@@ -64,6 +64,7 @@
       # Install via Brew rather than Nix so we can utilize system services
       # (start on login).
       "caddy"
+      "weave"
     ];
     masApps = {
       Reeder = 6475002485;

@@ -24,7 +24,6 @@ in
     mergiraf
     nixfmt
     ripgrep
-    weave
 
     # https://github.com/davidpdrsn/jj-sync-prs
     jj-ryu
@@ -330,7 +329,7 @@ in
       # https://github.com/jj-vcs/jj/wiki/Diff-and-merge-tools#weave
       # https://github.com/jj-vcs/jj/pull/8833
       merge-tools.weave = {
-        program = "${lib.getExe pkgs.weave}";
+        program = "/opt/homebrew/bin/weave";
         merge-args = [
           "$base"
           "$left"
