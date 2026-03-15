@@ -308,6 +308,23 @@ in
         backend = "ssh";
         key = sshSigningKey;
       };
+
+      # Same as default minus `--fast`.
+      # https://github.com/jj-vcs/jj/wiki/Diff-and-merge-tools#mergiraf
+      merge-tools.mergiraf = {
+        program = "${lib.getExe pkgs.mergiraf}";
+        merge-args = [
+          "merge"
+          "$base"
+          "$left"
+          "$right"
+          "-o"
+          "$output"
+          "-l"
+          "$marker_length"
+        ];
+        merge-conflict-exit-codes = [ 1 ];
+      };
     };
   };
 
