@@ -325,6 +325,26 @@ in
         ];
         merge-conflict-exit-codes = [ 1 ];
       };
+
+      # https://github.com/jj-vcs/jj/wiki/Diff-and-merge-tools#weave
+      # https://github.com/jj-vcs/jj/pull/8833
+      merge-tools.weave = {
+        program = "${lib.getExe pkgs.weave}";
+        merge-args = [
+          "$base"
+          "$left"
+          "$right"
+          "-o"
+          "$output"
+          "-l"
+          "$marker_length"
+          "-p"
+          "$path"
+        ];
+        merge-conflict-exit-codes = [ 1 ];
+        merge-tool-edits-conflict-markers = true;
+        conflict-marker-style = "git";
+      };
     };
   };
 
