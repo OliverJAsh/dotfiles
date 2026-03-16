@@ -38,14 +38,14 @@
               })
               (final: prev: {
                 jjui = prev.jjui.overrideAttrs (old: rec {
-                  version = "0.10.0";
+                  version = "0.10.1";
                   src = prev.fetchFromGitHub {
                     owner = "idursun";
                     repo = "jjui";
                     tag = "v${version}";
-                    hash = "sha256-wGal1aulnbacP6Ovms82XKPMbUvH/rs9Rg/B40E3uls=";
+                    hash = "sha256-o648hMSoEa21GqK4VGSa4hf5KP5FVu80Ea5NB2QwII0=";
                   };
-                  vendorHash = "sha256-egPW+YgRkdOdnzei5J2JmSt/98fpoo1lphsoQIK41Lg=";
+                  vendorHash = "sha256-GDYgZI6X7UwnyKXOJVmqXXtm4ulA10uuX5MeqKVTheA=";
                 });
               })
               nix-vscode-extensions.overlays.default
