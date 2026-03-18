@@ -201,6 +201,7 @@ in
           name = "rebase-onto-trunk";
           lua = ''
             jj_async("rebase", "--onto", "trunk()")
+            revisions.refresh({ keep_selections = true, selected_revision = context.change_id() })
           '';
         }
       ];
