@@ -86,7 +86,6 @@
       "linear-linear"
       # "plex-media-server"
       "raycast"
-      "slack"
       "spotify"
       "stats"
       "transmission"
