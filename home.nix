@@ -276,15 +276,36 @@ in
           name = "resolve-combo";
           lua = ''
             local change = context.change_id()
-            jj_async("resolve", "-r", change, "--tool", "mergiraf")
-            revisions.refresh({ keep_selections = true, selected_revision = change })
+            if not change or change == "" then
+              flash({ text = "No change selected", error = true })
+              return
+            end
+
+            local file = context.file()
+            local args = { "resolve", "-r", change, "--tool", "mergiraf" }
+            if file and file ~= "" then
+              table.insert(args, file)
+            end
+
+            jj_async(args)
+
+            if file and file ~= "" then
+              revisions.details.refresh()
+            else
+              revisions.refresh({ keep_selections = true, selected_revision = change })
+            end
+
             local out, err = jj("log", "-r", "conflicts() & " .. change, "--no-graph", "-T", "change_id")
             if err then
               flash({ text = err, error = true })
               return
             end
             if out ~= "" then
-              jj_interactive("resolve", "-r", change)
+              local interactive_args = { "resolve", "-r", change }
+              if file and file ~= "" then
+                table.insert(interactive_args, file)
+              end
+              jj_interactive(interactive_args)
             end
           '';
         }
