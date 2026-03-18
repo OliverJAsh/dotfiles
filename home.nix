@@ -81,6 +81,29 @@ in
             jj_async("pr", context.change_id())
           '';
         }
+        # https://idursun.github.io/jjui/lua-cookbook/#incrementally-expand-ancestors-in-the-revset
+        {
+          name = "append-ancestors-to-revset";
+          lua = ''
+            local change_id = revisions.current()
+            if not change_id then
+              return
+            end
+
+            local current = revset.current()
+            local bumped = false
+            local updated = current:gsub("ancestors%(" .. change_id .. "%s*,%s*(%d+)%)", function(n)
+              bumped = true
+              return "ancestors(" .. change_id .. ", " .. (tonumber(n) + 1) .. ")"
+            end, 1)
+
+            if not bumped then
+              updated = current .. " | ancestors(" .. change_id .. ", 2)"
+            end
+
+            revset.set(updated)
+          '';
+        }
         {
           name = "edit-file";
           lua = ''
@@ -219,6 +242,11 @@ in
             "w"
             "p"
           ];
+          scope = "revisions";
+        }
+        {
+          action = "append-ancestors-to-revset";
+          key = "+";
           scope = "revisions";
         }
         {
