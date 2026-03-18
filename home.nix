@@ -119,7 +119,7 @@ in
           '';
         }
         {
-          name = "resolve";
+          name = "resolve-combo";
           lua = ''
             local change = context.change_id()
             jj_async("resolve", "-r", change, "--tool", "mergiraf")
@@ -131,6 +131,49 @@ in
             end
             if out ~= "" then
               jj_interactive("resolve", "-r", change)
+            end
+          '';
+        }
+        {
+          name = "resolve";
+          lua = ''
+            local change = context.change_id()
+            if not change or change == "" then
+              flash({ text = "No change selected", error = true })
+              return
+            end
+
+            local file = context.file()
+            local tool = choose({
+              title = "Resolve with",
+              options = {
+                "vscode",
+                "mergiraf",
+                "weave",
+                ":ours",
+                ":theirs",
+              },
+              ordered = true,
+            })
+            if not tool then
+              return
+            end
+
+            local args = { "resolve", "-r", change, "--tool", tool }
+            if file and file ~= "" then
+              table.insert(args, file)
+            end
+
+            if tool == "vscode" then
+              jj_interactive(args)
+            else
+              jj_async(args)
+            end
+
+            if file and file ~= "" then
+              revisions.details.refresh()
+            else
+              revisions.refresh({ keep_selections = true, selected_revision = change })
             end
           '';
         }
@@ -203,6 +246,16 @@ in
         {
           action = "resolve";
           key = "ctrl+c";
+          scope = "revisions";
+        }
+        {
+          action = "resolve";
+          key = "ctrl+c";
+          scope = "revisions.details";
+        }
+        {
+          action = "resolve-combo";
+          key = "ctrl+shift+c";
           scope = "revisions";
         }
         {
