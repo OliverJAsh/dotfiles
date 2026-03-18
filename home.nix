@@ -123,8 +123,13 @@ in
           lua = ''
             local change = context.change_id()
             jj_async("resolve", "-r", change, "--tool", "mergiraf")
-            local out = jj("log", "-r", "conflicts() & " .. change, "--no-graph", "-T", "change_id")
-            if out and out ~= "" then
+            revisions.refresh({ keep_selections = true, selected_revision = change })
+            local out, err = jj("log", "-r", "conflicts() & " .. change, "--no-graph", "-T", "change_id")
+            if err then
+              flash({ text = err, error = true })
+              return
+            end
+            if out ~= "" then
               jj_interactive("resolve", "-r", change)
             end
           '';
