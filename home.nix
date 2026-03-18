@@ -273,43 +273,6 @@ in
         }
         # https://github.com/idursun/jjui/issues/218
         {
-          name = "resolve-combo";
-          lua = ''
-            local change = context.change_id()
-            if not change or change == "" then
-              flash({ text = "No change selected", error = true })
-              return
-            end
-
-            local file = context.file()
-            local args = { "resolve", "-r", change, "--tool", "mergiraf" }
-            if file and file ~= "" then
-              table.insert(args, file)
-            end
-
-            jj_async(args)
-
-            if file and file ~= "" then
-              revisions.details.refresh()
-            else
-              revisions.refresh({ keep_selections = true, selected_revision = change })
-            end
-
-            local out, err = jj("log", "-r", "conflicts() & " .. change, "--no-graph", "-T", "change_id")
-            if err then
-              flash({ text = err, error = true })
-              return
-            end
-            if out ~= "" then
-              local interactive_args = { "resolve", "-r", change }
-              if file and file ~= "" then
-                table.insert(interactive_args, file)
-              end
-              jj_interactive(interactive_args)
-            end
-          '';
-        }
-        {
           name = "resolve-with";
           lua = ''
             local change = context.change_id()
@@ -322,6 +285,7 @@ in
             local tool = choose({
               title = "Resolve with",
               options = {
+                "combo",
                 "vscode",
                 "mergiraf",
                 "weave",
@@ -331,6 +295,36 @@ in
               ordered = true,
             })
             if not tool then
+              return
+            end
+
+            if tool == "combo" then
+              local combo_args = { "resolve", "-r", change, "--tool", "mergiraf" }
+              if file and file ~= "" then
+                table.insert(combo_args, file)
+              end
+
+              jj_async(combo_args)
+
+              if file and file ~= "" then
+                revisions.details.refresh()
+              else
+                revisions.refresh({ keep_selections = true, selected_revision = change })
+              end
+
+              local out, err = jj("log", "-r", "conflicts() & " .. change, "--no-graph", "-T", "change_id")
+              if err then
+                flash({ text = err, error = true })
+                return
+              end
+              if out ~= "" then
+                local interactive_args = { "resolve", "-r", change }
+                if file and file ~= "" then
+                  table.insert(interactive_args, file)
+                end
+                jj_interactive(interactive_args)
+              end
+
               return
             end
 
@@ -541,11 +535,6 @@ in
           action = "resolve-with";
           key = "ctrl+c";
           scope = "revisions.details";
-        }
-        {
-          action = "resolve-combo";
-          key = "ctrl+shift+c";
-          scope = "revisions";
         }
         {
           action = "copy-git-diff";
