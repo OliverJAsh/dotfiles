@@ -4,6 +4,55 @@ let
   name = "Oliver Joseph Ash";
   email = "oliverjash@gmail.com";
   sshSigningKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILVN8hEG4Z4si/JTl+L9b1f2npLjZ9gQ0DW1op6HLaT9";
+  # https://github.com/Wilfred/difftastic/issues/693
+  jjDifft = pkgs.writeShellApplication {
+    name = "jj-difft";
+    runtimeInputs = [
+      pkgs.difftastic
+      pkgs.ncurses
+    ];
+    text = ''
+      set -euo pipefail
+
+      width=
+      prev=
+      has_display=0
+
+      for arg in "$@"; do
+        case "$arg" in
+          --display|--display=*)
+            has_display=1
+            ;;
+          --width=*)
+            width="''${arg#--width=}"
+            ;;
+          *)
+            if [ "$prev" = '--width' ]; then
+              width="$arg"
+            fi
+            ;;
+        esac
+
+        prev="$arg"
+      done
+
+      if [ "$has_display" -eq 1 ]; then
+        exec difft "$@"
+      fi
+
+      if [ -z "$width" ]; then
+        width="$(tput cols)"
+      fi
+
+      if [ "$width" -lt 140 ]; then
+        display=inline
+      else
+        display=side-by-side
+      fi
+
+      exec difft --display "$display" "$@"
+    '';
+  };
 in
 {
   home.username = "oliver";
@@ -507,6 +556,8 @@ in
           1
         ];
       };
+
+      merge-tools.difft.program = lib.getExe jjDifft;
 
       # Same as default minus `--fast`.
       # https://github.com/jj-vcs/jj/wiki/Diff-and-merge-tools#mergiraf
