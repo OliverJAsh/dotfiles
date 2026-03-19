@@ -37,6 +37,10 @@
                 jj-ryu = prev.callPackage ./pkgs/jj-ryu.nix { };
               })
               (final: prev: {
+                # https://github.com/NixOS/nixpkgs/pull/500629
+                difftastic = prev.callPackage ./pkgs/difftastic.nix { };
+              })
+              (final: prev: {
                 jjui = prev.jjui.overrideAttrs (old: rec {
                   version = "0.10.2";
                   src = prev.fetchFromGitHub {
