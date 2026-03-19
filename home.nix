@@ -185,21 +185,19 @@ in
       preview = {
         revision_command = [
           "--config=merge-tools.difft.diff-args=[\"--color=always\",\"--width=$preview_width\",\"$left\",\"$right\"]"
+          "--config=merge-tools.delta.diff-args=[\"--tabs=2\",\"--width=$preview_width\",\"$left\",\"$right\"]"
           "show"
           "--color"
           "always"
-          "--tool"
-          "difft"
           "-r"
           "$change_id"
         ];
         file_command = [
           "--config=merge-tools.difft.diff-args=[\"--color=always\",\"--width=$preview_width\",\"$left\",\"$right\"]"
+          "--config=merge-tools.delta.diff-args=[\"--tabs=2\",\"--width=$preview_width\",\"$left\",\"$right\"]"
           "diff"
           "--color"
           "always"
-          "--tool"
-          "difft"
           "-r"
           "$change_id"
           "$file"
@@ -416,6 +414,58 @@ in
             revisions.refresh({ keep_selections = true, selected_revision = context.change_id() })
           '';
         }
+        {
+          name = "select-diff-formatter";
+          lua = ''
+            local current, err = jj("config", "get", "ui.diff-formatter")
+            if err then
+              flash({ text = err, error = true })
+              return
+            end
+
+            current = current:gsub("%s+$", "")
+
+            local formatter = choose({
+              title = "Diff formatter (current: " .. current .. ")",
+              options = {
+                "difft",
+                "delta",
+              },
+              ordered = true,
+            })
+            if not formatter then
+              return
+            end
+
+            if formatter == current then
+              flash("Diff formatter: " .. formatter)
+              return
+            end
+
+            local _, set_err = jj("config", "set", "--repo", "ui.diff-formatter", formatter)
+            if set_err then
+              flash({ text = set_err, error = true })
+              return
+            end
+
+            local change = context.change_id()
+            local file = context.file()
+            if file then
+              revisions.details.refresh()
+              revisions.details.select_file(file)
+            else
+              revisions.refresh({ keep_selections = true, selected_revision = change })
+              if change and change ~= "" then
+                revisions.navigate({ to = change, ensureView = true })
+              end
+            end
+
+            jjui.ui.preview_toggle()
+            jjui.ui.preview_toggle()
+
+            flash("Diff formatter: " .. formatter)
+          '';
+        }
       ];
 
       # https://github.com/idursun/jjui/issues/352
@@ -493,6 +543,24 @@ in
           action = "diff-with";
           seq = [
             "w"
+            "d"
+          ];
+          scope = "revisions.details";
+        }
+        {
+          action = "select-diff-formatter";
+          seq = [
+            "w"
+            "t"
+            "d"
+          ];
+          scope = "revisions";
+        }
+        {
+          action = "select-diff-formatter";
+          seq = [
+            "w"
+            "t"
             "d"
           ];
           scope = "revisions.details";
