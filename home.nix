@@ -494,6 +494,20 @@ in
         key = sshSigningKey;
       };
 
+      merge-tools.delta = {
+        diff-args = [
+          "--tabs=2"
+          "--side-by-side"
+          "--width=$width"
+          "$left"
+          "$right"
+        ];
+        diff-expected-exit-codes = [
+          0
+          1
+        ];
+      };
+
       # Same as default minus `--fast`.
       # https://github.com/jj-vcs/jj/wiki/Diff-and-merge-tools#mergiraf
       merge-tools.mergiraf = {
