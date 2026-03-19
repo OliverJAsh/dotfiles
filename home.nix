@@ -481,13 +481,7 @@ in
       };
       ui = {
         default-command = [ "log" ];
-        # https://difftastic.wilfred.me.uk/jj.html
-        diff-formatter = [
-          "${lib.getExe pkgs.difftastic}"
-          "--color=always"
-          "$left"
-          "$right"
-        ];
+        diff-formatter = "difft";
         merge-editor = "vscode";
       };
       signing = {
