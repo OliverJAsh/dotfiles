@@ -289,7 +289,7 @@ in
           '';
         }
         {
-          name = "resolve";
+          name = "resolve-with";
           lua = ''
             local change = context.change_id()
             if not change or change == "" then
@@ -512,12 +512,12 @@ in
           scope = "revisions";
         }
         {
-          action = "resolve";
+          action = "resolve-with";
           key = "ctrl+c";
           scope = "revisions";
         }
         {
-          action = "resolve";
+          action = "resolve-with";
           key = "ctrl+c";
           scope = "revisions.details";
         }
