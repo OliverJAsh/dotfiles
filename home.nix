@@ -17,6 +17,7 @@ in
     claude-code
     colima
     curl # for Brotli compression support
+    delta
     gh
     kajji
     lazyjj
