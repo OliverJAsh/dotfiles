@@ -348,7 +348,7 @@ in
         # https://github.com/idursun/jjui/issues/587
         # https://github.com/idursun/jjui/issues/218
         {
-          name = "diff-with";
+          name = "diff.with";
           lua = ''
             local change = context.change_id()
             if not change or change == "" then
@@ -415,7 +415,7 @@ in
           '';
         }
         {
-          name = "select-diff-formatter";
+          name = "diff.select-formatter";
           lua = ''
             local current, err = jj("config", "get", "ui.diff-formatter")
             if err then
@@ -532,36 +532,42 @@ in
           scope = "revisions";
         }
         {
-          action = "diff-with";
+          action = "diff.with";
+          desc = "diff with...";
           seq = [
             "w"
+            "d"
             "d"
           ];
           scope = "revisions";
         }
         {
-          action = "diff-with";
+          action = "diff.with";
+          desc = "diff with...";
           seq = [
             "w"
+            "d"
             "d"
           ];
           scope = "revisions.details";
         }
         {
-          action = "select-diff-formatter";
+          action = "diff.select-formatter";
+          desc = "select diff formatter";
           seq = [
             "w"
-            "t"
             "d"
+            "f"
           ];
           scope = "revisions";
         }
         {
-          action = "select-diff-formatter";
+          action = "diff.select-formatter";
+          desc = "select diff formatter";
           seq = [
             "w"
-            "t"
             "d"
+            "f"
           ];
           scope = "revisions.details";
         }
