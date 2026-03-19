@@ -215,6 +215,60 @@ in
           '';
         }
         {
+          name = "diff-with";
+          lua = ''
+            local change = context.change_id()
+            if not change or change == "" then
+              flash({ text = "No change selected", error = true })
+              return
+            end
+
+            local file = context.file()
+            local tool = choose({
+              title = "Diff with",
+              options = {
+                "default",
+                "difft",
+                "delta",
+                ":git",
+                ":color-words",
+                ":summary",
+                ":stat",
+                ":types",
+                ":name-only",
+              },
+              ordered = true,
+            })
+            if not tool then
+              return
+            end
+
+            local args
+            if file and file ~= "" then
+              args = { "diff", "-r", change }
+            else
+              args = { "show", "-r", change }
+            end
+
+            if tool ~= "default" then
+              table.insert(args, "--tool")
+              table.insert(args, tool)
+            end
+
+            if file and file ~= "" then
+              table.insert(args, file)
+            end
+
+            local out, err = jj(args)
+            if err then
+              flash({ text = err, error = true })
+              return
+            end
+
+            jjui.diff.show(out)
+          '';
+        }
+        {
           name = "toggle-parent";
           lua = ''
             jj_async("toggle-parent", context.change_id())
@@ -291,6 +345,22 @@ in
           action = "copy-git-diff";
           key = "ctrl+x";
           scope = "revisions";
+        }
+        {
+          action = "diff-with";
+          seq = [
+            "w"
+            "d"
+          ];
+          scope = "revisions";
+        }
+        {
+          action = "diff-with";
+          seq = [
+            "w"
+            "d"
+          ];
+          scope = "revisions.details";
         }
         {
           action = "toggle-parent";
