@@ -172,6 +172,7 @@ in
             revisions.navigate { to = "@" }
           '';
         }
+        # https://github.com/idursun/jjui/issues/218
         {
           name = "resolve-combo";
           lua = ''
@@ -245,6 +246,8 @@ in
             end
           '';
         }
+        # https://github.com/idursun/jjui/issues/587
+        # https://github.com/idursun/jjui/issues/218
         {
           name = "diff-with";
           lua = ''
