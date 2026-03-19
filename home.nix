@@ -53,6 +53,58 @@ let
       exec difft --display "$display" "$@"
     '';
   };
+  # https://github.com/dandavison/delta/issues/359
+  # https://github.com/dandavison/delta/issues/2083
+  jjDelta = pkgs.writeShellApplication {
+    name = "jj-delta";
+    runtimeInputs = [
+      pkgs.delta
+      pkgs.ncurses
+    ];
+    text = ''
+      set -euo pipefail
+
+      width=
+      prev=
+      has_side_by_side=0
+      has_no_side_by_side=0
+
+      for arg in "$@"; do
+        case "$arg" in
+          --side-by-side)
+            has_side_by_side=1
+            ;;
+          --no-side-by-side)
+            has_no_side_by_side=1
+            ;;
+          --width=*)
+            width="''${arg#--width=}"
+            ;;
+          *)
+            if [ "$prev" = '--width' ]; then
+              width="$arg"
+            fi
+            ;;
+        esac
+
+        prev="$arg"
+      done
+
+      if [ "$has_side_by_side" -eq 1 ] || [ "$has_no_side_by_side" -eq 1 ]; then
+        exec delta "$@"
+      fi
+
+      if [ -z "$width" ]; then
+        width="$(tput cols)"
+      fi
+
+      if [ "$width" -ge 140 ]; then
+        exec delta --side-by-side "$@"
+      fi
+
+      exec delta "$@"
+    '';
+  };
 in
 {
   home.username = "oliver";
@@ -544,9 +596,9 @@ in
       };
 
       merge-tools.delta = {
+        program = lib.getExe jjDelta;
         diff-args = [
           "--tabs=2"
-          "--side-by-side"
           "--width=$width"
           "$left"
           "$right"
