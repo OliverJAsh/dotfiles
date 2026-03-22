@@ -220,19 +220,57 @@ in
           '';
         }
         {
-          name = "new-after";
+          name = "new-no-edit-after";
           lua = ''
-            jj("new", "-A", revisions.current())
-            revisions.refresh()
-            revisions.navigate { to = "@" }
+            -- `jj new` outputs new change ID to stderr, but jjui's `jj()`
+            -- helper only returns stdout, so we resolve the new change ID with a
+            -- follow-up `jj log` query.
+            local change = revisions.current()
+            jj("new", "--no-edit", "-A", change)
+
+            local created, err = jj(
+              "log",
+              "-r",
+              "children(" .. change .. ")",
+              "--limit",
+              "1",
+              "--no-graph",
+              "--template",
+              "change_id.shortest()"
+            )
+            if err then
+              flash({ text = err, error = true })
+              return
+            end
+
+            revisions.refresh({ selected_revision = created })
           '';
         }
         {
-          name = "new-before";
+          name = "new-no-edit-before";
           lua = ''
-            jj("new", "-B", revisions.current())
-            revisions.refresh()
-            revisions.navigate { to = "@" }
+            -- `jj new` outputs new change ID to stderr, but jjui's `jj()`
+            -- helper only returns stdout, so we resolve the new change ID with a
+            -- follow-up `jj log` query.
+            local change = revisions.current()
+            jj("new", "--no-edit", "-B", change)
+
+            local created, err = jj(
+              "log",
+              "-r",
+              "parents(" .. change .. ")",
+              "--limit",
+              "1",
+              "--no-graph",
+              "--template",
+              "change_id.shortest()"
+            )
+            if err then
+              flash({ text = err, error = true })
+              return
+            end
+
+            revisions.refresh({ selected_revision = created })
           '';
         }
         # https://github.com/idursun/jjui/issues/218
@@ -481,12 +519,12 @@ in
           scope = "revisions";
         }
         {
-          action = "new-after";
+          action = "new-no-edit-after";
           key = "ctrl+a";
           scope = "revisions";
         }
         {
-          action = "new-before";
+          action = "new-no-edit-before";
           key = "ctrl+b";
           scope = "revisions";
         }
