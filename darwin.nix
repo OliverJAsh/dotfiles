@@ -72,9 +72,7 @@
     };
     casks = [
       "1password"
-      "browserstacklocal"
       "codex-app"
-      "copilot-cli"
       "discord"
       "figma"
       "firefox"
@@ -89,9 +87,7 @@
       "spotify"
       "stats"
       "transmission"
-      "tunnelbear"
       "visual-studio-code"
-      "zoom"
     ];
   };
 
