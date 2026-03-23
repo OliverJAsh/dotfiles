@@ -88,6 +88,7 @@
       "stats"
       "transmission"
       "visual-studio-code"
+      "whatsapp"
     ];
   };
 
