@@ -51,6 +51,8 @@
 
     interactiveShellInit = ''
       set --global fish_greeting
+
+      but completions fish | source
     '';
 
     shellAbbrs = {

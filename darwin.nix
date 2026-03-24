@@ -74,7 +74,6 @@
       "figma"
       "firefox"
       "ghostty"
-      "gitbutler"
       "google-chrome"
       "google-chrome@beta"
       "istherenet"
