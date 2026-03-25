@@ -41,12 +41,6 @@
                 difftastic = prev.callPackage ./pkgs/difftastic.nix { };
               })
               (final: prev: {
-                difft-auto-layout = prev.callPackage ./pkgs/difft-auto-layout.nix { };
-              })
-              (final: prev: {
-                delta-auto-layout = prev.callPackage ./pkgs/delta-auto-layout.nix { };
-              })
-              (final: prev: {
                 jjui = prev.jjui.overrideAttrs (old: rec {
                   version = "0.10.2";
                   src = prev.fetchFromGitHub {

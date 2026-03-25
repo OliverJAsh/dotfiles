@@ -550,7 +550,6 @@
       };
 
       merge-tools.delta = {
-        program = lib.getExe pkgs.delta-auto-layout;
         diff-args = [
           "--tabs=2"
           "--width=$width"
@@ -562,8 +561,6 @@
           1
         ];
       };
-
-      merge-tools.difft.program = lib.getExe pkgs.difft-auto-layout;
 
       # Same as default minus `--fast`.
       # https://github.com/jj-vcs/jj/wiki/Diff-and-merge-tools#mergiraf
