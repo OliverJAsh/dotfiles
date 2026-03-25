@@ -67,7 +67,8 @@ in
     enable = true;
     git.enable = true;
     git.diffToolMode = true;
-    jujutsu.enable = true;
+    # https://github.com/jj-vcs/jj/blob/ac7a8671916ec2082288adf5c13f642041a5f716/cli/src/config/merge_tools.toml#L23
+    # jujutsu.enable = true;
     options = {
       tab-width = 2;
     };

@@ -392,6 +392,9 @@
       };
       ui = {
         default-command = [ "log" ];
+        # TODO: add --sort-paths
+        # https://github.com/nix-community/home-manager/blob/1eb0549a1ab3fe3f5acf86668249be15fa0e64f7/modules/programs/difftastic.nix#L166
+        diff-formatter = "difft";
         merge-editor = "vscode";
       };
       signing = {
