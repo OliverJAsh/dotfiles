@@ -392,7 +392,6 @@
       };
       ui = {
         default-command = [ "log" ];
-        diff-formatter = "difft";
         merge-editor = "vscode";
       };
       signing = {

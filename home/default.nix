@@ -67,5 +67,6 @@ in
     enable = true;
     git.enable = true;
     git.diffToolMode = true;
+    jujutsu.enable = true;
   };
 }
