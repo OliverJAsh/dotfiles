@@ -67,8 +67,5 @@ in
 
     enable = true;
     git.diffToolMode = true;
-    options = {
-      color = "always";
-    };
   };
 }
