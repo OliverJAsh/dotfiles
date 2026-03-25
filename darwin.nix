@@ -61,9 +61,6 @@
     onActivation.cleanup = "zap";
     taps = [ "TomAnthony/brews" ];
     brews = [
-      # Install via Brew rather than Nix so we can utilize system services
-      # (start on login).
-      "caddy"
       "weave"
     ];
     masApps = {

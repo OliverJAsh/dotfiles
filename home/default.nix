@@ -71,9 +71,4 @@ in
       color = "always";
     };
   };
-
-  home.activation.caddy = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ln -sf ~/Dev/dotfiles/proxy/Caddyfile /opt/homebrew/etc/Caddyfile
-    /opt/homebrew/bin/brew services start caddy
-  '';
 }
