@@ -403,6 +403,8 @@
         key = sshSigningKey;
       };
 
+      merge-tools.difft.program = lib.getExe pkgs.difft-auto-layout;
+
       # Same as default minus `--fast`.
       # https://github.com/jj-vcs/jj/wiki/Diff-and-merge-tools#mergiraf
       merge-tools.mergiraf = {
