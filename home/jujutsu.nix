@@ -230,62 +230,6 @@
             end
           '';
         }
-        # https://github.com/idursun/jjui/issues/587
-        # https://github.com/idursun/jjui/issues/218
-        {
-          name = "diff.with";
-          lua = ''
-            local change = context.change_id()
-            if not change or change == "" then
-              flash({ text = "No change selected", error = true })
-              return
-            end
-
-            local file = context.file()
-            local tool = choose({
-              title = "Diff with",
-              options = {
-                "default",
-                "difft",
-                "delta",
-                ":git",
-                ":color-words",
-                ":summary",
-                ":stat",
-                ":types",
-                ":name-only",
-              },
-              ordered = true,
-            })
-            if not tool then
-              return
-            end
-
-            local args
-            if file and file ~= "" then
-              args = { "diff", "-r", change }
-            else
-              args = { "show", "-r", change }
-            end
-
-            if tool ~= "default" then
-              table.insert(args, "--tool")
-              table.insert(args, tool)
-            end
-
-            if file and file ~= "" then
-              table.insert(args, file)
-            end
-
-            local out, err = jj(args)
-            if err then
-              flash({ text = err, error = true })
-              return
-            end
-
-            jjui.diff.show(out)
-          '';
-        }
         {
           name = "toggle-parent";
           lua = ''
@@ -297,58 +241,6 @@
           lua = ''
             jj_async("rebase", "--onto", "trunk()")
             revisions.refresh({ keep_selections = true, selected_revision = context.change_id() })
-          '';
-        }
-        {
-          name = "diff.select-formatter";
-          lua = ''
-            local current, err = jj("config", "get", "ui.diff-formatter")
-            if err then
-              flash({ text = err, error = true })
-              return
-            end
-
-            current = current:gsub("%s+$", "")
-
-            local formatter = choose({
-              title = "Diff formatter (current: " .. current .. ")",
-              options = {
-                "difft",
-                "delta",
-              },
-              ordered = true,
-            })
-            if not formatter then
-              return
-            end
-
-            if formatter == current then
-              flash("Diff formatter: " .. formatter)
-              return
-            end
-
-            local _, set_err = jj("config", "set", "--repo", "ui.diff-formatter", formatter)
-            if set_err then
-              flash({ text = set_err, error = true })
-              return
-            end
-
-            local change = context.change_id()
-            local file = context.file()
-            if file then
-              revisions.details.refresh()
-              revisions.details.select_file(file)
-            else
-              revisions.refresh({ keep_selections = true, selected_revision = change })
-              if change and change ~= "" then
-                revisions.navigate({ to = change, ensureView = true })
-              end
-            end
-
-            jjui.ui.preview_toggle()
-            jjui.ui.preview_toggle()
-
-            flash("Diff formatter: " .. formatter)
           '';
         }
       ];
@@ -410,46 +302,6 @@
           action = "copy-git-diff";
           key = "ctrl+x";
           scope = "revisions";
-        }
-        {
-          action = "diff.with";
-          desc = "diff with...";
-          seq = [
-            "w"
-            "d"
-            "d"
-          ];
-          scope = "revisions";
-        }
-        {
-          action = "diff.with";
-          desc = "diff with...";
-          seq = [
-            "w"
-            "d"
-            "d"
-          ];
-          scope = "revisions.details";
-        }
-        {
-          action = "diff.select-formatter";
-          desc = "select diff formatter";
-          seq = [
-            "w"
-            "d"
-            "f"
-          ];
-          scope = "revisions";
-        }
-        {
-          action = "diff.select-formatter";
-          desc = "select diff formatter";
-          seq = [
-            "w"
-            "d"
-            "f"
-          ];
-          scope = "revisions.details";
         }
         {
           action = "toggle-parent";
@@ -547,19 +399,6 @@
         behavior = "own";
         backend = "ssh";
         key = sshSigningKey;
-      };
-
-      merge-tools.delta = {
-        diff-args = [
-          "--tabs=2"
-          "--width=$width"
-          "$left"
-          "$right"
-        ];
-        diff-expected-exit-codes = [
-          0
-          1
-        ];
       };
 
       # Same as default minus `--fast`.

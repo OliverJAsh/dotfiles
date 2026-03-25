@@ -28,7 +28,6 @@ in
     claude-code
     colima
     curl # for Brotli compression support
-    delta
     gh
     # Not using `programs.mergiraf` due to https://github.com/gitbutlerapp/gitbutler/issues/10509
     mergiraf
