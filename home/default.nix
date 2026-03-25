@@ -65,6 +65,7 @@ in
     # - missing function names in hunk headers https://github.com/Wilfred/difftastic/issues/304
 
     enable = true;
+    git.enable = true;
     git.diffToolMode = true;
   };
 }
