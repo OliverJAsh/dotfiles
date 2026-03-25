@@ -34,7 +34,35 @@
         bg = "#171a1f";
       };
 
-      preview.show_at_start = true;
+      preview = {
+        show_at_start = true;
+
+        # jj passes the terminal width through to diff commands, but for jjui's
+        # preview that terminal width is the outer terminal (or a default), not
+        # the width of jjui's internal preview pane. jjui exposes the actual pane
+        # width as `$preview_width`, so we override the preview commands to pass
+        # that value through explicitly. Ideally this wouldn't be necessary:
+        # https://github.com/idursun/jjui/pull/608
+        revision_command = [
+          "--config=merge-tools.difft.diff-args=[\"--color=always\",\"--width=$preview_width\",\"$left\",\"$right\"]"
+          "--config=merge-tools.delta.diff-args=[\"--tabs=2\",\"--width=$preview_width\",\"$left\",\"$right\"]"
+          "show"
+          "--color"
+          "always"
+          "-r"
+          "$change_id"
+        ];
+        file_command = [
+          "--config=merge-tools.difft.diff-args=[\"--color=always\",\"--width=$preview_width\",\"$left\",\"$right\"]"
+          "--config=merge-tools.delta.diff-args=[\"--tabs=2\",\"--width=$preview_width\",\"$left\",\"$right\"]"
+          "diff"
+          "--color"
+          "always"
+          "-r"
+          "$change_id"
+          "$file"
+        ];
+      };
 
       actions = [
         {
