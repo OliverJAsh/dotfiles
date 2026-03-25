@@ -105,9 +105,7 @@
 
         pagers = [
           {
-            # https://github.com/jesseduffield/lazygit/pull/4832#issuecomment-3289371491
-            # useExternalDiffGitConfig = true;
-            externalDiffCommand = "difft --color=always";
+            useExternalDiffGitConfig = true;
           }
         ];
 
