@@ -77,6 +77,7 @@
       "google-chrome"
       "google-chrome@beta"
       "istherenet"
+      "keycastr"
       "linear-linear"
       "plex-media-server"
       "raycast"
