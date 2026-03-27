@@ -78,7 +78,7 @@
       "google-chrome@beta"
       "istherenet"
       "linear-linear"
-      # "plex-media-server"
+      "plex-media-server"
       "raycast"
       "spotify"
       "stats"
