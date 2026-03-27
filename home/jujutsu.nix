@@ -45,7 +45,6 @@
         # https://github.com/idursun/jjui/pull/608
         revision_command = [
           "--config=merge-tools.difft.diff-args=[\"--color=always\",\"--width=$preview_width\",\"$left\",\"$right\"]"
-          "--config=merge-tools.delta.diff-args=[\"--tabs=2\",\"--width=$preview_width\",\"$left\",\"$right\"]"
           "show"
           "--color"
           "always"
@@ -54,7 +53,6 @@
         ];
         file_command = [
           "--config=merge-tools.difft.diff-args=[\"--color=always\",\"--width=$preview_width\",\"$left\",\"$right\"]"
-          "--config=merge-tools.delta.diff-args=[\"--tabs=2\",\"--width=$preview_width\",\"$left\",\"$right\"]"
           "diff"
           "--color"
           "always"
