@@ -56,6 +56,7 @@
     ignores = [
       ".envrc"
       ".DS_Store"
+      ".codex/environments/environment.toml"
     ];
   };
 
