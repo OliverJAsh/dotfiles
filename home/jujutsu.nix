@@ -274,6 +274,17 @@
       # https://github.com/idursun/jjui/issues/352
       bindings = [
         {
+          action = "revisions.inline_describe.accept";
+          key = "enter";
+          scope = "revisions.inline_describe";
+        }
+        {
+          action = "revisions.inline_describe.new_line";
+          key = "shift+enter";
+          scope = "revisions.inline_describe";
+        }
+
+        {
           action = "revisions.commit";
           key = "C";
           scope = "revisions";
