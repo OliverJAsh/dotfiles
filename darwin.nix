@@ -69,6 +69,7 @@
     };
     casks = [
       "1password"
+      "alcove"
       "codex-app"
       "discord"
       "figma"
@@ -84,6 +85,7 @@
       "spotify"
       "stats"
       "transmission"
+      "tuple"
       "visual-studio-code"
       "whatsapp"
     ];
