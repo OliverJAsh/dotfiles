@@ -33,6 +33,7 @@ in
     mergiraf
     nixfmt
     ripgrep
+    yazi
   ];
 
   programs.ssh = {
