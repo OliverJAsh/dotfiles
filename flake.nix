@@ -45,12 +45,12 @@
               })
               (final: prev: {
                 jjui = prev.jjui.overrideAttrs (old: rec {
-                  version = "0.10.3";
+                  version = "0.10.4";
                   src = prev.fetchFromGitHub {
                     owner = "idursun";
                     repo = "jjui";
                     tag = "v${version}";
-                    hash = "sha256-8ckAZb6wNCkocQl2v0VCIii64W5B7VG8LFlnwhQIAT4=";
+                    hash = "sha256-20NWoojFBwHs33NFNeZbk1kiZ418kYD42XTUOHuQtv8=";
                   };
                   vendorHash = "sha256-AJlJ9iHkkWNS8a4oGt8AG89StjMH9UH3WuOcZwa3VS8=";
                 });
