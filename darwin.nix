@@ -61,6 +61,7 @@
     onActivation.cleanup = "zap";
     taps = [ "TomAnthony/brews" ];
     brews = [
+      "eliaskc/tap/kajji"
       "weave"
     ];
     masApps = {

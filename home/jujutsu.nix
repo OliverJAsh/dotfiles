@@ -7,7 +7,6 @@
 
 {
   home.packages = with pkgs; [
-    kajji
     lazyjj
 
     # https://github.com/davidpdrsn/jj-sync-prs

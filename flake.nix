@@ -31,9 +31,6 @@
                 jj-stack = prev.callPackage ./pkgs/jj-stack.nix { };
               })
               (final: prev: {
-                kajji = prev.callPackage ./pkgs/kajji.nix { };
-              })
-              (final: prev: {
                 jj-ryu = prev.callPackage ./pkgs/jj-ryu.nix { };
               })
               (final: prev: {
