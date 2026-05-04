@@ -14,17 +14,6 @@
     jj-stack
   ];
 
-  home.file.".config/kajji/config.json".text = ''
-    {
-      "ui": {
-        "showFileTree": false
-      },
-      "diff": {
-        "useJjFormatter": true
-      }
-    }
-  '';
-
   programs.jjui = {
     enable = true;
     settings = {
