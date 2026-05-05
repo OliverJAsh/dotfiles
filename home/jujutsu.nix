@@ -1,7 +1,6 @@
 {
   name,
   email,
-  sshSigningKey,
 }:
 { lib, pkgs, ... }:
 
@@ -401,7 +400,7 @@
       signing = {
         behavior = "own";
         backend = "ssh";
-        key = sshSigningKey;
+        key = "~/.ssh/id_ed25519.pub";
       };
 
       merge-tools.difft.program = lib.getExe pkgs.difft-auto-layout;

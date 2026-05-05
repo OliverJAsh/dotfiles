@@ -8,10 +8,10 @@ in
 {
   imports = [
     (import ./git.nix {
-      inherit name email sshSigningKey;
+      inherit name email;
     })
     (import ./jujutsu.nix {
-      inherit name email sshSigningKey;
+      inherit name email;
     })
     ./shell.nix
     ./vscode.nix

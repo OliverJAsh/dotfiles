@@ -1,7 +1,6 @@
 {
   name,
   email,
-  sshSigningKey,
 }:
 { ... }:
 
@@ -14,7 +13,7 @@
     };
 
     signing.signByDefault = true;
-    signing.key = sshSigningKey;
+    signing.key = "~/.ssh/id_ed25519.pub";
 
     settings = {
       gpg.format = "ssh";
