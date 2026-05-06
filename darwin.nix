@@ -80,7 +80,7 @@
       "google-chrome@beta"
       "istherenet"
       "keycastr"
-      "linear-linear"
+      "linear"
       "plex-media-server"
       "raycast"
       "spotify"
