@@ -39,13 +39,11 @@ in
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "github.com" = {
-        addKeysToAgent = "yes";
-        identityFile = "~/.ssh/id_ed25519";
-        extraOptions = {
-          UseKeychain = "yes";
-        };
+        AddKeysToAgent = "yes";
+        IdentityFile = "~/.ssh/id_ed25519";
+        UseKeychain = "yes";
       };
     };
   };
